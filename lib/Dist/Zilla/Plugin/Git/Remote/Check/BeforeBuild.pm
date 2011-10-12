@@ -1,12 +1,11 @@
 use strict;
 use warnings;
 
-package Dist::Zilla::Plugin::Git::Remote::Check;
+package Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild;
 
-# ABSTRACT: Ensure no pending commits on a remote branch before release
+# ABSTRACT: Ensure no pending commits on a remote branch before build
 
 use Moose;
-
 
 =head1 SYNOPSIS
 
@@ -43,7 +42,7 @@ use Moose;
 
 =cut
 
-with 'Dist::Zilla::Role::BeforeRelease';
+with 'Dist::Zilla::Role::BeforeBuild';
 with 'Dist::Zilla::Role::Git::LocalRepository';
 with 'Dist::Zilla::Role::Git::Remote';
 with 'Dist::Zilla::Role::Git::Remote::Branch';
@@ -55,7 +54,7 @@ with 'Dist::Zilla::Role::Git::Remote::Check';
 
 has '+_remote_branch' => ( default => sub { shift->branch } );
 
-sub before_release {
+sub before_build {
   my $self = shift;
   $self->remote_update;
   $self->check_remote;

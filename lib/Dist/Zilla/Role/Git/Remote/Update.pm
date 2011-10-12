@@ -24,7 +24,9 @@ sub remote_update {
 
   $self->log([qq[Updating remote '%s'], $remote ]);
 
-  $self->git->remote( 'update', $remote );
+  my ( @out ) = $self->git->remote( '--verbose','update', $remote );
+
+  $self->log_debug("[git] $_") for @out;
 
   1;
 }

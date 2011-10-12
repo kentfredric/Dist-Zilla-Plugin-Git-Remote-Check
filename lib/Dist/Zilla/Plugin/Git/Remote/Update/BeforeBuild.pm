@@ -1,16 +1,18 @@
 use strict;
 use warnings;
+
 package Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild;
+
 # FILENAME: BeforeBuild.pm
 # CREATED: 13/10/11 05:17:02 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Update a remote with Git before build.
 
 use Moose;
 
-with 'Dist::Zilla::Role::BeforeBuild', 
-     'Dist::Zilla::Role::Git::LocalRepository',
-     'Dist::Zilla::Role::Git::Remote',
-     'Dist::Zilla::Role::Git::Remote::Update';
+with 'Dist::Zilla::Role::BeforeBuild';
+with 'Dist::Zilla::Role::Git::LocalRepository';
+with 'Dist::Zilla::Role::Git::Remote';
+with 'Dist::Zilla::Role::Git::Remote::Update';
 
 =head1 SYNOPSIS
 
@@ -44,5 +46,4 @@ sub before_build {
 no Moose;
 __PACKAGE__->meta->make_immutable;
 1;
-
 

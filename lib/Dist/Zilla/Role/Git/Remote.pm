@@ -49,7 +49,7 @@ sub _build__remotes {
 
 sub _remote_valid {
   my $self = shift;
-  return $self->_has_remote( $self->remote_name );
+  return $self->_has_remote(sub { $_ eq $self->_remote_name });
 }
 
 sub _assert_valid_remote {
@@ -59,7 +59,7 @@ sub _assert_valid_remote {
 
   my $msg = qq[Git reports remote name '%s' does not exist.\n Remotes: %s];
 
-  return $self->log_fatal( [ $msg, $self->remote_name, Data::Dump::dump( $self->_remotes ), ] );
+  return $self->log_fatal( [ $msg, $self->_remote_name, Data::Dump::dump( $self->_remotes ), ] );
 
 }
 

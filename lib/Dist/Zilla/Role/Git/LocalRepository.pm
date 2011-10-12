@@ -19,9 +19,9 @@ has 'git' => (
 );
 
 sub _build_git {
-  require Git::Repository;
+  require Git::Wrapper;
   my $self = shift;
-  return Git::Repository->new( $self->zilla->root );
+  return Git::Wrapper->new( $self->zilla->root );
 }
 
 no Moose::Role;

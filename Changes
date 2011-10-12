@@ -1,5 +1,7 @@
 Release history for Dist-Zilla-Plugin-Git-Check-Remote
 
 {{$NEXT}}
+
+0.1.0 2011-10-12T23:01:55Z
  - First version.
 

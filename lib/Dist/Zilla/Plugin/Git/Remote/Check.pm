@@ -1,13 +1,13 @@
 use strict;
 use warnings;
 
-package Dist::Zilla::Plugin::Git::Check::Remote;
+package Dist::Zilla::Plugin::Git::Remote::Check;
 
 # ABSTRACT: Ensure no pending commits on a remote branch.
 
 use Moose;
 
-with 'Dist::Zilla::Role::BeforeBuild';
+with 'Dist::Zilla::Role::BeforeRelease';
 
 =head1 SYNOPSIS
 
@@ -21,11 +21,10 @@ with 'Dist::Zilla::Role::BeforeBuild';
 
 =cut
 
-with 'Dist::Zilla::Role::Git::LocalRepository',    #
-  'Dist::Zilla::Role::Git::Remote',                #
-  'Dist::Zilla::Role::Git::Remote::Branch',        #
-  'Dist::Zilla::Role::Git::Remote::Update',        #
-  ;
+with 'Dist::Zilla::Role::Git::LocalRepository';
+with 'Dist::Zilla::Role::Git::Remote';
+with 'Dist::Zilla::Role::Git::Remote::Branch';
+with 'Dist::Zilla::Role::Git::Remote::Update';
 
 has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
 

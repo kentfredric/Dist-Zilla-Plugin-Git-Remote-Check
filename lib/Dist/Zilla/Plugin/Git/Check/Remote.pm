@@ -6,6 +6,7 @@ package Dist::Zilla::Plugin::Git::Check::Remote;
 # ABSTRACT: Ensure no pending commits on a remote branch.
 
 use Moose;
+
 with 'Dist::Zilla::Role::BeforeBuild';
 
 =head1 SYNOPSIS
@@ -20,18 +21,11 @@ with 'Dist::Zilla::Role::BeforeBuild';
 
 =cut
 
-has '_git' => ( is => 'rw', lazy_build => 1 );
-sub _build__git { my $self = shift; require Git::Wrapper; return Git::Wrapper->new( $self->zilla->root ); }
+with 'Dist::Zilla::Role::Git::LocalRepository',
+     'Dist::Zilla::Role::Git::Remote',
+     'Dist::Zilla::Role::Git::Remote::Branch';
 
 has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
-
-has 'remote_name' => ( isa => 'Str', is => 'rw', default => 'origin' );
-
-has 'remote_branch' => ( isa => 'Str', is => 'rw', lazy_build => 1 );
-sub _build_remote_branch { my $self = shift; return $self->branch; }
-
-has '_remote' => ( isa => 'Str', is => 'rw', lazy_build => 1 );
-sub _build__remote { my $self = shift; return $self->remote_name . '/' . $self->remote_branch; }
 
 has 'do_update' => ( isa => 'Bool', is => 'rw', default => 1 );
 

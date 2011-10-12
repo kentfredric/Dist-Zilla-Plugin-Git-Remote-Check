@@ -36,7 +36,7 @@ sub _update_remote {
   my $self = shift;
 
   if ( $self->has_remote( $self->remote_name ) ) {
-    $self->_git->remote( 'update', $self->remote_name );
+    $self->git->remote( 'update', $self->remote_name );
     return 1;
   }
 
@@ -53,7 +53,7 @@ sub _update_remote {
 
 sub _incomming_commits {
   my $self = shift;
-  return $self->_git->rev_list( { -not => $self->branch }, $self->_remote );
+  return $self->git->rev_list( { -not => $self->branch }, $self->_remote );
 }
 
 sub _check_remote {

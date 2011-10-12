@@ -21,30 +21,16 @@ with 'Dist::Zilla::Role::BeforeBuild';
 
 =cut
 
-with 'Dist::Zilla::Role::Git::LocalRepository',
-     'Dist::Zilla::Role::Git::Remote',
-     'Dist::Zilla::Role::Git::Remote::Branch';
+with 'Dist::Zilla::Role::Git::LocalRepository',    #
+  'Dist::Zilla::Role::Git::Remote',                #
+  'Dist::Zilla::Role::Git::Remote::Branch',        #
+  ;
 
 has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
 
 has 'do_update' => ( isa => 'Bool', is => 'rw', default => 1 );
 
-has '_remotes' => (
-  isa        => 'ArrayRef',
-  is         => 'rw',
-  lazy_build => 1,
-  traits     => [qw( Array )],
-  handles    => { has_remote => 'first', }
-);
-sub _build__remotes { my $self = shift; return [ $self->_git->remote ]; }
-
 has 'report_commits' => ( isa => 'Int', is => 'rw', default => 5 );
-
-sub _dump {
-  my ( $self, @args ) = @_;
-  require Data::Dump;
-  return Data::Dump::dump(@args);
-}
 
 sub _update_remote {
   my $self = shift;

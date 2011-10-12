@@ -24,31 +24,17 @@ with 'Dist::Zilla::Role::BeforeBuild';
 with 'Dist::Zilla::Role::Git::LocalRepository',    #
   'Dist::Zilla::Role::Git::Remote',                #
   'Dist::Zilla::Role::Git::Remote::Branch',        #
+  'Dist::Zilla::Role::Git::Remote::Update',        #
   ;
 
 has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
-
-has 'do_update' => ( isa => 'Bool', is => 'rw', default => 1 );
 
 has 'report_commits' => ( isa => 'Int', is => 'rw', default => 5 );
 
 sub _update_remote {
   my $self = shift;
-
-  if ( $self->has_remote( $self->remote_name ) ) {
-    $self->git->remote( 'update', $self->remote_name );
-    return 1;
-  }
-
-  $self->log_fatal(
-    [
-      qq[Cannot update remote name '%s', git reports it does not exist.\n Remotes: %s],
-      $self->remote_name, $self->_dump( $self->_remotes ),
-    ]
-  );
-
+  $self->remote_update();
   return;
-
 }
 
 sub _incomming_commits {

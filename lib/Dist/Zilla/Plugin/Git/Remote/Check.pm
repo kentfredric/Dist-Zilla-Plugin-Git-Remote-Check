@@ -7,7 +7,6 @@ package Dist::Zilla::Plugin::Git::Remote::Check;
 
 use Moose;
 
-with 'Dist::Zilla::Role::BeforeRelease';
 
 =head1 SYNOPSIS
 
@@ -21,6 +20,7 @@ with 'Dist::Zilla::Role::BeforeRelease';
 
 =cut
 
+with 'Dist::Zilla::Role::BeforeRelease';
 with 'Dist::Zilla::Role::Git::LocalRepository';
 with 'Dist::Zilla::Role::Git::Remote';
 with 'Dist::Zilla::Role::Git::Remote::Branch';

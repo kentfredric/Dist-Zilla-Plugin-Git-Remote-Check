@@ -2,6 +2,12 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Role::Git::Remote::Check;
+BEGIN {
+  $Dist::Zilla::Role::Git::Remote::Check::AUTHORITY = 'cpan:KENTNL';
+}
+{
+  $Dist::Zilla::Role::Git::Remote::Check::VERSION = '0.1.0'; # TRIAL
+}
 
 # FILENAME: Check.pm
 # CREATED: 13/10/11 10:52:07 by Kent Fredric (kentnl) <kentfredric@gmail.com>
@@ -71,4 +77,29 @@ EOF
 
 no Moose::Role;
 1;
+
+
+__END__
+=pod
+
+=head1 NAME
+
+Dist::Zilla::Role::Git::Remote::Check - Check a remote branch is not ahead of a local one
+
+=head1 VERSION
+
+version 0.1.0
+
+=head1 AUTHOR
+
+Kent Fredric <kentnl@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Kent Fredric <kentnl@cpan.org>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 

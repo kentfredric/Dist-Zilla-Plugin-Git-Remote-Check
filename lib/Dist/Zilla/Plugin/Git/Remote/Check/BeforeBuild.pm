@@ -2,10 +2,52 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild;
+BEGIN {
+  $Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild::AUTHORITY = 'cpan:KENTNL';
+}
+{
+  $Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild::VERSION = '0.1.0'; # TRIAL
+}
 
 # ABSTRACT: Ensure no pending commits on a remote branch before build
 
 use Moose;
+
+
+with 'Dist::Zilla::Role::BeforeBuild';
+with 'Dist::Zilla::Role::Git::LocalRepository';
+with 'Dist::Zilla::Role::Git::Remote';
+with 'Dist::Zilla::Role::Git::Remote::Branch';
+with 'Dist::Zilla::Role::Git::Remote::Update';
+
+has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
+
+with 'Dist::Zilla::Role::Git::Remote::Check';
+
+has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
+
+sub before_build {
+  my $self = shift;
+  $self->remote_update;
+  $self->check_remote;
+  return 1;
+}
+
+__PACKAGE__->meta->make_immutable;
+no Moose;
+
+1;
+
+__END__
+=pod
+
+=head1 NAME
+
+Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild - Ensure no pending commits on a remote branch before build
+
+=head1 VERSION
+
+version 0.1.0
 
 =head1 SYNOPSIS
 
@@ -40,28 +82,16 @@ use Moose;
   ; default = 5
   report_commits = 5
 
+=head1 AUTHOR
+
+Kent Fredric <kentnl@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by Kent Fredric <kentnl@cpan.org>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
 
-with 'Dist::Zilla::Role::BeforeBuild';
-with 'Dist::Zilla::Role::Git::LocalRepository';
-with 'Dist::Zilla::Role::Git::Remote';
-with 'Dist::Zilla::Role::Git::Remote::Branch';
-with 'Dist::Zilla::Role::Git::Remote::Update';
-
-has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
-
-with 'Dist::Zilla::Role::Git::Remote::Check';
-
-has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
-
-sub before_build {
-  my $self = shift;
-  $self->remote_update;
-  $self->check_remote;
-  return 1;
-}
-
-__PACKAGE__->meta->make_immutable;
-no Moose;
-
-1;

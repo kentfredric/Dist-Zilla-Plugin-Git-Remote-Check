@@ -58,7 +58,7 @@ sub before_build {
   my $self = shift;
   $self->remote_update;
   $self->check_remote;
-  1;
+  return 1;
 }
 
 __PACKAGE__->meta->make_immutable;

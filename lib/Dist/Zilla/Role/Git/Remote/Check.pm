@@ -66,6 +66,7 @@ EOF
     ]
   );
 
+  return 1;
 }
 
 no Moose::Role;

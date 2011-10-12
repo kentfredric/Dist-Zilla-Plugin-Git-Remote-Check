@@ -21,14 +21,14 @@ has '_remote_branch' => (
 
 =method remote_branch
 
-If used in conjuction with L<Dist::Zilla::Role::Git::Remote> to provide C<remote>,
-then this method will expand the passed paramter C<remote_branch> in transit to a qualified one.
+If used in conjunction with L<Dist::Zilla::Role::Git::Remote> to provide C<remote>,
+then this method will expand the passed parameter C<remote_branch> in transit to a qualified one.
 
 =cut
 
 sub remote_branch {
   my $self = shift;
-  return $self->remote . '/' . $self->_remote_branch;
+  return $self->remote . q{/} . $self->_remote_branch;
 }
 
 no Moose::Role;

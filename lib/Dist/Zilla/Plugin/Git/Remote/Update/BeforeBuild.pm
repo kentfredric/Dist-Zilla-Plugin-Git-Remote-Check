@@ -16,7 +16,7 @@ with 'Dist::Zilla::Role::Git::Remote::Update';
 
 =head1 SYNOPSIS
 
-This Module is mostly intended to be used in conjuction with other things,
+This Module is mostly intended to be used in conjunction with other things,
 and won't on its own provide a lot of useful results.
 
 Having this in your configuration will effectively cause git to run C<git remote update $remotename>
@@ -41,6 +41,7 @@ before you build, and remotes don't usually have any impact on things in the res
 sub before_build {
   my $self = shift;
   $self->remote_update;
+  return 1;
 }
 
 no Moose;

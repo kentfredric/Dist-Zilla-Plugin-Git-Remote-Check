@@ -16,6 +16,7 @@ with 'Dist::Zilla::Role::BeforeBuild';
   remote_branch = master ; Str  default = ->branch()
   report_commits = 5     ; Int  default = 5
   do_update      = 1     ; Bool default = 1
+  when           = beforerelease ; enum('beforebuild','beforerelease')
 
 =cut
 
@@ -45,18 +46,29 @@ sub _build__remotes { my $self = shift; return [ $self->_git->remote ]; }
 
 has 'report_commits' => ( isa => 'Int', is => 'rw', default => 5 );
 
+sub _dump {
+  my ( $self, @args ) = @_;
+  require Data::Dump;
+  return Data::Dump::dump(@args);
+}
+
 sub _update_remote {
   my $self = shift;
-  unless ( $self->has_remote( $self->remote_name ) ) {
-    require Data::Dump;
-    $self->log_fatal(
-      [
-        qq[Cannot update remote name '%s', git reports it does not exist.\n Remotes: %s],
-        $self->remote_name, Data::Dump::dump( $self->_remotes ),
-      ]
-    );
+
+  if ( $self->has_remote( $self->remote_name ) ) {
+    $self->_git->remote( 'update', $self->remote_name );
+    return 1;
   }
-  $self->_git->remote( 'update', $self->remote_name );
+
+  $self->log_fatal(
+    [
+      qq[Cannot update remote name '%s', git reports it does not exist.\n Remotes: %s],
+      $self->remote_name, $self->_dump( $self->_remotes ),
+    ]
+  );
+
+  return;
+
 }
 
 sub _incomming_commits {
@@ -65,32 +77,28 @@ sub _incomming_commits {
 }
 
 sub _check_remote {
-  my $self    = shift;
+  my $self = shift;
+
   my @commits = @{ $self->_incomming_commits };
 
   return unless @commits;
 
-  my $want_commits =
-      ( ( scalar @commits ) < $self->report_commits )
-    ? ( scalar @commits )
-    : $self->report_commits;
-
-  my @selected_commits = @commits[ 0, $want_commits - 1 ];
-
-  require Data::Dump;
+  my $number_of_commits = scalar @commits;
+  my @selected_commits  = splice @commits, 0, $self->report_commits;
+  my $commits_displayed = scalar @selected_commits;
 
   $self->log_fatal(
     [
       qq[ %d commits visible upstream on '%s' not visible on '%s'. \n]
         . qq[ Either merge with '%s', rebase on '%s', or anihilate upstream with 'git push -f '\n]
         . qq[ %d most recent commits: \n] . qq[ %s],
-      scalar @commits,
+      $number_of_commits,
       $self->_remote,
       $self->branch,
       $self->_remote,
       $self->_remote,
-      $want_commits,
-      Data::Dump::dump( \@selected_commits ),
+      $commits_displayed,
+      $self->_dump( \@selected_commits ),
     ]
   );
 

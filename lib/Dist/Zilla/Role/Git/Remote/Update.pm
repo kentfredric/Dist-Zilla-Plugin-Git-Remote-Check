@@ -11,6 +11,7 @@ use Moose::Role;
 
 requires 'git';
 requires 'remote';
+requires 'log';
 
 has 'do_update' => ( isa => 'Bool', is => 'rw', default => 1 );
 
@@ -21,10 +22,13 @@ sub remote_update {
 
   my $remote = $self->remote;
 
+  $self->log([qq[Updating remote '%s'], $remote ]);
+
   $self->git->remote( 'update', $remote );
 
   1;
 }
+
 
 no Moose::Role;
 

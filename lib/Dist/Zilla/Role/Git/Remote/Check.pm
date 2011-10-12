@@ -18,7 +18,7 @@ has 'report_commits' => ( isa => 'Int', is => 'rw', default => 5 );
 sub check_remote {
   my $self = shift;
 
-  my (@commits) = $self->git->rev_list( { -not => $self->branch }, $self->remote_branch );
+  my (@commits) = $self->git->rev_list( '--not',$self->branch, $self->remote_branch );
 
   return unless @commits;
 

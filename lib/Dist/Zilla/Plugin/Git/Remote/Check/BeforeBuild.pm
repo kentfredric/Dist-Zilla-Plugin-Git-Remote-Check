@@ -52,7 +52,7 @@ has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
 
 with 'Dist::Zilla::Role::Git::Remote::Check';
 
-has '+_remote_branch' => ( default => sub { shift->branch } );
+has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
 
 sub before_build {
   my $self = shift;

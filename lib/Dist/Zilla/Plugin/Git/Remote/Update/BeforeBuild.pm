@@ -46,8 +46,6 @@ with 'Dist::Zilla::Role::BeforeBuild';
 
 Updates the L</remote> via L<Dist::Zilla::Role::Git::Remote::Update/remote_update>, before Building the release.
 
-=back
-
 =cut
 
 sub before_build {

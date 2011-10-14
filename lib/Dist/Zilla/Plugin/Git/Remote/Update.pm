@@ -46,8 +46,6 @@ with 'Dist::Zilla::Role::BeforeRelease';
 
 Updates the L</remote> via L<Dist::Zilla::Role::Git::Remote::Update/remote_update>, before releasing.
 
-=back
-
 =cut
 
 sub before_release {

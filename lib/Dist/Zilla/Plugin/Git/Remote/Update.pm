@@ -69,7 +69,6 @@ C<git> Repository.
 
 =cut
 
-
 with 'Dist::Zilla::Role::Git::LocalRepository';
 
 =role C<Dist::Zilla::Role::Git::Remote>
@@ -91,7 +90,6 @@ The name of the repository to use as specified in C<.git/config>.
 Defaults to C<origin>, which is usually what you want.
 
 =cut
-
 
 with 'Dist::Zilla::Role::Git::Remote';
 

@@ -53,7 +53,7 @@ with 'Dist::Zilla::Role::BeforeRelease';
 
 =method C<before_release>
 
-Executes code before building the release.
+Executes code before releasing.
 
 =over 4
 

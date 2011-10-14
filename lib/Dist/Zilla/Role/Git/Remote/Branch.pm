@@ -9,8 +9,18 @@ package Dist::Zilla::Role::Git::Remote::Branch;
 
 use Moose::Role;
 
+=requires C<git>
+
+=requires C<remote>
+
+=cut
+
 requires 'git';
 requires 'remote';
+
+=param C<remote_branch>
+
+=cut
 
 has '_remote_branch' => (
   isa      => 'Str',
@@ -19,7 +29,7 @@ has '_remote_branch' => (
   init_arg => 'remote_branch',
 );
 
-=method remote_branch
+=method C<remote_branch>
 
 If used in conjunction with L<Dist::Zilla::Role::Git::Remote> to provide C<remote>,
 then this method will expand the passed parameter C<remote_branch> in transit to a qualified one.

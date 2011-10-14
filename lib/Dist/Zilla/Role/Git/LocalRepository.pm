@@ -9,7 +9,15 @@ package Dist::Zilla::Role::Git::LocalRepository;
 
 use Moose::Role;
 
+=requires zilla
+
+=cut
+
 requires 'zilla';
+
+=method git
+
+=cut
 
 has 'git' => (
   isa        => 'Object',

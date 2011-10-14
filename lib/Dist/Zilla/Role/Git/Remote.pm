@@ -9,10 +9,16 @@ package Dist::Zilla::Role::Git::Remote;
 
 use Moose::Role;
 
+=requires C<git>
+
+=requires C<log_fatal>
+
+=cut
+
 requires 'git';
 requires 'log_fatal';
 
-=method remote
+=method C<remote>
 
 If a consuming package specifies a valid value via C<remote_name>, 
 this method will validate the existence of that remote in the current Git repository.
@@ -27,6 +33,10 @@ sub remote {
   return $self->_remote_name;
 }
 
+=param C<remote_name>
+
+=cut
+
 has '_remote_name' => (
   isa      => 'Str',
   is       => 'rw',
@@ -40,6 +50,7 @@ has '_remotes' => (
   lazy_build => 1,
   traits     => [qw( Array )],
   handles    => { _has_remote => 'first' },
+  init_arg   => undef,
 );
 
 sub _build__remotes {
@@ -49,7 +60,7 @@ sub _build__remotes {
 
 sub _remote_valid {
   my $self = shift;
-  return $self->_has_remote(sub { $_ eq $self->_remote_name });
+  return $self->_has_remote( sub { $_ eq $self->_remote_name } );
 }
 
 sub _assert_valid_remote {

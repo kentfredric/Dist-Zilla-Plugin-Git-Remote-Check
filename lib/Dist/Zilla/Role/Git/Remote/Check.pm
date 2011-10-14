@@ -9,9 +9,25 @@ package Dist::Zilla::Role::Git::Remote::Check;
 
 use Moose::Role;
 
+=requires C<git>
+
+=requires C<remote_branch>
+
+=requires C<branch>
+
+=cut
+
 requires 'git';
 requires 'remote_branch';
 requires 'branch';
+
+=param C<report_commits>
+
+=cut
+
+=method C<report_commits>
+
+=cut
 
 has 'report_commits' => ( isa => 'Int', is => 'rw', default => 5 );
 
@@ -33,6 +49,10 @@ sub _outgoing_commits {
   #  $self->log(['[TESTING] %s', Data::Dump::dump( \@commits ) ]);
   return @commits;
 }
+
+=method C<check_remote>
+
+=cut
 
 sub check_remote {
   my $self = shift;

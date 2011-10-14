@@ -9,11 +9,31 @@ package Dist::Zilla::Role::Git::Remote::Update;
 
 use Moose::Role;
 
+=requires C<git>
+
+=requires C<remote>
+
+=requires C<log>
+
+=cut
+
 requires 'git';
 requires 'remote';
 requires 'log';
 
+=param C<do_update>
+
+=cut
+
+=method C<do_update>
+
+=cut
+
 has 'do_update' => ( isa => 'Bool', is => 'rw', default => 1 );
+
+=method C<remote_update>
+
+=cut
 
 sub remote_update {
 
@@ -22,15 +42,14 @@ sub remote_update {
 
   my $remote = $self->remote;
 
-  $self->log([q[Updating remote '%s'], $remote ]);
+  $self->log( [ q[Updating remote '%s'], $remote ] );
 
-  my ( @out ) = $self->git->remote( '--verbose','update', $remote );
+  my (@out) = $self->git->remote( '--verbose', 'update', $remote );
 
   $self->log_debug("[git] $_") for @out;
 
   return 1;
 }
-
 
 no Moose::Role;
 

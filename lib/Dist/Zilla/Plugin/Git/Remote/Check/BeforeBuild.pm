@@ -10,7 +10,7 @@ use Moose;
 =head1 SYNOPSIS
 
   [Git::Remote::Check]
-   ; Provided by Dist::Zilla::Role::Git::Remote 
+   ; Provided by Dist::Zilla::Role::Git::Remote
   ; String
   ; The name of the remote to update.
   ; Must exist in Git.
@@ -57,7 +57,7 @@ Executes code before building the release.
 
 =over 4
 
-=item 1. 
+=item 1.
 
 Updates the L</remote> via L<Dist::Zilla::Role::Git::Remote::Update/remote_update>
 
@@ -139,7 +139,7 @@ with 'Dist::Zilla::Role::Git::Remote::Branch';
 
 =role C<Dist::Zilla::Role::Git::Remote::Update>
 
-Provides a L</remote_update> method which updates a L</remote> in L</git> 
+Provides a L</remote_update> method which updates a L</remote> in L</git>
 
 =method C<remote_update>
 
@@ -180,18 +180,15 @@ recent of the 2.
 =param C<report_commits>
 
 In the event the remote is ahead, this C<Int> dictates the maximum number of
-commits to print to output. 
+commits to print to output.
 
 Defaults to C<5>
 
 =cut
 
-
 with 'Dist::Zilla::Role::Git::Remote::Check';
 
 has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
-
-
 
 __PACKAGE__->meta->make_immutable;
 no Moose;

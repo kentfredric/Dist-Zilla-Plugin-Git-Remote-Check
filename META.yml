@@ -19,31 +19,31 @@ name: Dist-Zilla-Plugin-Git-Remote-Check
 provides:
   Dist::Zilla::Plugin::Git::Remote::Check:
     file: lib/Dist/Zilla/Plugin/Git/Remote/Check.pm
-    version: v0.1.0
+    version: v0.1.1
   Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild:
     file: lib/Dist/Zilla/Plugin/Git/Remote/Check/BeforeBuild.pm
-    version: v0.1.0
+    version: v0.1.1
   Dist::Zilla::Plugin::Git::Remote::Update:
     file: lib/Dist/Zilla/Plugin/Git/Remote/Update.pm
-    version: v0.1.0
+    version: v0.1.1
   Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild:
     file: lib/Dist/Zilla/Plugin/Git/Remote/Update/BeforeBuild.pm
-    version: v0.1.0
+    version: v0.1.1
   Dist::Zilla::Role::Git::LocalRepository:
     file: lib/Dist/Zilla/Role/Git/LocalRepository.pm
-    version: v0.1.0
+    version: v0.1.1
   Dist::Zilla::Role::Git::Remote:
     file: lib/Dist/Zilla/Role/Git/Remote.pm
-    version: v0.1.0
+    version: v0.1.1
   Dist::Zilla::Role::Git::Remote::Branch:
     file: lib/Dist/Zilla/Role/Git/Remote/Branch.pm
-    version: v0.1.0
+    version: v0.1.1
   Dist::Zilla::Role::Git::Remote::Check:
     file: lib/Dist/Zilla/Role/Git/Remote/Check.pm
-    version: v0.1.0
+    version: v0.1.1
   Dist::Zilla::Role::Git::Remote::Update:
     file: lib/Dist/Zilla/Role/Git/Remote/Update.pm
-    version: v0.1.0
+    version: v0.1.1
 requires:
   Data::Dump: 0
   Dist::Zilla::Role::BeforeBuild: 0
@@ -56,7 +56,7 @@ requires:
 resources:
   homepage: https://github.com/kentfredric/Dist-Zilla-Plugin-Git-Remote-Check
   repository: https://github.com/kentfredric/Dist-Zilla-Plugin-Git-Remote-Check.git
-version: 0.1.0
+version: 0.1.1
 x_BuiltWith:
   modules:
     Data::Dump: 1.19
@@ -209,6 +209,10 @@ x_Dist_Zilla:
       name: '@Author::KENTNL/MetaTests'
       version: 4.300002
     -
+      class: Dist::Zilla::Plugin::PodCoverageTests
+      name: '@Author::KENTNL/PodCoverageTests'
+      version: 4.300002
+    -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@Author::KENTNL/PodSyntaxTests'
       version: 4.300002
@@ -216,6 +220,10 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::ReportVersions::Tiny
       name: '@Author::KENTNL/ReportVersions::Tiny'
       version: 1.03
+    -
+      class: Dist::Zilla::Plugin::Test::Kwalitee
+      name: '@Author::KENTNL/Test::Kwalitee'
+      version: 2.020000
     -
       class: Dist::Zilla::Plugin::EOLTests
       name: '@Author::KENTNL/EOLTests'
@@ -303,6 +311,6 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: 1
+      is_trial: 0
     version: 4.300002
 x_authority: cpan:KENTNL

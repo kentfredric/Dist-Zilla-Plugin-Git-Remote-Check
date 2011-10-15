@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::Remote::Check::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::Remote::Check::VERSION = '0.1.0'; # TRIAL
+  $Dist::Zilla::Role::Git::Remote::Check::VERSION = '0.1.1';
 }
 
 # FILENAME: Check.pm
@@ -15,9 +15,16 @@ BEGIN {
 
 use Moose::Role;
 
+
 requires 'git';
+
+
 requires 'remote_branch';
+
+
 requires 'branch';
+
+
 
 has 'report_commits' => ( isa => 'Int', is => 'rw', default => 5 );
 
@@ -39,6 +46,7 @@ sub _outgoing_commits {
   #  $self->log(['[TESTING] %s', Data::Dump::dump( \@commits ) ]);
   return @commits;
 }
+
 
 sub check_remote {
   my $self = shift;
@@ -88,7 +96,49 @@ Dist::Zilla::Role::Git::Remote::Check - Check a remote branch is not ahead of a 
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
+
+=head1 PARAMETERS
+
+=head2 C<report_commits>
+
+=head1 METHODS
+
+=head2 C<report_commits>
+
+=head2 C<check_remote>
+
+=head1 REQUIRED METHODS
+
+=head2 C<git>
+
+Must return a L<Git::Wrapper> or compatible instance.
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::LocalRepository>
+
+=back
+
+=head2 C<remote_branch>
+
+Must return a string value of a fully qualified branch name, e.g.: C<origin/master>
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::Remote::Branch>
+
+=back
+
+=head2 C<branch>
+
+Must be implemented by the consuming plugin. ( Presently I know of no roles that provide this method ).
+
+Must return a string value of a branch name, e.g.: C<master>
 
 =head1 AUTHOR
 

@@ -1,5 +1,15 @@
 Release history for Dist-Zilla-Plugin-Git-Check-Remote
 
+0.1.1 2011-10-15T02:53:58Z
+ - First stable release, now fully documented.
+
+ [Documentation]
+ - Documented all Roles/Classes thoroughly
+ - Added groups of POD for Parameters, Roles, and Required Methods.
+
+ [Tests::New]
+ - Reintroduced xt/release/{kwalitee,pod-coverage}.t
+
 0.1.0 2011-10-12T23:01:55Z
  - First version.
 

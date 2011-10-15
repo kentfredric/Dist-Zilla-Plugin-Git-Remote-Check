@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::Remote::Update::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::Remote::Update::VERSION = '0.1.0'; # TRIAL
+  $Dist::Zilla::Role::Git::Remote::Update::VERSION = '0.1.1';
 }
 
 # FILENAME: Update.pm
@@ -15,11 +15,19 @@ BEGIN {
 
 use Moose::Role;
 
+
 requires 'git';
+
+
 requires 'remote';
+
+
 requires 'log';
 
+
+
 has 'do_update' => ( isa => 'Bool', is => 'rw', default => 1 );
+
 
 sub remote_update {
 
@@ -28,15 +36,14 @@ sub remote_update {
 
   my $remote = $self->remote;
 
-  $self->log([q[Updating remote '%s'], $remote ]);
+  $self->log( [ q[Updating remote '%s'], $remote ] );
 
-  my ( @out ) = $self->git->remote( '--verbose','update', $remote );
+  my (@out) = $self->git->remote( '--verbose', 'update', $remote );
 
   $self->log_debug("[git] $_") for @out;
 
   return 1;
 }
-
 
 no Moose::Role;
 
@@ -52,7 +59,67 @@ Dist::Zilla::Role::Git::Remote::Update - Update tracking data for a remote repos
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
+
+=head1 PARAMETERS
+
+=head2 C<do_update>
+
+Boolean: Specify whether or not the L</do_update> method does anything.
+
+Defaults to 1 ( true ), and setting it to a false value will disable updating.
+
+=head1 METHODS
+
+=head2 C<do_update>
+
+Boolean: Returns whether the consuming plugin should perform updates.
+
+Normally returns 1 ( true ) unless specified otherwise.
+
+=head2 C<remote_update>
+
+Calls C<git remote update $remote> when triggered, if C<do_update> is true.
+
+=head1 REQUIRED METHODS
+
+=head2 C<git>
+
+Must return a L<Git::Wrapper> or compatible instance.
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::LocalRepository>
+
+=back
+
+=head2 C<remote>
+
+Must return a String value representing a remote name ( as displayed in C<git remote> ).
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::Remote>
+
+=back
+
+=head2 C<log>
+
+Expected to take parameters as follows:
+
+  ->log( [ 'FormatString %s' , $formatargs ] )
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Plugin>
+
+=back
 
 =head1 AUTHOR
 

@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild::VERSION = '0.1.0'; # TRIAL
+  $Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild::VERSION = '0.1.1';
 }
 
 # FILENAME: BeforeBuild.pm
@@ -15,10 +15,9 @@ BEGIN {
 
 use Moose;
 
+
+
 with 'Dist::Zilla::Role::BeforeBuild';
-with 'Dist::Zilla::Role::Git::LocalRepository';
-with 'Dist::Zilla::Role::Git::Remote';
-with 'Dist::Zilla::Role::Git::Remote::Update';
 
 
 sub before_build {
@@ -26,6 +25,16 @@ sub before_build {
   $self->remote_update;
   return 1;
 }
+
+
+with 'Dist::Zilla::Role::Git::LocalRepository';
+
+
+
+with 'Dist::Zilla::Role::Git::Remote';
+
+
+with 'Dist::Zilla::Role::Git::Remote::Update';
 
 no Moose;
 __PACKAGE__->meta->make_immutable;
@@ -41,7 +50,7 @@ Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild - Update a remote with Git
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
 
 =head1 SYNOPSIS
 
@@ -64,6 +73,61 @@ before you build, and remotes don't usually have any impact on things in the res
   ; turn updating on/off
   ; default is 'on' ( 1 / true )
   do_update = 1
+
+=head1 PARAMETERS
+
+=head2 C<remote_name>
+
+The name of the repository to use as specified in C<.git/config>.
+
+Defaults to C<origin>, which is usually what you want.
+
+=head2 C<do_update>
+
+A boolean value that specifies whether or not to execute the update.
+
+Default value is C<1> / true.
+
+=head1 METHODS
+
+=head2 C<before_build>
+
+Updates the L</remote> via L<Dist::Zilla::Role::Git::Remote::Update/remote_update>, before Building the release.
+
+=head2 C<git>
+
+Returns a L<Git::Wrapper> instance for the current L<Dist::Zilla> projects
+C<git> Repository.
+
+=head2 C<remote>
+
+Returns a validated remote name. Configured via L</remote_name> parameter.
+
+=head2 C<remote_update>
+
+Performs C<git remote update $remote_name> on L</git> for the remote L</remote>
+
+=head1 ROLES
+
+=head2 C<Dist::Zilla::Role::BeforeBuild>
+
+Causes this plugin to be executed during L<Dist::Zilla>'s "Before Build" phase.
+( L</before_build> )
+
+=head2 C<Dist::Zilla::Role::Git::LocalRepository>
+
+Provides a L</git> method that returns a C<Git::Wrapper> instance for the
+current C<Dist::Zilla> project.
+
+=head2 C<Dist::Zilla::Role::Git::Remote>
+
+Provides a L</remote> method which always returns a validated C<remote> name,
+optionally accepting it being specified manually to something other than
+C<origin> via the parameter L</remote_name>
+
+=head2 C<Dist::Zilla::Role::Git::Remote::Update>
+
+Provides a L</remote_update> method which updates a L</remote> in L</git>
 
 =head1 AUTHOR
 

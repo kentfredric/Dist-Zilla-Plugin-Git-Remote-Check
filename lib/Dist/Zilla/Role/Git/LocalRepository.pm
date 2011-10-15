@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::LocalRepository::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::LocalRepository::VERSION = '0.1.0'; # TRIAL
+  $Dist::Zilla::Role::Git::LocalRepository::VERSION = '0.1.1';
 }
 
 # FILENAME: LocalRepository.pm
@@ -15,7 +15,10 @@ BEGIN {
 
 use Moose::Role;
 
+
+
 requires 'zilla';
+
 
 has 'git' => (
   isa        => 'Object',
@@ -43,7 +46,39 @@ Dist::Zilla::Role::Git::LocalRepository - A plugin which works with a local git 
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
+
+=head1 SYNOPSIS
+
+  package Foo;
+
+  use Moose;
+  with 'Dist::Zilla::Role::BeforeRelease';
+  with 'Dist::Zilla::Role::Git::LocalRepository';
+
+  sub before_release {
+    my $self = shift;
+    print for $self->git->version;
+  }
+
+=head1 METHODS
+
+=head2 git
+
+Returns a L<Git::Wrapper> instance representing the repository
+of the current L<Dist::Zilla> projects' root.
+
+=head1 REQUIRED METHODS
+
+=head2 zilla
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Plugin>
+
+=back
 
 =head1 AUTHOR
 

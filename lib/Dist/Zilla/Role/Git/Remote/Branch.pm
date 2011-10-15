@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::Remote::Branch::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::Remote::Branch::VERSION = '0.1.0'; # TRIAL
+  $Dist::Zilla::Role::Git::Remote::Branch::VERSION = '0.1.1';
 }
 
 # FILENAME: RemoteBranch.pm
@@ -15,8 +15,12 @@ BEGIN {
 
 use Moose::Role;
 
+
 requires 'git';
+
+
 requires 'remote';
+
 
 has '_remote_branch' => (
   isa      => 'Str',
@@ -44,14 +48,48 @@ Dist::Zilla::Role::Git::Remote::Branch - Parts to enable aggregated specificatio
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
+
+=head1 PARAMETERS
+
+=head2 C<remote_branch>
+
+The name of the branch as it is on the remote side, in String form.
+
+e.g: C<master>
 
 =head1 METHODS
 
-=head2 remote_branch
+=head2 C<remote_branch>
 
 If used in conjunction with L<Dist::Zilla::Role::Git::Remote> to provide C<remote>,
 then this method will expand the passed parameter C<remote_branch> in transit to a qualified one.
+
+=head1 REQUIRED METHODS
+
+=head2 C<git>
+
+Must return a L<Git::Wrapper> or compatible instance.
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::LocalRepository>
+
+=back
+
+=head2 C<remote>
+
+Must return a String value representing a remote name ( as displayed in C<git remote> ).
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::Remote>
+
+=back
 
 =head1 AUTHOR
 

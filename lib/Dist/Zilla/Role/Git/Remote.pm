@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::Remote::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::Remote::VERSION = '0.1.0'; # TRIAL
+  $Dist::Zilla::Role::Git::Remote::VERSION = '0.1.1';
 }
 
 # FILENAME: Remote.pm
@@ -15,7 +15,10 @@ BEGIN {
 
 use Moose::Role;
 
+
 requires 'git';
+
+
 requires 'log_fatal';
 
 
@@ -24,6 +27,7 @@ sub remote {
   $self->_assert_valid_remote;
   return $self->_remote_name;
 }
+
 
 has '_remote_name' => (
   isa      => 'Str',
@@ -38,6 +42,7 @@ has '_remotes' => (
   lazy_build => 1,
   traits     => [qw( Array )],
   handles    => { _has_remote => 'first' },
+  init_arg   => undef,
 );
 
 sub _build__remotes {
@@ -47,7 +52,7 @@ sub _build__remotes {
 
 sub _remote_valid {
   my $self = shift;
-  return $self->_has_remote(sub { $_ eq $self->_remote_name });
+  return $self->_has_remote( sub { $_ eq $self->_remote_name } );
 }
 
 sub _assert_valid_remote {
@@ -74,16 +79,56 @@ Dist::Zilla::Role::Git::Remote - Git Remote specification and validation for plu
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
+
+=head1 PARAMETERS
+
+=head2 C<remote_name>
+
+String.
+
+The name of the C<git remote> you want to refer to.
+
+Defaults to C<origin>
 
 =head1 METHODS
 
-=head2 remote
+=head2 C<remote>
 
 If a consuming package specifies a valid value via C<remote_name>, 
 this method will validate the existence of that remote in the current Git repository.
 
 If specified remote does not exist, a fatal log event is triggered.
+
+=head1 REQUIRED METHODS
+
+=head2 C<git>
+
+Must return a L<Git::Wrapper> or compatible instance.
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::LocalRepository>
+
+=back
+
+=head2 C<log_fatal>
+
+Expected to take parameters as follows:
+
+  ->log_fatal( [ 'FormatString %s' , $formatargs ] )
+
+Expected to halt execution ( throw an exception ) when called.
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Plugin>
+
+=back
 
 =head1 AUTHOR
 

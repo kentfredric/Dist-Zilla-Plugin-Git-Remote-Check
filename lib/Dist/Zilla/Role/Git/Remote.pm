@@ -11,11 +11,38 @@ use Moose::Role;
 
 =requires C<git>
 
-=requires C<log_fatal>
+Must return a L<Git::Wrapper> or compatible instance.
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::LocalRepository>
+
+=back
 
 =cut
 
 requires 'git';
+
+=requires C<log_fatal>
+
+Expected to take parameters as follows:
+
+  ->log_fatal( [ 'FormatString %s' , $formatargs ] )
+
+Expected to halt execution ( throw an exception ) when called.
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Plugin>
+
+=back
+
+=cut
+
 requires 'log_fatal';
 
 =method C<remote>
@@ -34,6 +61,12 @@ sub remote {
 }
 
 =param C<remote_name>
+
+String.
+
+The name of the C<git remote> you want to refer to.
+
+Defaults to C<origin>
 
 =cut
 

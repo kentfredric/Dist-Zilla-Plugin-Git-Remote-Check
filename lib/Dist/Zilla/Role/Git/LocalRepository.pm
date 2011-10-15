@@ -9,13 +9,39 @@ package Dist::Zilla::Role::Git::LocalRepository;
 
 use Moose::Role;
 
+=head1 SYNOPSIS
+
+  package Foo;
+
+  use Moose;
+  with 'Dist::Zilla::Role::BeforeRelease';
+  with 'Dist::Zilla::Role::Git::LocalRepository';
+
+  sub before_release {
+    my $self = shift;
+    print for $self->git->version;
+  }
+
+=cut
+
 =requires zilla
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Plugin>
+
+=back
 
 =cut
 
 requires 'zilla';
 
 =method git
+
+Returns a L<Git::Wrapper> instance representing the repository
+of the current L<Dist::Zilla> projects' root.
 
 =cut
 

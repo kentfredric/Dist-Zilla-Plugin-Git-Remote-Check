@@ -11,14 +11,41 @@ use Moose::Role;
 
 =requires C<git>
 
-=requires C<remote>
+Must return a L<Git::Wrapper> or compatible instance.
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::LocalRepository>
+
+=back
 
 =cut
 
 requires 'git';
+
+=requires C<remote>
+
+Must return a String value representing a remote name ( as displayed in C<git remote> ).
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::Remote>
+
+=back
+
+=cut
+
 requires 'remote';
 
 =param C<remote_branch>
+
+The name of the branch as it is on the remote side, in String form.
+
+e.g: C<master>
 
 =cut
 

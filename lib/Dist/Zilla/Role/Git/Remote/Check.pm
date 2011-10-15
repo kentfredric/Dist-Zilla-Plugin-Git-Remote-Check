@@ -11,14 +11,44 @@ use Moose::Role;
 
 =requires C<git>
 
-=requires C<remote_branch>
+Must return a L<Git::Wrapper> or compatible instance.
 
-=requires C<branch>
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::LocalRepository>
+
+=back
 
 =cut
 
 requires 'git';
+
+=requires C<remote_branch>
+
+Must return a string value of a fully qualified branch name, e.g.: C<origin/master>
+
+Available from:
+
+=over 4
+
+=item * L<Dist::Zilla::Role::Git::Remote::Branch>
+
+=back
+
+=cut
+
 requires 'remote_branch';
+
+=requires C<branch>
+
+Must be implemented by the consuming plugin. ( Presently I know of no roles that provide this method ).
+
+Must return a string value of a branch name, e.g.: C<master>
+
+=cut
+
 requires 'branch';
 
 =param C<report_commits>

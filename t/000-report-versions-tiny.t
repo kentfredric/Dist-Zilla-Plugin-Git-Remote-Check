@@ -12,7 +12,7 @@ my $v = "\n";
 
 eval {                     # no excuses!
     # report our Perl details
-    my $want = "any version";
+    my $want = '5.006';
     my $pv = ($^V || $]);
     $v .= "perl: $pv (wanted $want) on $^O from $^X\n\n";
 };
@@ -49,8 +49,8 @@ sub pmver {
 }
 
 eval { $v .= pmver('Data::Dump','any version') };
-eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL','1.0.0') };
-eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL::Lite','0.01009803') };
+eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL','v1.3.0') };
+eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL::Lite','v1.3.0') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeBuild','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeRelease','any version') };
 eval { $v .= pmver('File::Find','any version') };

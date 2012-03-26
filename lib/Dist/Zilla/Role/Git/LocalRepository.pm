@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::LocalRepository::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::LocalRepository::VERSION = '0.1.1';
+  $Dist::Zilla::Role::Git::LocalRepository::VERSION = '0.1.2';
 }
 
 # FILENAME: LocalRepository.pm
@@ -46,7 +46,7 @@ Dist::Zilla::Role::Git::LocalRepository - A plugin which works with a local git 
 
 =head1 VERSION
 
-version 0.1.1
+version 0.1.2
 
 =head1 SYNOPSIS
 
@@ -86,7 +86,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2012 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

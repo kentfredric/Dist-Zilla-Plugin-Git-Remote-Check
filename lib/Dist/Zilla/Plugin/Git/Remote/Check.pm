@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Git::Remote::Check::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Plugin::Git::Remote::Check::VERSION = '0.1.1';
+  $Dist::Zilla::Plugin::Git::Remote::Check::VERSION = '0.1.2';
 }
 
 # ABSTRACT: Ensure no pending commits on a remote branch before release
@@ -44,7 +44,7 @@ has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
 
 with 'Dist::Zilla::Role::Git::Remote::Check';
 
-has '+_remote_branch' => ( default => sub { shift->branch } );
+has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
@@ -60,7 +60,7 @@ Dist::Zilla::Plugin::Git::Remote::Check - Ensure no pending commits on a remote 
 
 =head1 VERSION
 
-version 0.1.1
+version 0.1.2
 
 =head1 SYNOPSIS
 
@@ -213,7 +213,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2012 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

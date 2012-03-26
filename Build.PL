@@ -20,7 +20,7 @@ my %module_build_args = (
     "Kent Fredric <kentnl\@cpan.org>"
   ],
   "dist_name" => "Dist-Zilla-Plugin-Git-Remote-Check",
-  "dist_version" => "0.1.1",
+  "dist_version" => "0.1.2",
   "license" => "perl",
   "module_name" => "Dist::Zilla::Plugin::Git::Remote::Check",
   "recommends" => {},
@@ -32,6 +32,7 @@ my %module_build_args = (
     "Git::Wrapper" => 0,
     "Moose" => 0,
     "Moose::Role" => 0,
+    "perl" => "5.006",
     "strict" => 0,
     "warnings" => 0
   },

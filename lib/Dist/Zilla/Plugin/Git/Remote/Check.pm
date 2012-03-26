@@ -188,7 +188,7 @@ Defaults to C<5>
 
 with 'Dist::Zilla::Role::Git::Remote::Check';
 
-has '+_remote_branch' => ( default => sub { shift->branch } );
+has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
 
 __PACKAGE__->meta->make_immutable;
 no Moose;

@@ -1,6 +1,8 @@
 ﻿Release history for Dist-Zilla-Plugin-Git-Check-Remote
 
 {{$NEXT}}
+
+0.1.2 2012-03-26T19:47:17Z
  [Bug Fixes]
  - fix bug for when [Git::Remote::Check] is using all defaults (Karen
    Etheridge)

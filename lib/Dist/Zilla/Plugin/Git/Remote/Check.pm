@@ -6,6 +6,7 @@ package Dist::Zilla::Plugin::Git::Remote::Check;
 # ABSTRACT: Ensure no pending commits on a remote branch before release
 
 use Moose;
+use namespace::autoclean;
 
 =head1 SYNOPSIS
 
@@ -71,6 +72,7 @@ Checks the L</remote> via L<Dist::Zilla::Role::Git::Remote::Check/check_remote>
 
 sub before_release {
   my $self = shift;
+  return if $self->should_skip;
   $self->remote_update;
   $self->check_remote;
   return 1;

@@ -51,6 +51,12 @@ Must return a string value of a branch name, e.g.: C<master>
 
 requires 'branch';
 
+=requires C<current_branch>
+
+Must return the name (String) of the branch we are currently on, or return false if we are not on a branch.
+
+Must be one of the branches listed by C<git branch>
+
 =param C<report_commits>
 
 =cut
@@ -78,6 +84,36 @@ sub _outgoing_commits {
   #  require Data::Dump;
   #  $self->log(['[TESTING] %s', Data::Dump::dump( \@commits ) ]);
   return @commits;
+}
+
+=param  C<skip_if_not_current>
+
+=cut
+
+=method C<skip_if_not_current>
+
+=cut
+
+has 'skip_if_not_current' => ( isa => 'Bool', is => 'rw', default => undef );
+
+=method C<is_current_branch>
+
+=cut
+
+sub is_current_branch {
+   my $self = shift;
+   return ( $self->branch eq $self->current_branch );
+}
+
+=method C<should_skip>
+
+=cut
+
+sub should_skip {
+   my $self = shift;
+   return unless $self->skip_if_not_current;
+   return if $self->is_current_branch;
+   return 1;
 }
 
 =method C<check_remote>

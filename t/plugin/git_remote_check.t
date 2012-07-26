@@ -54,7 +54,8 @@ strict_nsmap(
     should_skip => , 
     skip_if_not_current => ,
     packages_dzil_plugin(),
-    packages_moose( { clean => 1, immutable => 1 } )
+    packages_moose( { clean => 1, immutable => 1 } ),
+    '$VERSION',
   ]
 
 );

@@ -78,7 +78,7 @@ x_BuiltWith:
     File::Find: 1.20
     File::Temp: 0.22
     FindBin: 1.51
-    Git::Wrapper: 0.023
+    Git::Wrapper: 0.025
     Module::Build: 0.4001
     Moose: 2.0603
     Moose::Role: 2.0603
@@ -101,7 +101,7 @@ x_BuiltWith:
     myarchname: x86_64-linux
     osname: linux
   platform: linux
-  uname: 'Linux 3.4.4-gentoo x86_64 GenuineIntel GNU/Linux'
+  uname: 'Linux 3.5.0-gentoo x86_64 GenuineIntel GNU/Linux'
 x_Dist_Zilla:
   plugins:
     -

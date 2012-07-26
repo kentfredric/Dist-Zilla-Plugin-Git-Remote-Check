@@ -48,6 +48,11 @@ with 'Dist::Zilla::Role::Git::Remote::Check';
 
 has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
 
+with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
+
+with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
+
+
 __PACKAGE__->meta->make_immutable;
 no Moose;
 

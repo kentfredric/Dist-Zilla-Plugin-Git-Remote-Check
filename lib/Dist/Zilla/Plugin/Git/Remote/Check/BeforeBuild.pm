@@ -12,6 +12,7 @@ BEGIN {
 # ABSTRACT: Ensure no pending commits on a remote branch before build
 
 use Moose;
+use namespace::autoclean;
 
 
 

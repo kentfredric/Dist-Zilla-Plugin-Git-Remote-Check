@@ -52,7 +52,6 @@ with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
 
 with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
 
-
 __PACKAGE__->meta->make_immutable;
 no Moose;
 

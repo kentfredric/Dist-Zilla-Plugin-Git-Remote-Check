@@ -53,16 +53,16 @@ has 'skip_if_not_current' => ( isa => 'Bool', is => 'rw', default => undef );
 
 
 sub is_current_branch {
-   my $self = shift;
-   return ( $self->branch eq $self->current_branch );
+  my $self = shift;
+  return ( $self->branch eq $self->current_branch );
 }
 
 
 sub should_skip {
-   my $self = shift;
-   return unless $self->skip_if_not_current;
-   return if $self->is_current_branch;
-   return 1;
+  my $self = shift;
+  return unless $self->skip_if_not_current;
+  return if $self->is_current_branch;
+  return 1;
 }
 
 

@@ -19,7 +19,6 @@ use namespace::autoclean;
 with 'Dist::Zilla::Role::BeforeBuild';
 
 
-
 sub before_build {
   my $self = shift;
   return if $self->should_skip;
@@ -52,7 +51,6 @@ has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
 with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
 
 with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
-
 
 __PACKAGE__->meta->make_immutable;
 no Moose;

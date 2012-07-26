@@ -34,7 +34,10 @@ strict_nsmap(
     git                  =>,
     log_fatal            =>,
     remote               =>,
-    packages_moose( { clean => 1, immutable => 1 } )
+    packages_moose( { clean => 1, immutable => 1 } ),
+    do { if ( $t::Role::Git::Remote::VERSION ) {
+	'$AUTHORITY', '$VERSION';
+    }}
   ]
 );
 

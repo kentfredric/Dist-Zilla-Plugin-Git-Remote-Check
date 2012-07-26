@@ -52,6 +52,13 @@ strict_nsmap(
     report_commits => , 
     should_skip => , 
     skip_if_not_current => ,
+    _current_sha1 =>,
+    current_branch =>, 
+    local_branches =>,
+    has_local_branches =>,
+    clear_local_branches =>,
+    _build_local_branches =>,
+
     packages_dzil_plugin(),
     packages_moose( { clean => 1, immutable => 1 } ),
     (( $Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild::VERSION ) ? (qw(  $AUTHORITY $VERSION )) : ()),

@@ -38,7 +38,7 @@ strict_nsmap(
     _remote_name => , 
     _remote_valid => , 
     _remotes => , 
-    before_release => , 
+    before_build => , 
     branch => , 
     check_remote => , 
     clear_git => , 

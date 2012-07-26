@@ -108,7 +108,7 @@ sub strict_nsmap {
   }
   if ( keys %{$symbols} ) {
     Test::More::fail("$package doesn't have unexpected symbols");
-    Test::More::diag( "Unexpected symbols: [" . ( join ", ", keys %{$symbols} ) . "]" );
+    Test::More::diag( "Unexpected symbols: $package [" . ( join ", ", keys %{$symbols} ) . "]" );
     for my $key ( keys %{$symbols} ) {
     	Test::More::diag( " $key => " . $symbols->{$key});
     }

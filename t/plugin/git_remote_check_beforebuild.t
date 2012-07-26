@@ -12,9 +12,6 @@ use lib "$FindBin::Bin/../lib/";
   use namespace::autoclean;
   extends "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild";
 
-  sub git       { }
-  sub log_fatal { }
-
   __PACKAGE__->meta->make_immutable;
 }
 

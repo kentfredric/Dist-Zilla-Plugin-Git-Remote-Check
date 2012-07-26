@@ -12,18 +12,20 @@ use Sub::Exporter -setup => {
 use Data::Dump qw( pp );
 sub _moose_clean {
   return (
-    BEGIN =>,
-    '@ISA'   =>,
-    isa   =>,
-    meta  =>,
+    #  BEGIN =>,
+    '@ISA' =>,
+
+    #  isa   =>,
+    meta =>,
   );
 }
 
 sub _moose_immutable {
   return (
     DESTROY =>,
-    can     =>,
-    new     =>,
+
+    # can     =>,
+    new =>,
   );
 }
 
@@ -108,7 +110,7 @@ sub strict_nsmap {
   }
   if ( keys %{$symbols} ) {
     Test::More::fail("$package doesn't have unexpected symbols");
-    Test::More::diag( "Unexpected symbols: [" . ( join ", ", keys %{$symbols} ) . "]" );
+    Test::More::diag( "Unexpected symbols: $package [" . ( join ", ", keys %{$symbols} ) . "]" );
     for my $key ( keys %{$symbols} ) {
     	Test::More::diag( " $key => " . $symbols->{$key});
     }

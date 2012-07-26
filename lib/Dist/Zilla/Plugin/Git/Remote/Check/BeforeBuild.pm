@@ -6,6 +6,7 @@ package Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild;
 # ABSTRACT: Ensure no pending commits on a remote branch before build
 
 use Moose;
+use namespace::autoclean;
 
 =head1 SYNOPSIS
 

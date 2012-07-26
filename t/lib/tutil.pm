@@ -12,9 +12,9 @@ use Sub::Exporter -setup => {
 use Data::Dump qw( pp );
 sub _moose_clean {
   return (
-    BEGIN =>,
+  #  BEGIN =>,
     '@ISA'   =>,
-    isa   =>,
+  #  isa   =>,
     meta  =>,
   );
 }
@@ -22,7 +22,7 @@ sub _moose_clean {
 sub _moose_immutable {
   return (
     DESTROY =>,
-    can     =>,
+   # can     =>,
     new     =>,
   );
 }

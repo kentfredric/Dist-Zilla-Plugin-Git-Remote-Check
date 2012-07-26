@@ -41,5 +41,4 @@ strict_nsmap(
     packages_moose( { clean => 1, immutable => 1 } )
   ]
 );
-
 done_testing;

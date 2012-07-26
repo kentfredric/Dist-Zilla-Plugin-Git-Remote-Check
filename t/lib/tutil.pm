@@ -3,13 +3,14 @@ use warnings;
 
 use Sub::Exporter -setup => {
   exports => [
-    strict_nsmap   =>,
-    packages_moose =>,
-    packages_dzil_plugin => ,
+    strict_nsmap         =>,
+    packages_moose       =>,
+    packages_dzil_plugin =>,
   ],
   groups => { default => [':all'], },
 };
 use Data::Dump qw( pp );
+
 sub _moose_clean {
   return (
     #  BEGIN =>,
@@ -57,22 +58,20 @@ sub packages_moose {
 }
 
 sub packages_dzil_plugin {
-	return (
-		plugin_name =>,
-		zilla => ,
-		logger =>,
-		log  => ,
-		log_debug => ,
-		log_fatal => ,
-		mvp_multivalue_args => , 
-		mvp_aliases => ,
-		plugin_from_config =>,
-		register_component =>,
-		dump_config => ,
-	);
+  return (
+    plugin_name         =>,
+    zilla               =>,
+    logger              =>,
+    log                 =>,
+    log_debug           =>,
+    log_fatal           =>,
+    mvp_multivalue_args =>,
+    mvp_aliases         =>,
+    plugin_from_config  =>,
+    register_component  =>,
+    dump_config         =>,
+  );
 }
-
-
 
 sub strict_nsmap {
   my ( $package, $expected ) = @_;
@@ -82,20 +81,18 @@ sub strict_nsmap {
   my $stash   = Package::Stash->new($package);
   my $symbols = {};
 
-  for my $sym ( $stash->list_all_symbols('CODE') ){
-	$symbols->{$sym} = 'CODE';
+  for my $sym ( $stash->list_all_symbols('CODE') ) {
+    $symbols->{$sym} = 'CODE';
   }
   for my $sym ( $stash->list_all_symbols('SCALAR') ) {
-  	$symbols->{'$' . $sym } = 'SCALAR';
+    $symbols->{ '$' . $sym } = 'SCALAR';
   }
   for my $sym ( $stash->list_all_symbols('HASH') ) {
-  	$symbols->{'%' . $sym } = 'HASH';
+    $symbols->{ '%' . $sym } = 'HASH';
   }
   for my $sym ( $stash->list_all_symbols('ARRAY') ) {
-  	$symbols->{'@' . $sym } = 'ARRAY';
+    $symbols->{ '@' . $sym } = 'ARRAY';
   }
-  
-
 
   my $pass = 1;
 
@@ -112,7 +109,7 @@ sub strict_nsmap {
     Test::More::fail("$package doesn't have unexpected symbols");
     Test::More::diag( "Unexpected symbols: $package [" . ( join ", ", keys %{$symbols} ) . "]" );
     for my $key ( keys %{$symbols} ) {
-    	Test::More::diag( " $key => " . $symbols->{$key});
+      Test::More::diag( " $key => " . $symbols->{$key} );
     }
     undef $pass;
   }

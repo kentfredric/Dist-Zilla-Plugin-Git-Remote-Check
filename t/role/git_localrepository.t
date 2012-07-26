@@ -12,7 +12,7 @@ use lib "$FindBin::Bin/../lib/";
   use namespace::autoclean;
   with "Dist::Zilla::Role::Git::LocalRepository";
 
-  sub zilla {}
+  sub zilla { }
 
   __PACKAGE__->meta->make_immutable;
 }
@@ -22,11 +22,11 @@ use tutil;
 strict_nsmap(
   't::Role::Git::LocalRepository',
   [
-    _build_git		 =>,
-    clear_git		 =>,
-    git                  =>,
-    has_git		 =>,
-    zilla 		 =>,
+    _build_git =>,
+    clear_git  =>,
+    git        =>,
+    has_git    =>,
+    zilla      =>,
     packages_moose( { clean => 1, immutable => 1 } )
   ]
 );

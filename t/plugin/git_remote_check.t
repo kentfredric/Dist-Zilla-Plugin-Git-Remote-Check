@@ -17,12 +17,7 @@ use lib "$FindBin::Bin/../lib/";
 
 use tutil;
 
-strict_nsmap(
-  't::Plugin::Git::Remote::Check',
-  [
-    packages_moose( { clean => 1, immutable => 1 } )
-  ]
-);
+strict_nsmap( 't::Plugin::Git::Remote::Check', [ packages_moose( { clean => 1, immutable => 1 } ) ] );
 
 strict_nsmap(
   'Dist::Zilla::Plugin::Git::Remote::Check',
@@ -65,6 +60,5 @@ strict_nsmap(
   ]
 
 );
-
 
 done_testing;

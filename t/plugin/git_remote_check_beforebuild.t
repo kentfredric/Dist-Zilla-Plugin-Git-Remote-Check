@@ -58,6 +58,7 @@ strict_nsmap(
     packages_moose( { clean => 1, immutable => 1 } ),
     ( ($Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild::VERSION) ? (qw(  $AUTHORITY $VERSION )) : () ),
   ]
+
 );
 
 done_testing;

@@ -55,7 +55,7 @@ strict_nsmap(
     skip_if_not_current => ,
     packages_dzil_plugin(),
     packages_moose( { clean => 1, immutable => 1 } ),
-    '$VERSION',
+    (( $Dist::Zilla::Plugin::Git::Remote::Check::VERSION ) ? (qw(  $AUTHORITY $VERSION )) : ()),
   ]
 
 );

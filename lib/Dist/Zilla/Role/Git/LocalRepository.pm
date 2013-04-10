@@ -24,6 +24,27 @@ use Moose::Role;
 
 =cut
 
+=head1 DESCRIPTION
+
+This role is for all plugins that need to work with a local repository that is from Git, and assumes the git directory is the project root.
+
+Applying this role gives you a "git" method on your plugin, that will give you a Git::Wrapper instance for the project.
+
+
+    package Dist::Zilla::Plugin::Mine;
+    use Moose;
+
+    ...
+
+    with 'Dist::Zilla::Role::Git::LocalRepository';
+
+    sub some_phase {
+        $_[0]->git-> ...
+    }
+
+
+=cut
+
 =requires zilla
 
 Available from:

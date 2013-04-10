@@ -54,7 +54,6 @@ eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL','v1.7.2') };
 eval { $v .= pmver('Dist::Zilla::PluginBundle::Author::KENTNL::Lite','v1.3.0') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeBuild','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeRelease','any version') };
-eval { $v .= pmver('Dist::Zilla::Role::Git::Remote','any version') };
 eval { $v .= pmver('Dist::Zilla::Tester','any version') };
 eval { $v .= pmver('File::Find','any version') };
 eval { $v .= pmver('File::Temp','any version') };

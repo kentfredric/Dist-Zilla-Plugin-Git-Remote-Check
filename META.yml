@@ -62,7 +62,6 @@ requires:
   Data::Dump: 0
   Dist::Zilla::Role::BeforeBuild: 0
   Dist::Zilla::Role::BeforeRelease: 0
-  Dist::Zilla::Role::Git::Remote: 0
   Git::Wrapper: 0
   Moose: 0
   Moose::Role: 0
@@ -83,7 +82,6 @@ x_BuiltWith:
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 'NA(possibly not installed)'
     Dist::Zilla::Role::BeforeBuild: 4.300033
     Dist::Zilla::Role::BeforeRelease: 4.300033
-    Dist::Zilla::Role::Git::Remote: 'NA(possibly not installed)'
     Dist::Zilla::Tester: 4.300033
     File::Find: 1.23
     File::Temp: 0.23

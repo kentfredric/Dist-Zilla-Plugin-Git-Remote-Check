@@ -9,37 +9,7 @@ package Dist::Zilla::Role::Git::Remote::Check;
 
 use Moose::Role;
 
-=requires C<git>
-
-Must return a L<Git::Wrapper> or compatible instance.
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=cut
-
-requires 'git';
-
-=requires C<remote_branch>
-
-Must return a string value of a fully qualified branch name, e.g.: C<origin/master>
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::Remote::Branch>
-
-=back
-
-=cut
-
-requires 'remote_branch';
+with 'Dist::Zilla::Role::Git::Remote::Branch';
 
 =requires C<branch>
 

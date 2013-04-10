@@ -9,37 +9,7 @@ package Dist::Zilla::Role::Git::Remote::Update;
 
 use Moose::Role;
 
-=requires C<git>
-
-Must return a L<Git::Wrapper> or compatible instance.
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=cut
-
-requires 'git';
-
-=requires C<remote>
-
-Must return a String value representing a remote name ( as displayed in C<git remote> ).
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::Remote>
-
-=back
-
-=cut
-
-requires 'remote';
+with 'Dist::Zilla::Role::Git::RemoteName';
 
 =requires C<log>
 
@@ -88,7 +58,7 @@ sub remote_update {
   my $self = shift;
   return unless $self->do_update;
 
-  my $remote = $self->remote;
+  my $remote = $self->remote_name;
 
   $self->log( [ q[Updating remote '%s'], $remote ] );
 

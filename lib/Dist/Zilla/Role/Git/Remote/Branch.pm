@@ -9,37 +9,7 @@ package Dist::Zilla::Role::Git::Remote::Branch;
 
 use Moose::Role;
 
-=requires C<git>
-
-Must return a L<Git::Wrapper> or compatible instance.
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=cut
-
-requires 'git';
-
-=requires C<remote>
-
-Must return a String value representing a remote name ( as displayed in C<git remote> ).
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::Remote>
-
-=back
-
-=cut
-
-requires 'remote';
+with 'Dist::Zilla::Role::Git::RemoteName';
 
 =param C<remote_branch>
 
@@ -58,14 +28,14 @@ has '_remote_branch' => (
 
 =method C<remote_branch>
 
-If used in conjunction with L<Dist::Zilla::Role::Git::Remote> to provide C<remote>,
+If used in conjunction with L<Dist::Zilla::Role::Git::RemoteName> to provide C<remote_name>,
 then this method will expand the passed parameter C<remote_branch> in transit to a qualified one.
 
 =cut
 
 sub remote_branch {
   my $self = shift;
-  return $self->remote . q{/} . $self->_remote_branch;
+  return $self->remote_name . q{/} . $self->_remote_branch;
 }
 
 no Moose::Role;

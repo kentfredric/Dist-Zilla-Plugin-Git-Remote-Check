@@ -28,11 +28,6 @@ sub before_release {
 }
 
 
-with 'Dist::Zilla::Role::Git::LocalRepository';
-
-
-
-with 'Dist::Zilla::Role::Git::Remote';
 
 
 with 'Dist::Zilla::Role::Git::Remote::Branch';
@@ -110,14 +105,6 @@ The name of the repository to use as specified in C<.git/config>.
 
 Defaults to C<origin>, which is usually what you want.
 
-=head2 C<remote_branch>
-
-The branch name on the remote.
-
-e.g.: For C<origin/master> use C<master> with C<remote_name = origin>
-
-Defaults to the same value as L</branch>
-
 =head2 C<do_update>
 
 A boolean value that specifies whether or not to execute the update.
@@ -153,20 +140,9 @@ Checks the L</remote> via L<Dist::Zilla::Role::Git::Remote::Check/check_remote>
 
 =back
 
-=head2 C<git>
-
-Returns a L<Git::Wrapper> instance for the current L<Dist::Zilla> projects
-C<git> Repository.
-
 =head2 C<remote>
 
 Returns a validated remote name. Configured via L</remote_name> parameter.
-
-=head2 C<remote_branch>
-
-Returns a fully qualified branch name for the parameter specified as
-C<remote_branch> by combining it with L</remote>, and defaulting to the value of
-L</branch> if not assigned explicitly.
 
 =head2 C<remote_update>
 
@@ -188,22 +164,11 @@ recent of the 2.
 Causes this plugin to be executed during L<Dist::Zilla>'s "Before Re,ease" phase.
 ( L</before_release> )
 
-=head2 C<Dist::Zilla::Role::Git::LocalRepository>
-
-Provides a L</git> method that returns a C<Git::Wrapper> instance for the
-current C<Dist::Zilla> project.
-
 =head2 C<Dist::Zilla::Role::Git::Remote>
 
 Provides a L</remote> method which always returns a validated C<remote> name,
 optionally accepting it being specified manually to something other than
 C<origin> via the parameter L</remote_name>
-
-=head2 C<Dist::Zilla::Role::Git::Remote::Branch>
-
-Provides a L</remote_branch> method which combines the value returned by
-L</remote> with a user specified branch name and returns a fully qualified
-remote branch name.
 
 =head2 C<Dist::Zilla::Role::Git::Remote::Update>
 

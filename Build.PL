@@ -26,6 +26,7 @@ my %module_build_args = (
     "Data::Dump" => 0,
     "Dist::Zilla::Role::BeforeBuild" => 0,
     "Dist::Zilla::Role::BeforeRelease" => 0,
+    "Dist::Zilla::Role::Git::Remote" => 0,
     "Git::Wrapper" => 0,
     "Moose" => 0,
     "Moose::Role" => 0,

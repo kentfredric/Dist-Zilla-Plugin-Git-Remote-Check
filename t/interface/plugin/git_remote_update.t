@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More;
 use FindBin;
-use lib "$FindBin::Bin/../lib/";
+use lib "$FindBin::Bin/../../lib/";
 
 {
 
@@ -15,11 +15,12 @@ use lib "$FindBin::Bin/../lib/";
   __PACKAGE__->meta->make_immutable;
 }
 {
-   package FZil;
-   use Moose;
-   use namespace::autoclean;
-   extends "Dist::Zilla";
-   has '+chrome' => ( required => 0 );
+
+  package FZil;
+  use Moose;
+  use namespace::autoclean;
+  extends "Dist::Zilla";
+  has '+chrome' => ( required => 0 );
   __PACKAGE__->meta->make_immutable;
 
 }
@@ -53,12 +54,11 @@ strict_nsmap(
 # Real tests begin
 require Dist::Zilla::Tester;
 
-my $zilla = Dist::Zilla::Tester::_Builder->from_config(
-);
+my $zilla = Dist::Zilla::Tester::_Builder->from_config();
 
 my $instance = t::Plugin::Git::Remote::Update->new(
-	plugin_name => 'Update_test',
-	zilla => $zilla,
+  plugin_name => 'Update_test',
+  zilla       => $zilla,
 
 );
 $instance->before_release();

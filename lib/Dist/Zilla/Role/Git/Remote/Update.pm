@@ -15,11 +15,7 @@ BEGIN {
 
 use Moose::Role;
 
-
-requires 'git';
-
-
-requires 'remote';
+with 'Dist::Zilla::Role::Git::RemoteName';
 
 
 requires 'log';
@@ -34,7 +30,7 @@ sub remote_update {
   my $self = shift;
   return unless $self->do_update;
 
-  my $remote = $self->remote;
+  my $remote = $self->remote_name;
 
   $self->log( [ q[Updating remote '%s'], $remote ] );
 
@@ -82,30 +78,6 @@ Normally returns 1 ( true ) unless specified otherwise.
 Calls C<git remote update $remote> when triggered, if C<do_update> is true.
 
 =head1 REQUIRED METHODS
-
-=head2 C<git>
-
-Must return a L<Git::Wrapper> or compatible instance.
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=head2 C<remote>
-
-Must return a String value representing a remote name ( as displayed in C<git remote> ).
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::Remote>
-
-=back
 
 =head2 C<log>
 

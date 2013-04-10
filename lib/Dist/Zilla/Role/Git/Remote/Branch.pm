@@ -15,11 +15,7 @@ BEGIN {
 
 use Moose::Role;
 
-
-requires 'git';
-
-
-requires 'remote';
+with 'Dist::Zilla::Role::Git::RemoteName';
 
 
 has '_remote_branch' => (
@@ -32,7 +28,7 @@ has '_remote_branch' => (
 
 sub remote_branch {
   my $self = shift;
-  return $self->remote . q{/} . $self->_remote_branch;
+  return $self->remote_name . q{/} . $self->_remote_branch;
 }
 
 no Moose::Role;
@@ -62,34 +58,8 @@ e.g: C<master>
 
 =head2 C<remote_branch>
 
-If used in conjunction with L<Dist::Zilla::Role::Git::Remote> to provide C<remote>,
+If used in conjunction with L<Dist::Zilla::Role::Git::RemoteName> to provide C<remote_name>,
 then this method will expand the passed parameter C<remote_branch> in transit to a qualified one.
-
-=head1 REQUIRED METHODS
-
-=head2 C<git>
-
-Must return a L<Git::Wrapper> or compatible instance.
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=head2 C<remote>
-
-Must return a String value representing a remote name ( as displayed in C<git remote> ).
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::Remote>
-
-=back
 
 =head1 AUTHOR
 

@@ -15,11 +15,7 @@ BEGIN {
 
 use Moose::Role;
 
-
-requires 'git';
-
-
-requires 'remote_branch';
+with 'Dist::Zilla::Role::Git::Remote::Branch';
 
 
 requires 'branch';
@@ -135,30 +131,6 @@ version 0.1.3
 =head2 C<check_remote>
 
 =head1 REQUIRED METHODS
-
-=head2 C<git>
-
-Must return a L<Git::Wrapper> or compatible instance.
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=head2 C<remote_branch>
-
-Must return a string value of a fully qualified branch name, e.g.: C<origin/master>
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::Remote::Branch>
-
-=back
 
 =head2 C<branch>
 

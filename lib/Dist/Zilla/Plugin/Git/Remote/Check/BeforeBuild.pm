@@ -28,11 +28,8 @@ sub before_build {
 }
 
 
-with 'Dist::Zilla::Role::Git::LocalRepository';
 
-
-
-with 'Dist::Zilla::Role::Git::Remote';
+with 'Dist::Zilla::Role::Git::RemoteName';
 
 
 with 'Dist::Zilla::Role::Git::Remote::Branch';
@@ -153,12 +150,7 @@ Checks the L</remote> via L<Dist::Zilla::Role::Git::Remote::Check/check_remote>
 
 =back
 
-=head2 C<git>
-
-Returns a L<Git::Wrapper> instance for the current L<Dist::Zilla> projects
-C<git> Repository.
-
-=head2 C<remote>
+=head2 C<remote_name>
 
 Returns a validated remote name. Configured via L</remote_name> parameter.
 
@@ -188,14 +180,9 @@ recent of the 2.
 Causes this plugin to be executed during L<Dist::Zilla>'s "Before Build" phase.
 ( L</before_build> )
 
-=head2 C<Dist::Zilla::Role::Git::LocalRepository>
+=head2 C<Dist::Zilla::Role::Git::RemoteName>
 
-Provides a L</git> method that returns a C<Git::Wrapper> instance for the
-current C<Dist::Zilla> project.
-
-=head2 C<Dist::Zilla::Role::Git::Remote>
-
-Provides a L</remote> method which always returns a validated C<remote> name,
+Provides a L</remote_name> method which always returns a validated C<remote> name,
 optionally accepting it being specified manually to something other than
 C<origin> via the parameter L</remote_name>
 

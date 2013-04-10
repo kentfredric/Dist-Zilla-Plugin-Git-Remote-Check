@@ -14,7 +14,16 @@ use lib "$FindBin::Bin/../lib/";
 
   __PACKAGE__->meta->make_immutable;
 }
+{
 
+  package FZil;
+  use Moose;
+  use namespace::autoclean;
+  extends "Dist::Zilla";
+  has '+chrome' => ( required => 0 );
+  __PACKAGE__->meta->make_immutable;
+
+}
 use tutil;
 
 strict_nsmap( 't::Plugin::Git::Remote::Update', [ packages_moose( { clean => 1, immutable => 1 } ) ] );
@@ -41,4 +50,18 @@ strict_nsmap(
     packages_moose( { clean => 1, immutable => 1 } )
   ]
 );
+
+# Real tests begin
+require Dist::Zilla::Tester;
+
+my $zilla = Dist::Zilla::Tester::_Builder->from_config();
+
+my $instance = t::Plugin::Git::Remote::Update->new(
+  plugin_name => 'Update_test',
+  zilla       => $zilla,
+
+);
+$instance->before_release();
+
+diag explain $instance;
 done_testing;

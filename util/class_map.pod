@@ -1,0 +1,1032 @@
+=head1 Dist::Zilla::Plugin::Git::Remote::Check
+
+=head2 Constructor Arguments
+
+=head3 own public
+
+=head4 remote_branch
+
+=head4 branch
+
+=head3 inherited public
+
+=head4 skip_if_not_current
+
+=head4 zilla
+
+=head4 do_update
+
+=head4 logger
+
+=head4 remote_name
+
+=head4 plugin_name
+
+=head4 local_branches
+
+=head4 report_commits
+
+=head2 Attributes
+
+=head3 own public
+
+=head4 branch
+
+=head3 inherited public
+
+=head4 git
+
+=head4 zilla
+
+=head4 do_update
+
+=head4 logger
+
+=head4 skip_if_not_current
+
+=head4 report_commits
+
+=head4 plugin_name
+
+=head4 local_branches
+
+=head4 remote_names
+
+=head3 own private
+
+=head4 _remote_branch
+
+=head3 inherited private
+
+=head4 _remote_name
+
+=head2 Attribute Accessors
+
+=head3 own public
+
+=head4 branch
+
+=head3 inherited public
+
+=head4 skip_if_not_current
+
+=head4 log_debug
+
+=head4 log_fatal
+
+=head4 git
+
+=head4 has_local_branches
+
+=head4 zilla
+
+=head4 logger
+
+=head4 do_update
+
+=head4 remote_names
+
+=head4 report_commits
+
+=head4 log
+
+=head4 plugin_name
+
+=head4 clear_local_branches
+
+=head4 local_branches
+
+=head3 own private
+
+=head4 _remote_branch
+
+=head3 inherited private
+
+=head4 _remote_name
+
+=head4 _has_remote_name
+
+=head2 Methods
+
+=head3 own public
+
+=head4 does
+
+=head4 BUILDARGS
+
+=head4 can
+
+=head4 VERSION
+
+=head4 log
+
+=head4 local_branches
+
+=head4 mvp_aliases
+
+=head4 should_skip
+
+=head4 current_branch
+
+=head4 isa
+
+=head4 BUILDALL
+
+=head4 logger
+
+=head4 branch
+
+=head4 new
+
+=head4 meta
+
+=head4 report_commits
+
+=head4 skip_if_not_current
+
+=head4 dump_config
+
+=head4 plugin_from_config
+
+=head4 dump
+
+=head4 log_fatal
+
+=head4 has_local_branches
+
+=head4 zilla
+
+=head4 remote_branch
+
+=head4 mvp_multivalue_args
+
+=head4 remote_update
+
+=head4 DEMOLISHALL
+
+=head4 remote_names
+
+=head4 get_valid_remote_name
+
+=head4 is_current_branch
+
+=head4 before_release
+
+=head4 DOES
+
+=head4 plugin_name
+
+=head4 clear_local_branches
+
+=head4 log_debug
+
+=head4 check_remote
+
+=head4 remote_name
+
+=head4 git
+
+=head4 has_remote_name
+
+=head4 do_update
+
+=head4 DESTROY
+
+=head4 register_component
+
+=head3 own private
+
+=head4 _build_remote_names
+
+=head4 _incomming_commits
+
+=head4 _remote_name
+
+=head4 _build_local_branches
+
+=head4 _has_remote_name
+
+=head4 _build_git
+
+=head4 _current_sha1
+
+=head4 _outgoing_commits
+
+=head4 _remote_branch
+
+=head1 Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild
+
+=head2 Constructor Arguments
+
+=head3 own public
+
+=head4 branch
+
+=head4 remote_branch
+
+=head3 inherited public
+
+=head4 local_branches
+
+=head4 plugin_name
+
+=head4 report_commits
+
+=head4 do_update
+
+=head4 logger
+
+=head4 zilla
+
+=head4 remote_name
+
+=head4 skip_if_not_current
+
+=head2 Attributes
+
+=head3 own public
+
+=head4 branch
+
+=head3 inherited public
+
+=head4 report_commits
+
+=head4 plugin_name
+
+=head4 local_branches
+
+=head4 remote_names
+
+=head4 zilla
+
+=head4 git
+
+=head4 do_update
+
+=head4 logger
+
+=head4 skip_if_not_current
+
+=head3 own private
+
+=head4 _remote_branch
+
+=head3 inherited private
+
+=head4 _remote_name
+
+=head2 Attribute Accessors
+
+=head3 own public
+
+=head4 branch
+
+=head3 inherited public
+
+=head4 log_fatal
+
+=head4 zilla
+
+=head4 git
+
+=head4 has_local_branches
+
+=head4 do_update
+
+=head4 logger
+
+=head4 skip_if_not_current
+
+=head4 log_debug
+
+=head4 report_commits
+
+=head4 log
+
+=head4 plugin_name
+
+=head4 clear_local_branches
+
+=head4 local_branches
+
+=head4 remote_names
+
+=head3 own private
+
+=head4 _remote_branch
+
+=head3 inherited private
+
+=head4 _remote_name
+
+=head4 _has_remote_name
+
+=head2 Methods
+
+=head3 own public
+
+=head4 register_component
+
+=head4 DESTROY
+
+=head4 log_debug
+
+=head4 check_remote
+
+=head4 remote_name
+
+=head4 do_update
+
+=head4 has_remote_name
+
+=head4 git
+
+=head4 remote_names
+
+=head4 DEMOLISHALL
+
+=head4 remote_branch
+
+=head4 mvp_multivalue_args
+
+=head4 remote_update
+
+=head4 is_current_branch
+
+=head4 get_valid_remote_name
+
+=head4 DOES
+
+=head4 clear_local_branches
+
+=head4 plugin_name
+
+=head4 plugin_from_config
+
+=head4 dump
+
+=head4 dump_config
+
+=head4 skip_if_not_current
+
+=head4 log_fatal
+
+=head4 zilla
+
+=head4 before_build
+
+=head4 has_local_branches
+
+=head4 meta
+
+=head4 new
+
+=head4 branch
+
+=head4 report_commits
+
+=head4 mvp_aliases
+
+=head4 current_branch
+
+=head4 isa
+
+=head4 should_skip
+
+=head4 BUILDALL
+
+=head4 logger
+
+=head4 does
+
+=head4 BUILDARGS
+
+=head4 can
+
+=head4 VERSION
+
+=head4 local_branches
+
+=head4 log
+
+=head3 own private
+
+=head4 _outgoing_commits
+
+=head4 _remote_branch
+
+=head4 _current_sha1
+
+=head4 _build_git
+
+=head4 _has_remote_name
+
+=head4 _build_local_branches
+
+=head4 _remote_name
+
+=head4 _build_remote_names
+
+=head4 _incomming_commits
+
+=head1 Dist::Zilla::Plugin::Git::Remote::Update
+
+=head2 Constructor Arguments
+
+=head3 inherited public
+
+=head4 remote_name
+
+=head4 logger
+
+=head4 do_update
+
+=head4 zilla
+
+=head4 plugin_name
+
+=head2 Attributes
+
+=head3 inherited public
+
+=head4 remote_names
+
+=head4 do_update
+
+=head4 logger
+
+=head4 zilla
+
+=head4 plugin_name
+
+=head4 git
+
+=head3 inherited private
+
+=head4 _remote_name
+
+=head2 Attribute Accessors
+
+=head3 inherited public
+
+=head4 remote_names
+
+=head4 log
+
+=head4 plugin_name
+
+=head4 log_debug
+
+=head4 do_update
+
+=head4 logger
+
+=head4 git
+
+=head4 zilla
+
+=head4 log_fatal
+
+=head3 inherited private
+
+=head4 _has_remote_name
+
+=head4 _remote_name
+
+=head2 Methods
+
+=head3 own public
+
+=head4 log_debug
+
+=head4 do_update
+
+=head4 has_remote_name
+
+=head4 git
+
+=head4 remote_name
+
+=head4 get_valid_remote_name
+
+=head4 DEMOLISHALL
+
+=head4 remote_names
+
+=head4 remote_update
+
+=head4 mvp_multivalue_args
+
+=head4 plugin_name
+
+=head4 DOES
+
+=head4 before_release
+
+=head4 register_component
+
+=head4 DESTROY
+
+=head4 isa
+
+=head4 mvp_aliases
+
+=head4 logger
+
+=head4 BUILDALL
+
+=head4 can
+
+=head4 does
+
+=head4 BUILDARGS
+
+=head4 log
+
+=head4 VERSION
+
+=head4 dump_config
+
+=head4 plugin_from_config
+
+=head4 dump
+
+=head4 zilla
+
+=head4 log_fatal
+
+=head4 meta
+
+=head4 new
+
+=head3 own private
+
+=head4 _build_git
+
+=head4 _has_remote_name
+
+=head4 _build_remote_names
+
+=head4 _remote_name
+
+=head1 Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild
+
+=head2 Constructor Arguments
+
+=head3 inherited public
+
+=head4 remote_name
+
+=head4 do_update
+
+=head4 logger
+
+=head4 zilla
+
+=head4 plugin_name
+
+=head2 Attributes
+
+=head3 inherited public
+
+=head4 git
+
+=head4 zilla
+
+=head4 plugin_name
+
+=head4 logger
+
+=head4 do_update
+
+=head4 remote_names
+
+=head3 inherited private
+
+=head4 _remote_name
+
+=head2 Attribute Accessors
+
+=head3 inherited public
+
+=head4 log_fatal
+
+=head4 do_update
+
+=head4 logger
+
+=head4 git
+
+=head4 zilla
+
+=head4 log_debug
+
+=head4 log
+
+=head4 plugin_name
+
+=head4 remote_names
+
+=head3 inherited private
+
+=head4 _has_remote_name
+
+=head4 _remote_name
+
+=head2 Methods
+
+=head3 own public
+
+=head4 VERSION
+
+=head4 log
+
+=head4 does
+
+=head4 BUILDARGS
+
+=head4 can
+
+=head4 BUILDALL
+
+=head4 logger
+
+=head4 mvp_aliases
+
+=head4 isa
+
+=head4 new
+
+=head4 meta
+
+=head4 log_fatal
+
+=head4 before_build
+
+=head4 zilla
+
+=head4 dump
+
+=head4 dump_config
+
+=head4 plugin_from_config
+
+=head4 DOES
+
+=head4 plugin_name
+
+=head4 remote_update
+
+=head4 mvp_multivalue_args
+
+=head4 remote_names
+
+=head4 DEMOLISHALL
+
+=head4 get_valid_remote_name
+
+=head4 remote_name
+
+=head4 git
+
+=head4 has_remote_name
+
+=head4 do_update
+
+=head4 log_debug
+
+=head4 DESTROY
+
+=head4 register_component
+
+=head3 own private
+
+=head4 _build_remote_names
+
+=head4 _remote_name
+
+=head4 _build_git
+
+=head4 _has_remote_name
+
+=head1 Dist::Zilla::Role::BeforeBuild
+
+=head2 Attributes
+
+=head3 inherited public
+
+=head4 logger
+
+=head4 zilla
+
+=head4 plugin_name
+
+=head2 Methods
+
+=head3 own public
+
+=head4 logger
+
+=head4 zilla
+
+=head4 plugin_name
+
+=head1 Dist::Zilla::Role::BeforeRelease
+
+=head2 Attributes
+
+=head3 inherited public
+
+=head4 logger
+
+=head4 plugin_name
+
+=head4 zilla
+
+=head2 Methods
+
+=head3 own public
+
+=head4 logger
+
+=head4 zilla
+
+=head4 plugin_name
+
+=head1 Dist::Zilla::Role::ConfigDumper
+
+=head1 Dist::Zilla::Role::Git::LocalRepository
+
+=head2 Attributes
+
+=head3 own public
+
+=head4 git
+
+=head2 Methods
+
+=head3 own public
+
+=head4 git
+
+=head1 Dist::Zilla::Role::Git::LocalRepository::CurrentBranch
+
+=head2 Attributes
+
+=head3 inherited public
+
+=head4 local_branches
+
+=head2 Methods
+
+=head3 own public
+
+=head4 local_branches
+
+=head1 Dist::Zilla::Role::Git::LocalRepository::LocalBranches
+
+=head2 Attributes
+
+=head3 own public
+
+=head4 local_branches
+
+=head2 Methods
+
+=head3 own public
+
+=head4 local_branches
+
+=head1 Dist::Zilla::Role::Git::Remote::Branch
+
+=head2 Constructor Arguments
+
+=head3 own public
+
+=head4 remote_branch
+
+=head3 inherited public
+
+=head4 remote_name
+
+=head2 Attributes
+
+=head3 inherited public
+
+=head4 remote_names
+
+=head4 git
+
+=head3 own private
+
+=head4 _remote_branch
+
+=head3 inherited private
+
+=head4 _remote_name
+
+=head2 Methods
+
+=head3 own public
+
+=head4 git
+
+=head4 remote_names
+
+=head3 own private
+
+=head4 _remote_name
+
+=head4 _remote_branch
+
+=head1 Dist::Zilla::Role::Git::Remote::Check
+
+=head2 Constructor Arguments
+
+=head3 inherited public
+
+=head4 remote_branch
+
+=head4 remote_name
+
+=head2 Attributes
+
+=head3 own public
+
+=head4 report_commits
+
+=head4 skip_if_not_current
+
+=head3 inherited public
+
+=head4 git
+
+=head4 remote_names
+
+=head3 inherited private
+
+=head4 _remote_branch
+
+=head4 _remote_name
+
+=head2 Methods
+
+=head3 own public
+
+=head4 report_commits
+
+=head4 git
+
+=head4 skip_if_not_current
+
+=head4 remote_names
+
+=head3 own private
+
+=head4 _remote_name
+
+=head4 _remote_branch
+
+=head1 Dist::Zilla::Role::Git::Remote::Update
+
+=head2 Constructor Arguments
+
+=head3 inherited public
+
+=head4 remote_name
+
+=head2 Attributes
+
+=head3 own public
+
+=head4 do_update
+
+=head3 inherited public
+
+=head4 remote_names
+
+=head4 git
+
+=head3 inherited private
+
+=head4 _remote_name
+
+=head2 Methods
+
+=head3 own public
+
+=head4 remote_names
+
+=head4 do_update
+
+=head4 git
+
+=head3 own private
+
+=head4 _remote_name
+
+=head1 Dist::Zilla::Role::Git::RemoteName
+
+=head2 Constructor Arguments
+
+=head3 own public
+
+=head4 remote_name
+
+=head2 Attributes
+
+=head3 inherited public
+
+=head4 remote_names
+
+=head4 git
+
+=head3 own private
+
+=head4 _remote_name
+
+=head2 Methods
+
+=head3 own public
+
+=head4 git
+
+=head4 remote_names
+
+=head3 own private
+
+=head4 _remote_name
+
+=head1 Dist::Zilla::Role::Git::RemoteNames
+
+=head2 Attributes
+
+=head3 own public
+
+=head4 remote_names
+
+=head3 inherited public
+
+=head4 git
+
+=head2 Methods
+
+=head3 own public
+
+=head4 remote_names
+
+=head4 git
+
+=head1 Dist::Zilla::Role::Plugin
+
+=head2 Attributes
+
+=head3 own public
+
+=head4 plugin_name
+
+=head4 zilla
+
+=head4 logger
+
+=head2 Methods
+
+=head3 own public
+
+=head4 zilla
+
+=head4 plugin_name
+
+=head4 logger
+
+=head1 Moose::Object
+
+=head2 Methods
+
+=head3 own public
+
+=head4 DESTROY
+
+=head4 DEMOLISHALL
+
+=head4 DOES
+
+=head4 new
+
+=head4 meta
+
+=head4 dump
+
+=head4 can
+
+=head4 does
+
+=head4 BUILDARGS
+
+=head4 VERSION
+
+=head4 isa
+
+=head4 BUILDALL
+

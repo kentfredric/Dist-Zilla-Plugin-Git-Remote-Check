@@ -9,12 +9,13 @@ use Moose::Role;
 with 'Dist::Zilla::Role::Git::LocalRepository';
 
 has 'remote_names' => (
-  isa        => 'ArrayRef[ Str ]',
-  is         => 'rw',
-  lazy_build => 1,
-  traits     => [qw( Array )],
-  handles    => { _has_remote_name => 'first' },
-  init_arg   => undef,
+  isa      => 'ArrayRef[ Str ]',
+  is       => ro =>,
+  lazy     => 1,
+  builder  => _build_remote_names =>,
+  traits   => [qw( Array )],
+  handles  => { _has_remote_name => first =>, },
+  init_arg => undef,
 );
 
 sub has_remote_name {

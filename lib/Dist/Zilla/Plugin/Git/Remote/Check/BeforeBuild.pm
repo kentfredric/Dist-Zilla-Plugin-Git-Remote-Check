@@ -152,7 +152,7 @@ The local branch to check against the remote one. Defaults to 'master'
 
 =cut
 
-has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
+has 'branch' => ( isa => Str =>, is => rw =>, default => master =>, );
 
 =role C<Dist::Zilla::Role::Git::Remote::Check>
 

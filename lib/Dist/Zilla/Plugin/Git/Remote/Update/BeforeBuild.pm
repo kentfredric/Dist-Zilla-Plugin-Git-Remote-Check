@@ -54,43 +54,6 @@ sub before_build {
   return 1;
 }
 
-=role C<Dist::Zilla::Role::Git::LocalRepository>
-
-Provides a L</git> method that returns a C<Git::Wrapper> instance for the
-current C<Dist::Zilla> project.
-
-
-=method C<git>
-
-Returns a L<Git::Wrapper> instance for the current L<Dist::Zilla> projects
-C<git> Repository.
-
-=cut
-
-with 'Dist::Zilla::Role::Git::LocalRepository';
-
-=role C<Dist::Zilla::Role::Git::Remote>
-
-Provides a L</remote> method which always returns a validated C<remote> name,
-optionally accepting it being specified manually to something other than
-C<origin> via the parameter L</remote_name>
-
-=method C<remote>
-
-Returns a validated remote name. Configured via L</remote_name> parameter.
-
-=cut
-
-=param C<remote_name>
-
-The name of the repository to use as specified in C<.git/config>.
-
-Defaults to C<origin>, which is usually what you want.
-
-=cut
-
-with 'Dist::Zilla::Role::Git::Remote';
-
 =role C<Dist::Zilla::Role::Git::Remote::Update>
 
 Provides a L</remote_update> method which updates a L</remote> in L</git>

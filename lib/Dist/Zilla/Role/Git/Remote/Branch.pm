@@ -20,10 +20,10 @@ e.g: C<master>
 =cut
 
 has '_remote_branch' => (
-  isa      => 'Str',
-  is       => 'rw',
-  default  => 'master',
-  init_arg => 'remote_branch',
+  isa      => Str           =>,
+  is       => ro            =>,
+  default  => master        =>,
+  init_arg => remote_branch =>,
 );
 
 =method C<remote_branch>

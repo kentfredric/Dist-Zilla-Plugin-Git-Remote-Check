@@ -67,10 +67,11 @@ of the current L<Dist::Zilla> projects' root.
 =cut
 
 has 'git' => (
-  isa        => 'Object',
-  is         => 'ro',
-  lazy_build => 1,
-  init_arg   => undef,
+  isa      => Object     =>,
+  is       => ro         =>,
+  builder  => _build_git =>,
+  lazy     => 1,
+  init_arg => undef,
 );
 
 sub _build_git {

@@ -105,6 +105,9 @@ sub strict_nsmap {
     Test::More::fail("$package has symbol $expected_symbol");
     undef $pass;
   }
+  for my $ignore (qw( $VERSION $AUTHORITY )) {
+    delete $symbols->{$ignore} if exists $symbols->{$ignore};
+  }
   if ( keys %{$symbols} ) {
     Test::More::fail("$package doesn't have unexpected symbols");
     Test::More::diag( "Unexpected symbols: $package [" . ( join ", ", keys %{$symbols} ) . "]" );

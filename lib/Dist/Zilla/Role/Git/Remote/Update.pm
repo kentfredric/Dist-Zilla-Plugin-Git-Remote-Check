@@ -45,7 +45,7 @@ Normally returns 1 ( true ) unless specified otherwise.
 
 =cut
 
-has 'do_update' => ( isa => 'Bool', is => 'rw', default => 1 );
+has 'do_update' => ( isa => Bool =>, is => ro =>, default => 1 );
 
 =method C<remote_update>
 

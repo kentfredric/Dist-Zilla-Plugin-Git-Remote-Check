@@ -7,8 +7,8 @@ use Moose::Role;
 requires 'git';
 
 has local_branches => (
-  isa        => 'HashRef',
-  is         => 'rw',
+  isa        => HashRef =>,
+  is         => rw      =>,
   lazy_build => 1,
 );
 

@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More;
 use FindBin;
-use lib "$FindBin::Bin/../lib/";
+use lib "$FindBin::Bin/../../lib/";
 
 {
 
@@ -21,22 +21,18 @@ strict_nsmap( 't::Plugin::Git::Remote::Update::BeforeBuild', [ packages_moose( {
 strict_nsmap(
   'Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild',
   [
-    _assert_valid_remote =>,
-    _build__remotes      =>,
-    _build_git           =>,
-    _clear_remotes       =>,
-    _has_remote          =>,
-    _has_remotes         =>,
-    _remote_name         =>,
-    _remote_valid        =>,
-    _remotes             =>,
-    before_build         =>,
-    clear_git            =>,
-    do_update            =>,
-    git                  =>,
-    has_git              =>,
-    remote               =>,
-    remote_update        =>,
+    _build_git            =>,
+    _build_remote_names   =>,
+    _has_remote_name      =>,
+    _remote_name          =>,
+    before_build          =>,
+    do_update             =>,
+    get_valid_remote_name =>,
+    git                   =>,
+    has_remote_name       =>,
+    remote_name           =>,
+    remote_names          =>,
+    remote_update         =>,
     packages_dzil_plugin(),
     packages_moose( { clean => 1, immutable => 1 } )
   ]

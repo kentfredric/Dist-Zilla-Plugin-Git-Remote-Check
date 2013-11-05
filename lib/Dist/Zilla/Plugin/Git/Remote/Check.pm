@@ -78,21 +78,6 @@ sub before_release {
   return 1;
 }
 
-=role C<Dist::Zilla::Role::Git::LocalRepository>
-
-Provides a L</git> method that returns a C<Git::Wrapper> instance for the
-current C<Dist::Zilla> project.
-
-
-=method C<git>
-
-Returns a L<Git::Wrapper> instance for the current L<Dist::Zilla> projects
-C<git> Repository.
-
-=cut
-
-with 'Dist::Zilla::Role::Git::LocalRepository';
-
 =role C<Dist::Zilla::Role::Git::Remote>
 
 Provides a L</remote> method which always returns a validated C<remote> name,
@@ -110,30 +95,6 @@ Returns a validated remote name. Configured via L</remote_name> parameter.
 The name of the repository to use as specified in C<.git/config>.
 
 Defaults to C<origin>, which is usually what you want.
-
-=cut
-
-with 'Dist::Zilla::Role::Git::Remote';
-
-=role C<Dist::Zilla::Role::Git::Remote::Branch>
-
-Provides a L</remote_branch> method which combines the value returned by
-L</remote> with a user specified branch name and returns a fully qualified
-remote branch name.
-
-=method C<remote_branch>
-
-Returns a fully qualified branch name for the parameter specified as
-C<remote_branch> by combining it with L</remote>, and defaulting to the value of
-L</branch> if not assigned explicitly.
-
-=param C<remote_branch>
-
-The branch name on the remote.
-
-e.g.: For C<origin/master> use C<master> with C<remote_name = origin>
-
-Defaults to the same value as L</branch>
 
 =cut
 
@@ -167,7 +128,7 @@ The local branch to check against the remote one. Defaults to 'master'
 
 =cut
 
-has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
+has 'branch' => ( isa => Str =>, is => rw =>, default => master =>, );
 
 =role C<Dist::Zilla::Role::Git::Remote::Check>
 

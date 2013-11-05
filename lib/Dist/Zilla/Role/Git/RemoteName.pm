@@ -54,10 +54,10 @@ Defaults to C<origin>
 =cut
 
 has '_remote_name' => (
-  isa      => 'Str',
-  is       => 'rw',
-  default  => 'origin',
-  init_arg => 'remote_name',
+  isa      => Str         =>,
+  is       => ro          =>,
+  default  => origin      =>,
+  init_arg => remote_name =>,
 );
 
 no Moose::Role;

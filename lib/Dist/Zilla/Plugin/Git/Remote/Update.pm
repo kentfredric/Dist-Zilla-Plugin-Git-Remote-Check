@@ -54,28 +54,6 @@ sub before_release {
   return 1;
 }
 
-=role C<Dist::Zilla::Role::Git::RemoteName>
-
-Provides a L</remote_name> method which always returns a validated C<remote_name> name,
-optionally accepting it being specified manually to something other than
-C<origin> via the parameter L</remote_name>
-
-=method C<remote_name>
-
-Returns a validated remote name. Configured via L</remote_name> parameter.
-
-=cut
-
-=param C<remote_name>
-
-The name of the repository to use as specified in C<.git/config>.
-
-Defaults to C<origin>, which is usually what you want.
-
-=cut
-
-with 'Dist::Zilla::Role::Git::RemoteName';
-
 =role C<Dist::Zilla::Role::Git::Remote::Update>
 
 Provides a L</remote_update> method which updates a L</remote> in L</git>

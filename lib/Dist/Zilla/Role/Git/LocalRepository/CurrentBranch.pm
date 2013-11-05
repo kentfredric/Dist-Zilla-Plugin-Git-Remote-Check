@@ -5,37 +5,7 @@ package Dist::Zilla::Role::Git::LocalRepository::CurrentBranch;
 
 use Moose::Role;
 
-=requires C<git>
-
-Must return a L<Git::Wrapper> or compatible instance
-
-Available from
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=cut
-
-requires 'git';
-
-=requires C<local_branches>
-
-Must return a HashRef mapping branch name to branch sha1. 
-
-Available from
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository::LocalBranches>
-
-=back
-
-=cut
-
-requires 'local_branches';
+with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
 
 =p_method _current_sha1
 

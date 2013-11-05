@@ -35,7 +35,7 @@ Must be one of the branches listed by C<git branch>
 
 =cut
 
-has 'report_commits' => ( isa => 'Int', is => 'rw', default => 5 );
+has 'report_commits' => ( isa => Int =>, is => ro =>, default => 5 );
 
 sub _incomming_commits {
   my $self = shift;
@@ -64,7 +64,7 @@ sub _outgoing_commits {
 
 =cut
 
-has 'skip_if_not_current' => ( isa => 'Bool', is => 'rw', default => undef );
+has 'skip_if_not_current' => ( isa => Bool =>, is => ro =>, default => undef );
 
 =method C<is_current_branch>
 

@@ -11,7 +11,9 @@ BEGIN {
 use Moose::Role;
 
 
-requires 'git';
+# requires 'git';
+
+with 'Dist::Zilla::Role::Git::LocalRepository';
 
 has local_branches => (
   isa        => 'HashRef',
@@ -51,7 +53,10 @@ version 0.1.3
 
 {
     "namespace":"Dist::Zilla::Role::Git::LocalRepository::LocalBranches",
-    "interface":"role"
+    "interface":"role",
+    "does":[
+        "Dist::Zilla::Role::Git::LocalRepository"
+    ]
 }
 
 

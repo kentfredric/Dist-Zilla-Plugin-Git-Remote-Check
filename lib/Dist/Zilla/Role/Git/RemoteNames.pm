@@ -15,7 +15,9 @@ use Moose::Role;
 
 requires 'log_fatal';
 
-requires 'git';
+# requires 'git';
+
+with "Dist::Zilla::Role::Git::LocalRepository";
 
 has 'remote_names' => (
   isa        => 'ArrayRef[ Str ]',
@@ -64,7 +66,10 @@ version 0.1.3
 
 {
     "namespace":"Dist::Zilla::Role::Git::RemoteNames",
-    "interface":"role"
+    "interface":"role",
+    "does":[
+        "Dist::Zilla::Role::Git::LocalRepository"
+    ]
 }
 
 

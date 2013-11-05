@@ -2,8 +2,6 @@ use strict;
 use warnings;
 
 use Test::More;
-use FindBin;
-use lib "$FindBin::Bin/../../lib/";
 
 {
 
@@ -19,38 +17,5 @@ use lib "$FindBin::Bin/../../lib/";
   __PACKAGE__->meta->make_immutable;
 }
 
-use tutil;
-
-strict_nsmap(
-  't::Role::Git::Remote::Check',
-  [
-    _build_git            =>,
-    _build_remote_names   =>,
-    _has_remote_name      =>,
-    _incomming_commits    =>,
-    _outgoing_commits     =>,
-    _remote_branch        =>,
-    _remote_name          =>,
-    branch                =>,
-    check_remote          =>,
-    clear_git             =>,
-    clear_remote_names    =>,
-    get_valid_remote_name =>,
-    git                   =>,
-    has_git               =>,
-    has_remote_name       =>,
-    has_remote_names      =>,
-    is_current_branch     =>,
-    log_fatal             =>,
-    remote_branch         =>,
-    remote_name           =>,
-    remote_names          =>,
-    report_commits        =>,
-    should_skip           =>,
-    skip_if_not_current   =>,
-    zilla                 =>,
-    packages_moose( { clean => 1, immutable => 1 } )
-  ]
-);
-
+pass('Compiled Ok');
 done_testing;

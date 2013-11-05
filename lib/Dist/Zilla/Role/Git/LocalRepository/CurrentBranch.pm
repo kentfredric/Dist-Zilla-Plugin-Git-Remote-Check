@@ -13,10 +13,12 @@ use Moose::Role;
 
 
 
-requires 'git';
+# requires 'git';
 
 
-requires 'local_branches';
+# requires 'local_branches';
+
+with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
 
 
 sub _current_sha1 {
@@ -96,7 +98,10 @@ Returns the SHA1 for the current HEAD
 
 {
     "namespace":"Dist::Zilla::Role::Git::LocalRepository::CurrentBranch",
-    "interface":"role"
+    "interface":"role",
+    "does": [
+        "Dist::Zilla::Role::Git::LocalRepository::LocalBranches"
+    ]
 }
 
 

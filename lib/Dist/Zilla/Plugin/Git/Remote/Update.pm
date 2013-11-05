@@ -12,10 +12,12 @@ BEGIN {
 # ABSTRACT: Update a remote with Git before release.
 
 use Moose;
+use namespace::autoclean;
 
 
 
-with 'Dist::Zilla::Role::BeforeRelease';
+
+
 
 
 sub before_release {
@@ -24,10 +26,9 @@ sub before_release {
   return 1;
 }
 
+with 'Dist::Zilla::Role::Plugin';
 
-
-with 'Dist::Zilla::Role::Git::RemoteName';
-
+with 'Dist::Zilla::Role::BeforeRelease';
 
 with 'Dist::Zilla::Role::Git::Remote::Update';
 
@@ -113,6 +114,22 @@ C<origin> via the parameter L</remote_name>
 =head2 C<Dist::Zilla::Role::Git::Remote::Update>
 
 Provides a L</remote_update> method which updates a L</remote> in L</git>
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Plugin::Git::Remote::Update",
+    "interface":"class",
+    "inherits":"Moose::Object",
+    "does":[
+        "Dist::Zilla::Role::Plugin",
+        "Dist::Zilla::Role::BeforeRelease",
+        "Dist::Zilla::Role::Git::Remote::Update"
+    ]
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

@@ -74,11 +74,7 @@ METHODS
     2.  Checks the "remote" via "check_remote" in
         Dist::Zilla::Role::Git::Remote::Check
 
-  "git"
-    Returns a Git::Wrapper instance for the current Dist::Zilla projects
-    "git" Repository.
-
-  "remote"
+  "remote_name"
     Returns a validated remote name. Configured via "remote_name" parameter.
 
   "remote_branch"
@@ -102,14 +98,10 @@ ROLES
     Causes this plugin to be executed during Dist::Zilla's "Before Re,ease"
     phase. ( "before_release" )
 
-  "Dist::Zilla::Role::Git::LocalRepository"
-    Provides a "git" method that returns a "Git::Wrapper" instance for the
-    current "Dist::Zilla" project.
-
-  "Dist::Zilla::Role::Git::Remote"
-    Provides a "remote" method which always returns a validated "remote"
-    name, optionally accepting it being specified manually to something
-    other than "origin" via the parameter "remote_name"
+  "Dist::Zilla::Role::Git::RemoteName"
+    Provides a "remote_name" method which always returns a validated
+    "remote" name, optionally accepting it being specified manually to
+    something other than "origin" via the parameter "remote_name"
 
   "Dist::Zilla::Role::Git::Remote::Branch"
     Provides a "remote_branch" method which combines the value returned by

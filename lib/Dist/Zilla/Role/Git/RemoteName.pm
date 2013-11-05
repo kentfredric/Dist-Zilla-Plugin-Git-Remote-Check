@@ -17,7 +17,9 @@ use Moose::Role;
 
 requires 'log_fatal';
 
-requires 'get_valid_remote_name';
+# requires 'get_valid_remote_name';
+
+with 'Dist::Zilla::Role::Git::RemoteNames';
 
 
 sub remote_name {
@@ -89,7 +91,10 @@ Available from:
 
 {
     "namespace":"Dist::Zilla::Role::Git::RemoteName",
-    "interface":"role"
+    "interface":"role",
+    "does":[
+        "Dist::Zilla::Role::Git::RemoteNames"
+    ]
 }
 
 

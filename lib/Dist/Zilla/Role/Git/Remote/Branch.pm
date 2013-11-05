@@ -23,7 +23,9 @@ has '_remote_branch' => (
   init_arg => 'remote_branch',
 );
 
-requires 'remote_name';
+# requires 'remote_name';
+
+with 'Dist::Zilla::Role::Git::RemoteName';
 
 
 sub remote_branch {
@@ -65,7 +67,10 @@ then this method will expand the passed parameter C<remote_branch> in transit to
 
 {
     "namespace":"Dist::Zilla::Role::Git::Remote::Branch",
-    "interface":"role"
+    "interface":"role",
+    "does":[
+        "Dist::Zilla::Role::Git::RemoteName"
+    ]
 }
 
 

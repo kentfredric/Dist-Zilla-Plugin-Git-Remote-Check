@@ -18,13 +18,9 @@ use Moose::Role;
 
 requires 'branch';
 
-requires 'git';
-
-requires 'remote_branch';
-
 requires 'log_fatal';
 
-requires 'current_branch';
+with 'Dist::Zilla::Role::Git::Remote::Branch', 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
 
 
 
@@ -154,7 +150,11 @@ Must be one of the branches listed by C<git branch>
 
 {
     "namespace":"Dist::Zilla::Role::Git::Remote::Check",
-    "interface":"role"
+    "interface":"role",
+    "does":[
+        "Dist::Zilla::Role::Git::Remote::Branch",
+        "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch"
+    ]
 }
 
 

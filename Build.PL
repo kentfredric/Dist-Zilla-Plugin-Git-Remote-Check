@@ -26,7 +26,6 @@ my %module_build_args = (
     "Data::Dump" => 0,
     "Dist::Zilla::Role::BeforeBuild" => 0,
     "Dist::Zilla::Role::BeforeRelease" => 0,
-    "Dist::Zilla::Role::Git::Remote" => 0,
     "Dist::Zilla::Role::Plugin" => 0,
     "Git::Wrapper" => 0,
     "Moose" => 0,
@@ -38,32 +37,20 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
-    "Dist::Zilla" => 0,
-    "Dist::Zilla::Tester" => 0,
     "File::Spec" => 0,
-    "FindBin" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
-    "Package::Stash" => 0,
-    "Sub::Exporter" => 0,
-    "Test::More" => "1.001002",
-    "lib" => 0
+    "Test::More" => "1.001002"
   }
 );
 
 
 my %fallback_build_requires = (
-  "Dist::Zilla" => 0,
-  "Dist::Zilla::Tester" => 0,
   "File::Spec" => 0,
-  "FindBin" => 0,
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
   "Module::Build" => "0.4008",
-  "Package::Stash" => 0,
-  "Sub::Exporter" => 0,
-  "Test::More" => "1.001002",
-  "lib" => 0
+  "Test::More" => "1.001002"
 );
 
 

@@ -9,32 +9,27 @@ BEGIN {
   $Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild::VERSION = '0.1.3';
 }
 
-# FILENAME: BeforeBuild.pm
-# CREATED: 13/10/11 05:17:02 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Update a remote with Git before build.
 
 use Moose;
 
 
 
+
+
+
+
+with 'Dist::Zilla::Role::Plugin';
+
 with 'Dist::Zilla::Role::BeforeBuild';
 
+with 'Dist::Zilla::Role::Git::Remote::Update';
 
 sub before_build {
   my $self = shift;
   $self->remote_update;
   return 1;
 }
-
-
-with 'Dist::Zilla::Role::Git::LocalRepository';
-
-
-
-with 'Dist::Zilla::Role::Git::Remote';
-
-
-with 'Dist::Zilla::Role::Git::Remote::Update';
 
 no Moose;
 __PACKAGE__->meta->make_immutable;
@@ -128,6 +123,22 @@ C<origin> via the parameter L</remote_name>
 =head2 C<Dist::Zilla::Role::Git::Remote::Update>
 
 Provides a L</remote_update> method which updates a L</remote> in L</git>
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild",
+    "interface":"class",
+    "inherits":"Moose::Object",
+    "does":[
+        "Dist::Zilla::Role::Plugin",
+        "Dist::Zilla::Role::BeforeBuild",
+        "Dist::Zilla::Role::Git::Remote::Update"
+    ]
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

@@ -49,24 +49,17 @@ sub pmver {
 }
 
 eval { $v .= pmver('Data::Dump','any version') };
-eval { $v .= pmver('Dist::Zilla','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeBuild','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeRelease','any version') };
-eval { $v .= pmver('Dist::Zilla::Role::Git::Remote','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::Plugin','any version') };
-eval { $v .= pmver('Dist::Zilla::Tester','any version') };
 eval { $v .= pmver('File::Spec','any version') };
-eval { $v .= pmver('FindBin','any version') };
 eval { $v .= pmver('Git::Wrapper','any version') };
 eval { $v .= pmver('IO::Handle','any version') };
 eval { $v .= pmver('IPC::Open3','any version') };
 eval { $v .= pmver('Module::Build','0.4008') };
 eval { $v .= pmver('Moose','any version') };
 eval { $v .= pmver('Moose::Role','any version') };
-eval { $v .= pmver('Package::Stash','any version') };
-eval { $v .= pmver('Sub::Exporter','any version') };
 eval { $v .= pmver('Test::More','1.001002') };
-eval { $v .= pmver('lib','any version') };
 eval { $v .= pmver('namespace::autoclean','any version') };
 eval { $v .= pmver('strict','any version') };
 eval { $v .= pmver('warnings','any version') };

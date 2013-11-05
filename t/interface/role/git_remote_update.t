@@ -2,8 +2,6 @@ use strict;
 use warnings;
 
 use Test::More;
-use FindBin;
-use lib "$FindBin::Bin/../../lib/";
 
 {
 
@@ -15,35 +13,10 @@ use lib "$FindBin::Bin/../../lib/";
   sub log_fatal { }
   sub log       { }
   sub zilla     { }
+  sub log_debug { }
 
   __PACKAGE__->meta->make_immutable;
 }
 
-use tutil;
-
-strict_nsmap(
-  't::Role::Git::Remote::Update',
-  [
-    _build_git            =>,
-    _build_remote_names   =>,
-    _has_remote_name      =>,
-    _remote_name          =>,
-    clear_git             =>,
-    clear_remote_names    =>,
-    do_update             =>,
-    get_valid_remote_name =>,
-    git                   =>,
-    has_git               =>,
-    has_remote_name       =>,
-    has_remote_names      =>,
-    log                   =>,
-    log_fatal             =>,
-    remote_name           =>,
-    remote_names          =>,
-    remote_update         =>,
-    zilla                 =>,
-    packages_moose( { clean => 1, immutable => 1 } )
-  ]
-);
-
+pass("Compiled OK");
 done_testing;

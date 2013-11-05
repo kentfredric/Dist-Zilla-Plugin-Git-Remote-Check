@@ -2,8 +2,6 @@ use strict;
 use warnings;
 
 use Test::More;
-use FindBin;
-use lib "$FindBin::Bin/../../lib/";
 
 {
 
@@ -17,18 +15,5 @@ use lib "$FindBin::Bin/../../lib/";
   __PACKAGE__->meta->make_immutable;
 }
 
-use tutil;
-
-strict_nsmap(
-  't::Role::Git::LocalRepository',
-  [
-    _build_git =>,
-    clear_git  =>,
-    git        =>,
-    has_git    =>,
-    zilla      =>,
-    packages_moose( { clean => 1, immutable => 1 } )
-  ]
-);
-
+pass("Compiled OK");
 done_testing;

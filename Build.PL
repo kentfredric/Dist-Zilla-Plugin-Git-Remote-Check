@@ -10,7 +10,6 @@ my %module_build_args = (
     "Module::Build" => "0.4008"
   },
   "configure_requires" => {
-    "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.4008"
   },
   "dist_abstract" => "Ensure no pending commits on a remote branch before release",

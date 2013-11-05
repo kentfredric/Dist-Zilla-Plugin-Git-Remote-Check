@@ -21,7 +21,6 @@
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.30",
             "Module::Build" : "0.4008"
          }
       },
@@ -219,7 +218,6 @@
          "Dist::Zilla::Role::BeforeBuild" : "5.005",
          "Dist::Zilla::Role::BeforeRelease" : "5.005",
          "Dist::Zilla::Role::Plugin" : "5.005",
-         "ExtUtils::MakeMaker" : "6.82",
          "File::Spec" : "3.40",
          "Git::Wrapper" : "0.030",
          "IO::Handle" : "1.35",
@@ -605,9 +603,19 @@
             "version" : "5.005"
          },
          {
-            "class" : "Dist::Zilla::Plugin::MakeMaker",
-            "name" : "MakeMaker",
-            "version" : "5.005"
+            "class" : "Dist::Zilla::Plugin::Git::Remote::Update",
+            "name" : "Git::Remote::Update",
+            "version" : null
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Git::Remote::Check",
+            "name" : "Git::Remote::Check",
+            "version" : null
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild",
+            "name" : "Git::Remote::Update::BeforeBuild",
+            "version" : null
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild",

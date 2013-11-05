@@ -52,7 +52,6 @@ eval { $v .= pmver('Data::Dump','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeBuild','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::BeforeRelease','any version') };
 eval { $v .= pmver('Dist::Zilla::Role::Plugin','any version') };
-eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
 eval { $v .= pmver('File::Spec','any version') };
 eval { $v .= pmver('Git::Wrapper','any version') };
 eval { $v .= pmver('IO::Handle','any version') };

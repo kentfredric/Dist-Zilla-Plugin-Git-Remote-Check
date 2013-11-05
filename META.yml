@@ -9,7 +9,6 @@ build_requires:
   Module::Build: 0.4008
   Test::More: 1.001002
 configure_requires:
-  ExtUtils::MakeMaker: 6.30
   Module::Build: 0.4008
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 5.005, CPAN::Meta::Converter version 2.132830'
@@ -122,7 +121,6 @@ x_BuiltWith:
     Dist::Zilla::Role::BeforeBuild: 5.005
     Dist::Zilla::Role::BeforeRelease: 5.005
     Dist::Zilla::Role::Plugin: 5.005
-    ExtUtils::MakeMaker: 6.82
     File::Spec: 3.40
     Git::Wrapper: 0.030
     IO::Handle: 1.35
@@ -428,9 +426,17 @@ x_Dist_Zilla:
       name: '@Author::KENTNL/::Role::BundleDeps'
       version: 5.005
     -
-      class: Dist::Zilla::Plugin::MakeMaker
-      name: MakeMaker
-      version: 5.005
+      class: Dist::Zilla::Plugin::Git::Remote::Update
+      name: Git::Remote::Update
+      version: ~
+    -
+      class: Dist::Zilla::Plugin::Git::Remote::Check
+      name: Git::Remote::Check
+      version: ~
+    -
+      class: Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild
+      name: Git::Remote::Update::BeforeBuild
+      version: ~
     -
       class: Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild
       name: Git::Remote::Check::BeforeBuild

@@ -9,7 +9,6 @@ package Dist::Zilla::Role::Git::Remote::Branch;
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::RemoteName';
 
 =param C<remote_branch>
 

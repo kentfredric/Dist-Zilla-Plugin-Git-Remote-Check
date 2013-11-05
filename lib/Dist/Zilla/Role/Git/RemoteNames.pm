@@ -6,7 +6,6 @@ package Dist::Zilla::Role::Git::RemoteNames;
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::LocalRepository';
 
 has 'remote_names' => (
   isa        => 'ArrayRef[ Str ]',

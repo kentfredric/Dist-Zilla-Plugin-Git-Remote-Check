@@ -9,7 +9,6 @@ package Dist::Zilla::Role::Git::Remote::Update;
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::RemoteName';
 
 =requires C<log>
 

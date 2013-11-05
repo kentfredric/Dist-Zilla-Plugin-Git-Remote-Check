@@ -7,7 +7,6 @@ package Dist::Zilla::Role::Git::RemoteName;
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::RemoteNames';
 
 =requires C<log_fatal>
 

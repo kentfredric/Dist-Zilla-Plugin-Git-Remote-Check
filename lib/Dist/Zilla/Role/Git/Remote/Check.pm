@@ -9,7 +9,6 @@ package Dist::Zilla::Role::Git::Remote::Check;
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::Remote::Branch';
 
 =requires C<branch>
 

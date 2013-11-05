@@ -43,6 +43,10 @@ use namespace::autoclean;
 
 =cut
 
+with 'Dist::Zilla::Role::Plugin';
+
+with 'Dist::Zilla::Role::Git::LocalRepository';
+
 =role C<Dist::Zilla::Role::BeforeBuild>
 
 Causes this plugin to be executed during L<Dist::Zilla>'s "Before Build" phase.

@@ -19,6 +19,7 @@ lib/Dist/Zilla/Role/Git/Remote/Check.pm
 lib/Dist/Zilla/Role/Git/Remote/Update.pm
 lib/Dist/Zilla/Role/Git/RemoteName.pm
 lib/Dist/Zilla/Role/Git/RemoteNames.pm
+meta/class_map.dump
 perlcritic.rc
 t/00-compile.t
 t/000-report-versions-tiny.t

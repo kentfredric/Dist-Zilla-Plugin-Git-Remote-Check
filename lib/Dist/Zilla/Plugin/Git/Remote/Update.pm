@@ -9,8 +9,6 @@ BEGIN {
   $Dist::Zilla::Plugin::Git::Remote::Update::VERSION = '0.1.3';
 }
 
-# FILENAME: Update.pm
-# CREATED: 13/10/11 05:17:02 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Update a remote with Git before release.
 
 use Moose;

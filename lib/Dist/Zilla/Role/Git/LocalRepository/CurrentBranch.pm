@@ -12,6 +12,7 @@ BEGIN {
 use Moose::Role;
 
 
+
 requires 'git';
 
 
@@ -90,6 +91,16 @@ Available from
 =head2 _current_sha1
 
 Returns the SHA1 for the current HEAD
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::LocalRepository::CurrentBranch",
+    "interface":"role"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

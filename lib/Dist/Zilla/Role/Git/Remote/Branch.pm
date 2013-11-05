@@ -15,8 +15,6 @@ BEGIN {
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::RemoteName';
-
 
 has '_remote_branch' => (
   isa      => 'Str',
@@ -60,6 +58,16 @@ e.g: C<master>
 
 If used in conjunction with L<Dist::Zilla::Role::Git::RemoteName> to provide C<remote_name>,
 then this method will expand the passed parameter C<remote_branch> in transit to a qualified one.
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::Remote::Branch",
+    "interface":"role"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

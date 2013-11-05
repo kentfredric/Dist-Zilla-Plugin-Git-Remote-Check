@@ -10,6 +10,7 @@ BEGIN {
 }
 use Moose::Role;
 
+
 requires 'git';
 
 has local_branches => (
@@ -45,6 +46,16 @@ Dist::Zilla::Role::Git::LocalRepository::LocalBranches
 =head1 VERSION
 
 version 0.1.3
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::LocalRepository::LocalBranches",
+    "interface":"role"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

@@ -13,10 +13,11 @@ BEGIN {
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::RemoteNames';
 
 
 requires 'log_fatal';
+
+requires 'get_valid_remote_name';
 
 
 sub remote_name {
@@ -83,6 +84,16 @@ Available from:
 =item * L<Dist::Zilla::Role::Plugin>
 
 =back
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::RemoteName",
+    "interface":"role"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

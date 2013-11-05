@@ -12,7 +12,6 @@ BEGIN {
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::LocalRepository';
 
 has 'remote_names' => (
   isa        => 'ArrayRef[ Str ]',
@@ -56,6 +55,16 @@ Dist::Zilla::Role::Git::RemoteNames
 =head1 VERSION
 
 version 0.1.3
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::RemoteNames",
+    "interface":"role"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

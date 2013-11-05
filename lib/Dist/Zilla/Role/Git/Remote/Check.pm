@@ -15,8 +15,6 @@ BEGIN {
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::Remote::Branch';
-
 
 requires 'branch';
 
@@ -143,6 +141,16 @@ Must return a string value of a branch name, e.g.: C<master>
 Must return the name (String) of the branch we are currently on, or return false if we are not on a branch.
 
 Must be one of the branches listed by C<git branch>
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::Remote::Check",
+    "interface":"role"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

@@ -18,6 +18,7 @@ use Moose::Role;
 
 
 
+
 requires 'zilla';
 
 
@@ -97,6 +98,16 @@ Available from:
 =item * L<Dist::Zilla::Role::Plugin>
 
 =back
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::LocalRepository",
+    "interface":"role"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

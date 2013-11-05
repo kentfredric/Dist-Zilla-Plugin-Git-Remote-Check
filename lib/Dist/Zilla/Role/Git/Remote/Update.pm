@@ -15,8 +15,6 @@ BEGIN {
 
 use Moose::Role;
 
-with 'Dist::Zilla::Role::Git::RemoteName';
-
 
 requires 'log';
 
@@ -92,6 +90,16 @@ Available from:
 =item * L<Dist::Zilla::Role::Plugin>
 
 =back
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::Remote::Update",
+    "interface":"role"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 

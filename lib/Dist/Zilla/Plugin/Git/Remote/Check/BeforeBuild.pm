@@ -8,6 +8,28 @@ package Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild;
 use Moose;
 use namespace::autoclean;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild",
+    "interface":"class",
+    "inherits":"Moose::Object",
+    "does":[
+        "Dist::Zilla::Role::Plugin",
+        "Dist::Zilla::Role::Git::LocalRepository",
+        "Dist::Zilla::Role::Git::RemoteNames",
+        "Dist::Zilla::Role::Git::LocalRepository::LocalBranches",
+        "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch",
+        "Dist::Zilla::Role::BeforeBuild",
+        "Dist::Zilla::Role::Git::RemoteName",
+        "Dist::Zilla::Role::Git::Remote::Branch",
+        "Dist::Zilla::Role::Git::Remote::Update",
+        "Dist::Zilla::Role::Git::Remote::Check"
+    ]
+}
+
+=end MetaPOD::JSON
+
 =head1 SYNOPSIS
 
   [Git::Remote::Check]
@@ -52,7 +74,6 @@ with 'Dist::Zilla::Role::Git::RemoteNames';
 with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
 
 with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
-
 
 =role C<Dist::Zilla::Role::BeforeBuild>
 
@@ -187,10 +208,6 @@ Defaults to C<5>
 with 'Dist::Zilla::Role::Git::Remote::Check';
 
 has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
-
-with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
-
-with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
 
 __PACKAGE__->meta->make_immutable;
 no Moose;

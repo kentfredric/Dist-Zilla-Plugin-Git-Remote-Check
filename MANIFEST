@@ -5,6 +5,7 @@ LICENSE
 MANIFEST
 META.json
 META.yml
+Makefile.PL
 README
 dist.ini
 lib/Dist/Zilla/Plugin/Git/Remote/Check.pm

@@ -18,6 +18,12 @@ use Moose::Role;
 
 requires 'log';
 
+requires 'remote_name';
+
+requires 'git';
+
+requires 'log_debug';
+
 
 
 has 'do_update' => ( isa => 'Bool', is => 'rw', default => 1 );

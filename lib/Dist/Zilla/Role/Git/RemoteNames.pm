@@ -13,6 +13,10 @@ BEGIN {
 use Moose::Role;
 
 
+requires 'log_fatal';
+
+requires 'git';
+
 has 'remote_names' => (
   isa        => 'ArrayRef[ Str ]',
   is         => 'rw',

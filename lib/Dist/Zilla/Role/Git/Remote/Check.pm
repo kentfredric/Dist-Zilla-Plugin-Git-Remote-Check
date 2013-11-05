@@ -18,6 +18,14 @@ use Moose::Role;
 
 requires 'branch';
 
+requires 'git';
+
+requires 'remote_branch';
+
+requires 'log_fatal';
+
+requires 'current_branch';
+
 
 
 has 'report_commits' => ( isa => 'Int', is => 'rw', default => 5 );

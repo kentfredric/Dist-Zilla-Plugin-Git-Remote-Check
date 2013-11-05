@@ -21,6 +21,11 @@ with 'Dist::Zilla::Role::Git::LocalRepository';
 
 with 'Dist::Zilla::Role::Git::RemoteNames';
 
+with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
+
+with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
+
+
 
 with 'Dist::Zilla::Role::BeforeBuild';
 

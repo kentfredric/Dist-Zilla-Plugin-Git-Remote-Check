@@ -23,6 +23,8 @@ has '_remote_branch' => (
   init_arg => 'remote_branch',
 );
 
+requires 'remote_name';
+
 
 sub remote_branch {
   my $self = shift;

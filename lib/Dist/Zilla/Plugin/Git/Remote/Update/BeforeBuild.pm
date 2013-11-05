@@ -3,11 +3,24 @@ use warnings;
 
 package Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild;
 
-# FILENAME: BeforeBuild.pm
-# CREATED: 13/10/11 05:17:02 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Update a remote with Git before build.
 
 use Moose;
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild",
+    "interface":"class",
+    "inherits":"Moose::Object",
+    "does":[
+        "Dist::Zilla::Role::Plugin",
+        "Dist::Zilla::Role::BeforeBuild",
+        "Dist::Zilla::Role::Git::Remote::Update"
+    ]
+}
+
+=end MetaPOD::JSON
 
 =head1 SYNOPSIS
 
@@ -40,19 +53,10 @@ Causes this plugin to be executed during L<Dist::Zilla>'s "Before Build" phase.
 
 =cut
 
-with 'Dist::Zilla::Role::BeforeBuild';
-
 =method C<before_build>
 
 Updates the L</remote> via L<Dist::Zilla::Role::Git::Remote::Update/remote_update>, before Building the release.
 
-=cut
-
-sub before_build {
-  my $self = shift;
-  $self->remote_update;
-  return 1;
-}
 
 =role C<Dist::Zilla::Role::Git::LocalRepository>
 
@@ -66,8 +70,6 @@ Returns a L<Git::Wrapper> instance for the current L<Dist::Zilla> projects
 C<git> Repository.
 
 =cut
-
-with 'Dist::Zilla::Role::Git::LocalRepository';
 
 =role C<Dist::Zilla::Role::Git::Remote>
 
@@ -89,8 +91,6 @@ Defaults to C<origin>, which is usually what you want.
 
 =cut
 
-with 'Dist::Zilla::Role::Git::Remote';
-
 =role C<Dist::Zilla::Role::Git::Remote::Update>
 
 Provides a L</remote_update> method which updates a L</remote> in L</git>
@@ -107,7 +107,17 @@ Default value is C<1> / true.
 
 =cut
 
+with 'Dist::Zilla::Role::Plugin';
+
+with 'Dist::Zilla::Role::BeforeBuild';
+
 with 'Dist::Zilla::Role::Git::Remote::Update';
+
+sub before_build {
+  my $self = shift;
+  $self->remote_update;
+  return 1;
+}
 
 no Moose;
 __PACKAGE__->meta->make_immutable;

@@ -8,14 +8,19 @@ use Moose::Role;
 
 {
     "namespace":"Dist::Zilla::Role::Git::LocalRepository::LocalBranches",
-    "interface":"role"
+    "interface":"role",
+    "does":[
+        "Dist::Zilla::Role::Git::LocalRepository"
+    ]
 }
 
 =end MetaPOD::JSON
 
 =cut
 
-requires 'git';
+# requires 'git';
+
+with 'Dist::Zilla::Role::Git::LocalRepository';
 
 has local_branches => (
   isa        => 'HashRef',

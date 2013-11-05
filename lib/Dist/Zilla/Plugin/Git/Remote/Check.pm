@@ -8,6 +8,22 @@ package Dist::Zilla::Plugin::Git::Remote::Check;
 use Moose;
 use namespace::autoclean;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Plugin::Git::Remote::Check",
+    "interface":"class",
+    "inherits":"Moose::Object",
+    "does":[
+        "Dist::Zilla::Role::Plugin",
+        "Dist::Zilla::Role::BeforeRelease",
+        "Dist::Zilla::Role::Git::Remote::Update",
+        "Dist::Zilla::Role::Git::Remote::Check"
+    ]
+}
+
+=end MetaPOD::JSON
+
 =head1 SYNOPSIS
 
   [Git::Remote::Check]
@@ -50,8 +66,6 @@ Causes this plugin to be executed during L<Dist::Zilla>'s "Before Re,ease" phase
 
 =cut
 
-with 'Dist::Zilla::Role::BeforeRelease';
-
 =method C<before_release>
 
 Executes code before releasing.
@@ -70,36 +84,13 @@ Checks the L</remote> via L<Dist::Zilla::Role::Git::Remote::Check/check_remote>
 
 =cut
 
-sub before_release {
-  my $self = shift;
-  return if $self->should_skip;
-  $self->remote_update;
-  $self->check_remote;
-  return 1;
-}
+=role C<Dist::Zilla::Role::Git::RemoteName>
 
-=role C<Dist::Zilla::Role::Git::LocalRepository>
-
-Provides a L</git> method that returns a C<Git::Wrapper> instance for the
-current C<Dist::Zilla> project.
-
-
-=method C<git>
-
-Returns a L<Git::Wrapper> instance for the current L<Dist::Zilla> projects
-C<git> Repository.
-
-=cut
-
-with 'Dist::Zilla::Role::Git::LocalRepository';
-
-=role C<Dist::Zilla::Role::Git::Remote>
-
-Provides a L</remote> method which always returns a validated C<remote> name,
+Provides a L</remote_name> method which always returns a validated C<remote> name,
 optionally accepting it being specified manually to something other than
 C<origin> via the parameter L</remote_name>
 
-=method C<remote>
+=method C<remote_name>
 
 Returns a validated remote name. Configured via L</remote_name> parameter.
 
@@ -112,8 +103,6 @@ The name of the repository to use as specified in C<.git/config>.
 Defaults to C<origin>, which is usually what you want.
 
 =cut
-
-with 'Dist::Zilla::Role::Git::Remote';
 
 =role C<Dist::Zilla::Role::Git::Remote::Branch>
 
@@ -137,8 +126,6 @@ Defaults to the same value as L</branch>
 
 =cut
 
-with 'Dist::Zilla::Role::Git::Remote::Branch';
-
 =role C<Dist::Zilla::Role::Git::Remote::Update>
 
 Provides a L</remote_update> method which updates a L</remote> in L</git>
@@ -155,8 +142,6 @@ Default value is C<1> / true.
 
 =cut
 
-with 'Dist::Zilla::Role::Git::Remote::Update';
-
 =method C<branch>
 
 The local branch to check against the remote one. Defaults to 'master'
@@ -166,8 +151,6 @@ The local branch to check against the remote one. Defaults to 'master'
 The local branch to check against the remote one. Defaults to 'master'
 
 =cut
-
-has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
 
 =role C<Dist::Zilla::Role::Git::Remote::Check>
 
@@ -188,13 +171,21 @@ Defaults to C<5>
 
 =cut
 
-with 'Dist::Zilla::Role::Git::Remote::Check';
+sub before_release {
+  my $self = shift;
+  return if $self->should_skip;
+  $self->remote_update;
+  $self->check_remote;
+  return 1;
+}
+
+with 'Dist::Zilla::Role::Plugin', 'Dist::Zilla::Role::BeforeRelease';
+
+has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
+
+with 'Dist::Zilla::Role::Git::Remote::Check', 'Dist::Zilla::Role::Git::Remote::Update';
 
 has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
-
-with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
-
-with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
 
 __PACKAGE__->meta->make_immutable;
 no Moose;

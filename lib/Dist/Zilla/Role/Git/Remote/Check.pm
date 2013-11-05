@@ -13,7 +13,11 @@ use Moose::Role;
 
 {
     "namespace":"Dist::Zilla::Role::Git::Remote::Check",
-    "interface":"role"
+    "interface":"role",
+    "does":[
+        "Dist::Zilla::Role::Git::Remote::Branch",
+        "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch"
+    ]
 }
 
 =end MetaPOD::JSON
@@ -28,13 +32,9 @@ Must return a string value of a branch name, e.g.: C<master>
 
 requires 'branch';
 
-requires 'git';
-
-requires 'remote_branch';
-
 requires 'log_fatal';
 
-requires 'current_branch';
+with 'Dist::Zilla::Role::Git::Remote::Branch', 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
 
 =requires C<current_branch>
 

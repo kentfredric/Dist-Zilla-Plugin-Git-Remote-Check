@@ -9,7 +9,10 @@ use Moose::Role;
 
 {
     "namespace":"Dist::Zilla::Role::Git::LocalRepository::CurrentBranch",
-    "interface":"role"
+    "interface":"role",
+    "does": [
+        "Dist::Zilla::Role::Git::LocalRepository::LocalBranches"
+    ]
 }
 
 =end MetaPOD::JSON
@@ -30,7 +33,7 @@ Available from
 
 =cut
 
-requires 'git';
+# requires 'git';
 
 =requires C<local_branches>
 
@@ -46,7 +49,9 @@ Available from
 
 =cut
 
-requires 'local_branches';
+# requires 'local_branches';
+
+with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
 
 =p_method _current_sha1
 

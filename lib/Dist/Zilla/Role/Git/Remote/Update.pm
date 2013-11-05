@@ -3,8 +3,6 @@ use warnings;
 
 package Dist::Zilla::Role::Git::Remote::Update;
 
-# FILENAME: Update.pm
-# CREATED: 12/10/11 21:44:42 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Update tracking data for a remote repository
 
 use Moose::Role;
@@ -13,7 +11,10 @@ use Moose::Role;
 
 {
     "namespace":"Dist::Zilla::Role::Git::Remote::Update",
-    "interface":"role"
+    "interface":"role",
+    "does":[
+        "Dist::Zilla::Role::Git::RemoteName"
+    ]
 }
 
 =end MetaPOD::JSON
@@ -36,11 +37,13 @@ Available from:
 
 requires 'log';
 
-requires 'remote_name';
-
-requires 'git';
-
 requires 'log_debug';
+
+# requires 'git';
+
+# requires 'remote_name';
+
+with 'Dist::Zilla::Role::Git::RemoteName';
 
 =param C<do_update>
 

@@ -16,13 +16,7 @@ use namespace::autoclean;
     "inherits":"Moose::Object",
     "does":[
         "Dist::Zilla::Role::Plugin",
-        "Dist::Zilla::Role::Git::LocalRepository",
-        "Dist::Zilla::Role::Git::RemoteNames",
-        "Dist::Zilla::Role::Git::LocalRepository::LocalBranches",
-        "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch",
         "Dist::Zilla::Role::BeforeBuild",
-        "Dist::Zilla::Role::Git::RemoteName",
-        "Dist::Zilla::Role::Git::Remote::Branch",
         "Dist::Zilla::Role::Git::Remote::Update",
         "Dist::Zilla::Role::Git::Remote::Check"
     ]
@@ -65,24 +59,12 @@ use namespace::autoclean;
 
 =cut
 
-with 'Dist::Zilla::Role::Plugin';
-
-with 'Dist::Zilla::Role::Git::LocalRepository';
-
-with 'Dist::Zilla::Role::Git::RemoteNames';
-
-with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
-
-with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
-
 =role C<Dist::Zilla::Role::BeforeBuild>
 
 Causes this plugin to be executed during L<Dist::Zilla>'s "Before Build" phase.
 ( L</before_build> )
 
 =cut
-
-with 'Dist::Zilla::Role::BeforeBuild';
 
 =method C<before_build>
 
@@ -101,14 +83,6 @@ Checks the L</remote> via L<Dist::Zilla::Role::Git::Remote::Check/check_remote>
 =back
 
 =cut
-
-sub before_build {
-  my $self = shift;
-  return if $self->should_skip;
-  $self->remote_update;
-  $self->check_remote;
-  return 1;
-}
 
 =role C<Dist::Zilla::Role::Git::RemoteName>
 
@@ -129,8 +103,6 @@ The name of the repository to use as specified in C<.git/config>.
 Defaults to C<origin>, which is usually what you want.
 
 =cut
-
-with 'Dist::Zilla::Role::Git::RemoteName';
 
 =role C<Dist::Zilla::Role::Git::Remote::Branch>
 
@@ -154,8 +126,6 @@ Defaults to the same value as L</branch>
 
 =cut
 
-with 'Dist::Zilla::Role::Git::Remote::Branch';
-
 =role C<Dist::Zilla::Role::Git::Remote::Update>
 
 Provides a L</remote_update> method which updates a L</remote> in L</git>
@@ -172,8 +142,6 @@ Default value is C<1> / true.
 
 =cut
 
-with 'Dist::Zilla::Role::Git::Remote::Update';
-
 =method C<branch>
 
 The local branch to check against the remote one. Defaults to 'master'
@@ -183,8 +151,6 @@ The local branch to check against the remote one. Defaults to 'master'
 The local branch to check against the remote one. Defaults to 'master'
 
 =cut
-
-has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
 
 =role C<Dist::Zilla::Role::Git::Remote::Check>
 
@@ -205,7 +171,18 @@ Defaults to C<5>
 
 =cut
 
-with 'Dist::Zilla::Role::Git::Remote::Check';
+sub before_build {
+  my $self = shift;
+  return if $self->should_skip;
+  $self->remote_update;
+  $self->check_remote;
+  return 1;
+}
+
+has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
+
+with 'Dist::Zilla::Role::Plugin',             'Dist::Zilla::Role::BeforeBuild';
+with 'Dist::Zilla::Role::Git::Remote::Check', 'Dist::Zilla::Role::Git::Remote::Update';
 
 has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
 

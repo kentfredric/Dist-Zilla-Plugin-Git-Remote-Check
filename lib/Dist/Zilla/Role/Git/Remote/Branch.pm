@@ -33,6 +33,8 @@ has '_remote_branch' => (
   init_arg => 'remote_branch',
 );
 
+requires 'remote_name';
+
 =method C<remote_branch>
 
 If used in conjunction with L<Dist::Zilla::Role::Git::RemoteName> to provide C<remote_name>,

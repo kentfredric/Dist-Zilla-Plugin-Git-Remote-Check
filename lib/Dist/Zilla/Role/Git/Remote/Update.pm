@@ -36,6 +36,12 @@ Available from:
 
 requires 'log';
 
+requires 'remote_name';
+
+requires 'git';
+
+requires 'log_debug';
+
 =param C<do_update>
 
 Boolean: Specify whether or not the L</do_update> method does anything.

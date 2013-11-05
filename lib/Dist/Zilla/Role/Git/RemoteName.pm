@@ -38,6 +38,8 @@ Available from:
 
 requires 'log_fatal';
 
+requires 'get_valid_remote_name';
+
 =method C<remote_name>
 
 If a consuming package specifies a valid value via C<remote_name>, 

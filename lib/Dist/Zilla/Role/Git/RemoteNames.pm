@@ -17,6 +17,10 @@ use Moose::Role;
 
 =cut
 
+requires 'log_fatal';
+
+requires 'git';
+
 has 'remote_names' => (
   isa        => 'ArrayRef[ Str ]',
   is         => 'rw',

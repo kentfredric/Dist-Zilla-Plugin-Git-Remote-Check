@@ -47,6 +47,13 @@ with 'Dist::Zilla::Role::Plugin';
 
 with 'Dist::Zilla::Role::Git::LocalRepository';
 
+with 'Dist::Zilla::Role::Git::RemoteNames';
+
+with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
+
+with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
+
+
 =role C<Dist::Zilla::Role::BeforeBuild>
 
 Causes this plugin to be executed during L<Dist::Zilla>'s "Before Build" phase.

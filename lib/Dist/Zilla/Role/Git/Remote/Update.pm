@@ -9,6 +9,14 @@ package Dist::Zilla::Role::Git::Remote::Update;
 
 use Moose::Role;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::Remote::Update",
+    "interface":"role"
+}
+
+=end MetaPOD::JSON
 
 =requires C<log>
 

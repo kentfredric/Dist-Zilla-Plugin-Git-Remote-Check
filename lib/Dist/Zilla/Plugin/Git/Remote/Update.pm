@@ -3,8 +3,6 @@ use warnings;
 
 package Dist::Zilla::Plugin::Git::Remote::Update;
 
-# FILENAME: Update.pm
-# CREATED: 13/10/11 05:17:02 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Update a remote with Git before release.
 
 use Moose;

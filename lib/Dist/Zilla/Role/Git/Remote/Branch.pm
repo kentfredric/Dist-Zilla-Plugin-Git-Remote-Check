@@ -9,6 +9,14 @@ package Dist::Zilla::Role::Git::Remote::Branch;
 
 use Moose::Role;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::Remote::Branch",
+    "interface":"role"
+}
+
+=end MetaPOD::JSON
 
 =param C<remote_branch>
 

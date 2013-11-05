@@ -6,6 +6,16 @@ package Dist::Zilla::Role::Git::RemoteNames;
 
 use Moose::Role;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::RemoteNames",
+    "interface":"role"
+}
+
+=end MetaPOD::JSON
+
+=cut
 
 has 'remote_names' => (
   isa        => 'ArrayRef[ Str ]',

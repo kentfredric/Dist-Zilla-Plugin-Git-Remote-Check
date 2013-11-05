@@ -4,6 +4,17 @@ use warnings;
 package Dist::Zilla::Role::Git::LocalRepository::LocalBranches;
 use Moose::Role;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::LocalRepository::LocalBranches",
+    "interface":"role"
+}
+
+=end MetaPOD::JSON
+
+=cut
+
 requires 'git';
 
 has local_branches => (

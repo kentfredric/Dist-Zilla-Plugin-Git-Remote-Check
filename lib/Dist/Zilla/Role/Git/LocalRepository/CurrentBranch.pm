@@ -5,6 +5,17 @@ package Dist::Zilla::Role::Git::LocalRepository::CurrentBranch;
 
 use Moose::Role;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::LocalRepository::CurrentBranch",
+    "interface":"role"
+}
+
+=end MetaPOD::JSON
+
+=cut
+
 =requires C<git>
 
 Must return a L<Git::Wrapper> or compatible instance

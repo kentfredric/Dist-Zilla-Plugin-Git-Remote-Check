@@ -9,6 +9,17 @@ package Dist::Zilla::Role::Git::LocalRepository;
 
 use Moose::Role;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::LocalRepository",
+    "interface":"role"
+}
+
+=end MetaPOD::JSON
+
+=cut
+
 =head1 SYNOPSIS
 
   package Foo;

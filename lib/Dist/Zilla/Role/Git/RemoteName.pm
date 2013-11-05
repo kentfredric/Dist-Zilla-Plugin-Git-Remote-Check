@@ -7,6 +7,16 @@ package Dist::Zilla::Role::Git::RemoteName;
 
 use Moose::Role;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::RemoteName",
+    "interface":"role"
+}
+
+=end MetaPOD::JSON
+
+=cut
 
 =requires C<log_fatal>
 

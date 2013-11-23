@@ -61,7 +61,10 @@ sub get_valid_remote_name {
   return $self->log_fatal( [ $msg, $remote_name, Data::Dump::dump( $self->remote_names ), ] );
 }
 
-sub _build_remote_names { return [ $_[0]->git->remote ] }
+sub _build_remote_names {
+    my ( $self, ) = @_;
+    return [ $self->git->remote ]
+}
 
 no Moose::Role;
 

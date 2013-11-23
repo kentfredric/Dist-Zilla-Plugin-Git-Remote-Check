@@ -35,7 +35,7 @@ Suggests: L<Dist::Zilla::Role::Git::LocalRepository>
 
 =requires C<local_branches>
 
-Must return a HashRef mapping branch name to branch sha1.
+Must return a C<HashRef> mapping branch name to branch C<SHA1>.
 
 Suggests: L<Dist::Zilla::Role::Git::LocalRepository::LocalBranches>
 
@@ -44,9 +44,9 @@ Suggests: L<Dist::Zilla::Role::Git::LocalRepository::LocalBranches>
 requires 'local_branches';
 requires 'git';
 
-=p_method _current_sha1
+=p_method C<_current_sha1>
 
-Returns the SHA1 for the current HEAD
+Returns the C<SHA1> for the current C<HEAD>
 
 =cut
 

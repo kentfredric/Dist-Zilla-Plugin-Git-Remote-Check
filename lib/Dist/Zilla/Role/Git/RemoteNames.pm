@@ -10,6 +10,8 @@ BEGIN {
   $Dist::Zilla::Role::Git::RemoteNames::VERSION = '0.1.3';
 }
 
+# ABSTRACT: Query a list of remotes from C<Git>
+
 use Moose::Role;
 
 
@@ -54,7 +56,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Role::Git::RemoteNames
+Dist::Zilla::Role::Git::RemoteNames - Query a list of remotes from C<Git>
 
 =head1 VERSION
 

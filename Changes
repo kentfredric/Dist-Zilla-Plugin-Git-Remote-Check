@@ -1,20 +1,26 @@
 ﻿Release history for Dist-Zilla-Plugin-Git-Check-Remote
 
-0.1.3 2013-11-23T04:37:29Z
+0.1.3 2013-11-23T05:20:17Z
+ [Dependencies::Stats]
+ - Dependencies changed, see Changes.deps{,.all,.dev} for details
+ - build: ↑1
+ - configure: ↑1
+ - develop: +51 -3
+ - runtime: +2
+ - test: ↑1 -2
 
 0.1.2 2012-03-26T19:47:17Z
  [Bug Fixes]
- - fix bug for when [Git::Remote::Check] is using all defaults
-   (Karen Etheridge)
+ - fix bug for when [Git::Remote::Check] is using all defaults (Karen
+   Etheridge)
 
- [Dependencies::Added / runtime requires]
- - perl 5.006
+ [Dependencies]
+ - perl 5.006 is now the minimum
 
- [Dependencies::Changed / develop recommends]
- - Dist::Zilla::PluginBundle::Author::KENTNL::Lite 0.01009803 → v1.3.0
-
- [Dependencies::Changed / develop suggests]
- - Dist::Zilla::PluginBundle::Author::KENTNL v1.0.0 → v1.3.0
+ [Dependencies::Stats]
+ - Dependencies changed, see Changes.deps{,.all,.dev} for details
+ - develop: ↑2
+ - runtime: +1
 
  [Packaging]
  - Update LICENSE ( Year, Indent, Address )

@@ -7,6 +7,8 @@ META.json
 META.yml
 README
 dist.ini
+layout/self_structure.dot
+layout/self_structure.png
 lib/Dist/Zilla/Plugin/Git/Remote/Check.pm
 lib/Dist/Zilla/Plugin/Git/Remote/Check/BeforeBuild.pm
 lib/Dist/Zilla/Plugin/Git/Remote/Update.pm
@@ -45,6 +47,7 @@ t/interface/role/git_remote_check.t
 t/interface/role/git_remote_update.t
 t/interface/role/git_remotename.t
 t/interface/role/git_remotenames.t
+util/roleappl.pl
 weaver.ini
 xt/author/critic.t
 xt/release/cpan-changes.t

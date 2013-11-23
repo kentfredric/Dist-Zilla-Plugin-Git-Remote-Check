@@ -16,6 +16,7 @@ BEGIN {
 use Moose::Role;
 
 
+
 requires 'branch';
 requires 'current_branch';
 requires 'git';
@@ -152,6 +153,10 @@ Recommended application order if using this role:
 =head1 REQUIRED METHODS
 
 =head2 C<branch>
+
+Must be implemented by the consuming plugin. ( Presently I know of no roles that provide this method ).
+
+Must return a string value of a branch name, e.g.: C<master>
 
 =head2 C<current_branch>
 

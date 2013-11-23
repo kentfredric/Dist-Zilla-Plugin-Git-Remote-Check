@@ -1,0 +1,58 @@
+strict digraph Perl {
+	graph [overlap=false, rankdir=LR, ranksep=5, splines=spline];
+	node [label="\N", shape=record, style=dotted];
+	edge [minlen=1];
+	subgraph cluster_1 {
+		graph [label="Dist::Zilla::",
+			rank=min];
+		"Dist::Zilla::Plugin::Git::Remote::Check" [label="Dist::Zilla::Plugin::Git::Remote::Check", shape=Mrecord, style=solid, color="#7e1e9c", fontsize=7, height="0.1"];
+		"Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [label="Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild", shape=Mrecord, style=solid, color="#7e1e9c", fontsize=7, height="0.1"];
+		"Dist::Zilla::Plugin::Git::Remote::Update" [label="Dist::Zilla::Plugin::Git::Remote::Update", shape=Mrecord, style=solid, color="#7e1e9c", fontsize=7, height="0.1"];
+		"Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild" [label="Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild", shape=Mrecord, style=solid, color="#7e1e9c", fontsize=7, height="0.1"];
+		"Dist::Zilla::Role::BeforeBuild" [label="Dist::Zilla::Role::BeforeBuild"];
+		"Dist::Zilla::Role::BeforeRelease" [label="Dist::Zilla::Role::BeforeRelease"];
+		"Dist::Zilla::Role::Git::LocalRepository" [label="Dist::Zilla::Role::Git::LocalRepository", shape=Mrecord, style=solid, color="#15b01a", fontsize=7, height="0.1"];
+		"Dist::Zilla::Role::Git::LocalRepository::CurrentBranch" [label="Dist::Zilla::Role::Git::LocalRepository::CurrentBranch", shape=Mrecord, style=solid, color="#15b01a", fontsize=7, height="0.1"];
+		"Dist::Zilla::Role::Git::LocalRepository::LocalBranches" [label="Dist::Zilla::Role::Git::LocalRepository::LocalBranches", shape=Mrecord, style=solid, color="#15b01a", fontsize=7, height="0.1"];
+		"Dist::Zilla::Role::Git::Remote::Branch" [label="Dist::Zilla::Role::Git::Remote::Branch", shape=Mrecord, style=solid, color="#15b01a", fontsize=7, height="0.1"];
+		"Dist::Zilla::Role::Git::Remote::Check" [label="Dist::Zilla::Role::Git::Remote::Check", shape=Mrecord, style=solid, color="#15b01a", fontsize=7, height="0.1"];
+		"Dist::Zilla::Role::Git::Remote::Update" [label="Dist::Zilla::Role::Git::Remote::Update", shape=Mrecord, style=solid, color="#15b01a", fontsize=7, height="0.1"];
+		"Dist::Zilla::Role::Git::RemoteName" [label="Dist::Zilla::Role::Git::RemoteName", shape=Mrecord, style=solid, color="#15b01a", fontsize=7, height="0.1"];
+		"Dist::Zilla::Role::Git::RemoteNames" [label="Dist::Zilla::Role::Git::RemoteNames", shape=Mrecord, style=solid, color="#15b01a", fontsize=7, height="0.1"];
+		"Dist::Zilla::Role::Plugin" [label="Dist::Zilla::Role::Plugin"];
+		"Dist::Zilla::Role::Plugin" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::BeforeRelease" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::LocalRepository" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::LocalRepository::LocalBranches" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::LocalRepository::CurrentBranch" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::RemoteNames" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::RemoteName" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::Remote::Branch" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::Remote::Check" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::Remote::Update" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Plugin" -> "Dist::Zilla::Plugin::Git::Remote::Update" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::BeforeRelease" -> "Dist::Zilla::Plugin::Git::Remote::Update" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::LocalRepository" -> "Dist::Zilla::Plugin::Git::Remote::Update" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::RemoteNames" -> "Dist::Zilla::Plugin::Git::Remote::Update" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::RemoteName" -> "Dist::Zilla::Plugin::Git::Remote::Update" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::Remote::Update" -> "Dist::Zilla::Plugin::Git::Remote::Update" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Plugin" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::BeforeBuild" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::LocalRepository" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::LocalRepository::LocalBranches" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::LocalRepository::CurrentBranch" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::RemoteNames" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::RemoteName" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::Remote::Branch" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::Remote::Check" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::Remote::Update" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Plugin" -> "Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::BeforeBuild" -> "Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+		"Dist::Zilla::Role::Git::Remote::Update" -> "Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#653700", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=5];
+	}
+	"Moose::Object" [label="Moose::Object"];
+	"Moose::Object" -> "Dist::Zilla::Plugin::Git::Remote::Check" [arrowhead=vee, arrowsize="0.5", color="#ff81c0", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=10];
+	"Moose::Object" -> "Dist::Zilla::Plugin::Git::Remote::Update" [arrowhead=vee, arrowsize="0.5", color="#ff81c0", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=10];
+	"Moose::Object" -> "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#ff81c0", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=10];
+	"Moose::Object" -> "Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild" [arrowhead=vee, arrowsize="0.5", color="#ff81c0", dir=forward, fontsize=6, headclip=1, tailclip=1, weight=10];
+}

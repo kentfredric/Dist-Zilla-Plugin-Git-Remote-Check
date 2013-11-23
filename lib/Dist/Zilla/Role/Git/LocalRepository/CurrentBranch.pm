@@ -11,8 +11,8 @@ BEGIN {
 
 # ABSTRACT: Query state from C<Git> about the current branch
 
-
 use Moose::Role;
+
 
 
 requires 'local_branches';

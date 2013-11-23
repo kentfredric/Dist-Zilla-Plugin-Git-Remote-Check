@@ -40,6 +40,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild - Update a remote with Git before build.

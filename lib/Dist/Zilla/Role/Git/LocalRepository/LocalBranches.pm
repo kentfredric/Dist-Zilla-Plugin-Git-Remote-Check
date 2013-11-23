@@ -46,6 +46,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Role::Git::LocalRepository::LocalBranches - Enumerate all available local branches as branch ↔ C<SHA1> mappings.

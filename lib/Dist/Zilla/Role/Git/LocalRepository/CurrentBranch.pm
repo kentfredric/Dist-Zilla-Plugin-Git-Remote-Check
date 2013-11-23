@@ -44,6 +44,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Role::Git::LocalRepository::CurrentBranch - Query state from C<Git> about the current branch

@@ -40,6 +40,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Role::Git::RemoteName - Git Remote specification and validation for plugins.

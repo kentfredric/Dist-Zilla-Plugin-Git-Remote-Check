@@ -42,6 +42,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Role::Git::LocalRepository - A plugin which works with a local git repository as its Dist::Zilla source.

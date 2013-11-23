@@ -51,6 +51,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Role::Git::Remote::Update - Update tracking data for a remote repository

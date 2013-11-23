@@ -108,6 +108,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Role::Git::Remote::Check - Check a remote branch is not ahead of a local one

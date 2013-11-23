@@ -56,6 +56,8 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Dist::Zilla::Plugin::Git::Remote::Check - Ensure no pending commits on a remote branch before release

@@ -46,7 +46,7 @@ sub get_valid_remote_name {
 
 sub _build_remote_names {
     my ( $self, ) = @_;
-    return [ $self->git->remote ] 
+    return [ $self->git->remote ]
 }
 
 no Moose::Role;
@@ -56,6 +56,8 @@ no Moose::Role;
 __END__
 
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 

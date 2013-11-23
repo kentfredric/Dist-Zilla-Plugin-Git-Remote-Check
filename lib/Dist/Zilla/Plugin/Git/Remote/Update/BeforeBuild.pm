@@ -111,9 +111,10 @@ Default value is C<1> / true.
 =cut
 
 with 'Dist::Zilla::Role::Plugin';
-
 with 'Dist::Zilla::Role::BeforeBuild';
-
+with 'Dist::Zilla::Role::Git::LocalRepository';
+with 'Dist::Zilla::Role::Git::RemoteNames';
+with 'Dist::Zilla::Role::Git::RemoteName';
 with 'Dist::Zilla::Role::Git::Remote::Update';
 
 sub before_build {

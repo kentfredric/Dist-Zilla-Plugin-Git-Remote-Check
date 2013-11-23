@@ -185,11 +185,19 @@ sub before_release {
   return 1;
 }
 
-with 'Dist::Zilla::Role::Plugin', 'Dist::Zilla::Role::BeforeRelease';
+with 'Dist::Zilla::Role::Plugin';
+with 'Dist::Zilla::Role::BeforeRelease';
 
 has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
 
-with 'Dist::Zilla::Role::Git::Remote::Check', 'Dist::Zilla::Role::Git::Remote::Update';
+with 'Dist::Zilla::Role::Git::LocalRepository';
+with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
+with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
+with 'Dist::Zilla::Role::Git::RemoteNames';
+with 'Dist::Zilla::Role::Git::RemoteName';
+with 'Dist::Zilla::Role::Git::Remote::Branch';
+with 'Dist::Zilla::Role::Git::Remote::Check';
+with 'Dist::Zilla::Role::Git::Remote::Update';
 
 has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
 

@@ -9,10 +9,7 @@ use Moose::Role;
 
 {
     "namespace":"Dist::Zilla::Role::Git::LocalRepository::CurrentBranch",
-    "interface":"role",
-    "does": [
-        "Dist::Zilla::Role::Git::LocalRepository::LocalBranches"
-    ]
+    "interface":"role"
 }
 
 =end MetaPOD::JSON

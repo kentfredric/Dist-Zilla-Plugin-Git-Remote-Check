@@ -11,10 +11,7 @@ use Moose::Role;
 
 {
     "namespace":"Dist::Zilla::Role::Git::RemoteName",
-    "interface":"role",
-    "does":[
-        "Dist::Zilla::Role::Git::RemoteNames"
-    ]
+    "interface":"role"
 }
 
 =end MetaPOD::JSON

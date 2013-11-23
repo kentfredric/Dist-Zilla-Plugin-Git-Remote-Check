@@ -17,6 +17,9 @@ use namespace::autoclean;
     "does":[
         "Dist::Zilla::Role::Plugin",
         "Dist::Zilla::Role::BeforeRelease",
+        "Dist::Zilla::Role::Git::LocalRepository",
+        "Dist::Zilla::Role::Git::RemoteNames",
+        "Dist::Zilla::Role::Git::RemoteName",
         "Dist::Zilla::Role::Git::Remote::Update"
     ]
 }

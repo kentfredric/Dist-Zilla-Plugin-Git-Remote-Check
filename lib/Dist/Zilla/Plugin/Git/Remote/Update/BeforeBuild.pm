@@ -16,6 +16,9 @@ use Moose;
     "does":[
         "Dist::Zilla::Role::Plugin",
         "Dist::Zilla::Role::BeforeBuild",
+        "Dist::Zilla::Role::Git::LocalRepository",
+        "Dist::Zilla::Role::Git::RemoteNames",
+        "Dist::Zilla::Role::Git::RemoteName",
         "Dist::Zilla::Role::Git::Remote::Update"
     ]
 }

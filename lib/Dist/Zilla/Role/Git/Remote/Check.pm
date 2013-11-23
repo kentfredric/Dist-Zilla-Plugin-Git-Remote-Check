@@ -30,17 +30,21 @@ Must return a string value of a branch name, e.g.: C<master>
 
 =cut
 
-requires 'branch';
 
-requires 'log_fatal';
 
-with 'Dist::Zilla::Role::Git::Remote::Branch', 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
 
 =requires C<current_branch>
 
 Must return the name (String) of the branch we are currently on, or return false if we are not on a branch.
 
 Must be one of the branches listed by C<git branch>
+
+requires 'branch';
+requires 'current_branch';
+requires 'git';
+requires 'log';
+requires 'log_fatal';
+requires 'remote_branch';
 
 =param C<report_commits>
 

@@ -41,9 +41,7 @@ Available from:
 
 requires 'log_fatal';
 
-# requires 'get_valid_remote_name';
-
-with 'Dist::Zilla::Role::Git::RemoteNames';
+requires 'get_valid_remote_name';
 
 =method C<remote_name>
 

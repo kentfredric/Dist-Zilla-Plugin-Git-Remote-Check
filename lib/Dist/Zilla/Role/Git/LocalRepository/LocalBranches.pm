@@ -18,9 +18,8 @@ use Moose::Role;
 
 =cut
 
-# requires 'git';
 
-with 'Dist::Zilla::Role::Git::LocalRepository';
+requires 'git';
 
 has local_branches => (
   isa        => 'HashRef',

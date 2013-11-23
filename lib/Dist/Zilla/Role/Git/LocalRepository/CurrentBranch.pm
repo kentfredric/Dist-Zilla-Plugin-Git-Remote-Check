@@ -33,8 +33,6 @@ Available from
 
 =cut
 
-# requires 'git';
-
 =requires C<local_branches>
 
 Must return a HashRef mapping branch name to branch sha1. 
@@ -49,9 +47,8 @@ Available from
 
 =cut
 
-# requires 'local_branches';
-
-with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
+requires 'local_branches';
+requires 'git';
 
 =p_method _current_sha1
 

@@ -20,11 +20,11 @@ use Moose::Role;
 
 =cut
 
+
+
+
 requires 'log_fatal';
-
-# requires 'git';
-
-with "Dist::Zilla::Role::Git::LocalRepository";
+requires 'git';
 
 has 'remote_names' => (
   isa        => 'ArrayRef[ Str ]',

@@ -39,11 +39,9 @@ requires 'log';
 
 requires 'log_debug';
 
-# requires 'git';
+requires 'git';
 
-# requires 'remote_name';
-
-with 'Dist::Zilla::Role::Git::RemoteName';
+requires 'remote_name';
 
 =param C<do_update>
 

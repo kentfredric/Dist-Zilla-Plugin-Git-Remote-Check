@@ -28,9 +28,6 @@ sub before_release {
 
 with 'Dist::Zilla::Role::Plugin';
 with 'Dist::Zilla::Role::BeforeRelease';
-
-
-
 with 'Dist::Zilla::Role::Git::LocalRepository';
 with 'Dist::Zilla::Role::Git::RemoteNames';
 with 'Dist::Zilla::Role::Git::RemoteName';

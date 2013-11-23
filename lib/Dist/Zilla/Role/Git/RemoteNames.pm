@@ -28,10 +28,12 @@ has 'remote_names' => (
   init_arg   => undef,
 );
 
+
 sub has_remote_name {
   my ( $self, $remote_name ) = @_;
   return $self->_has_remote_name( sub { $_ eq $remote_name } );
 }
+
 
 sub get_valid_remote_name {
   my ( $self, $remote_name ) = @_;
@@ -66,6 +68,24 @@ Dist::Zilla::Role::Git::RemoteNames - Query a list of remotes from C<Git>
 =head1 VERSION
 
 version 0.2.0
+
+=head1 METHODS
+
+=head2 C<has_remote_name>
+
+    if ( $self->has_remote_name( $name ) ) {
+
+    }
+
+Returns true if C<git> reports C<$name> is a remote name that exists.
+
+=head2 C<get_valid_remote_name>
+
+    my $remote = $self->get_valid_remote_name( $remotename );
+
+Returns C<$remotename> as long as C<$remotename> is a valid remote according to C<git>
+
+Raises a fatal error otherwise.
 
 =head1 COMPOSITION
 

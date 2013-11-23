@@ -43,6 +43,8 @@ Available from:
 
 =back
 
+=requires C<get_valid_remote_name>
+
 =cut
 
 requires 'log_fatal';

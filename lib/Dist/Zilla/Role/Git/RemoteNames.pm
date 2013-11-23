@@ -27,7 +27,11 @@ Recommended application order if using this role:
     with "Dist::Zilla::Role::Git::LocalRepository";
     with "Dist::Zilla::Role::Git::RemoteNames";
 
+=requires C<log_fatal>
 
+=requires C<git>
+
+=cut
 
 requires 'log_fatal';
 requires 'git';

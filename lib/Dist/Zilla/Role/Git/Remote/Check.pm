@@ -45,14 +45,19 @@ Must return a string value of a branch name, e.g.: C<master>
 
 =cut
 
-
-
-
 =requires C<current_branch>
 
 Must return the name (String) of the branch we are currently on, or return false if we are not on a branch.
 
 Must be one of the branches listed by C<git branch>
+
+=requires C<log>
+
+=requires C<log_fatal>
+
+=requires C<remote_branch>
+
+=cut
 
 requires 'branch';
 requires 'current_branch';

@@ -45,6 +45,8 @@ Recommended application order if using this role:
     with "Dist::Zilla::Role::Git::RemoteName";
     with "Dist::Zilla::Role::Git::Remote::Branch";
 
+=requires C<remote_name>
+
 
 =method C<remote_branch>
 

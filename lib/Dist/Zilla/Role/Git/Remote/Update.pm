@@ -29,17 +29,11 @@ Recommended application order if using this role:
 
 =requires C<log>
 
-Expected to take parameters as follows:
+=requires C<log_debug>
 
-  ->log( [ 'FormatString %s' , $formatargs ] )
+=requires C<git>
 
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Plugin>
-
-=back
+=requires C<remote_name>
 
 =cut
 

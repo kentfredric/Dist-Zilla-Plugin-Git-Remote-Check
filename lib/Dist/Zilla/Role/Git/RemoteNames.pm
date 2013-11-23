@@ -7,7 +7,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::RemoteNames::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::RemoteNames::VERSION = '0.1.3';
+  $Dist::Zilla::Role::Git::RemoteNames::VERSION = '0.2.0'; # TRIAL
 }
 
 # ABSTRACT: Query a list of remotes from C<Git>
@@ -60,7 +60,7 @@ Dist::Zilla::Role::Git::RemoteNames - Query a list of remotes from C<Git>
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 COMPOSITION
 

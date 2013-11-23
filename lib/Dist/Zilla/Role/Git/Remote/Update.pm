@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::Remote::Update::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::Remote::Update::VERSION = '0.1.3';
+  $Dist::Zilla::Role::Git::Remote::Update::VERSION = '0.2.0'; # TRIAL
 }
 
 # ABSTRACT: Update tracking data for a remote repository
@@ -57,7 +57,7 @@ Dist::Zilla::Role::Git::Remote::Update - Update tracking data for a remote repos
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 PARAMETERS
 

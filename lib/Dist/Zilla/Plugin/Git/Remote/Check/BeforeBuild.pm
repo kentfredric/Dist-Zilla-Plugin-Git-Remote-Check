@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild::VERSION = '0.1.3';
+  $Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild::VERSION = '0.2.0'; # TRIAL
 }
 
 # ABSTRACT: Ensure no pending commits on a remote branch before build
@@ -62,7 +62,7 @@ Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild - Ensure no pending commits
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 SYNOPSIS
 

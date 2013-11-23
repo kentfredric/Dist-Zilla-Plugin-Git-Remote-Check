@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Git::Remote::Update::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Plugin::Git::Remote::Update::VERSION = '0.1.3';
+  $Dist::Zilla::Plugin::Git::Remote::Update::VERSION = '0.2.0'; # TRIAL
 }
 
 # ABSTRACT: Update a remote with Git before release.
@@ -47,7 +47,7 @@ Dist::Zilla::Plugin::Git::Remote::Update - Update a remote with Git before relea
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 SYNOPSIS
 

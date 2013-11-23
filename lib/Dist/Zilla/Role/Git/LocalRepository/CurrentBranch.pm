@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::LocalRepository::CurrentBranch::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::LocalRepository::CurrentBranch::VERSION = '0.1.3';
+  $Dist::Zilla::Role::Git::LocalRepository::CurrentBranch::VERSION = '0.2.0'; # TRIAL
 }
 
 # ABSTRACT: Query state from C<Git> about the current branch
@@ -50,7 +50,7 @@ Dist::Zilla::Role::Git::LocalRepository::CurrentBranch - Query state from C<Git>
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 METHODS
 

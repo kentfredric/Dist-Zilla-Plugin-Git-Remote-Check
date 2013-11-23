@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::LocalRepository::LocalBranches::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::LocalRepository::LocalBranches::VERSION = '0.1.3';
+  $Dist::Zilla::Role::Git::LocalRepository::LocalBranches::VERSION = '0.2.0'; # TRIAL
 }
 
 # ABSTRACT: Enumerate all available local branches as branch ↔ C<SHA1> mappings.
@@ -52,7 +52,7 @@ Dist::Zilla::Role::Git::LocalRepository::LocalBranches - Enumerate all available
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 PARAMETERS
 

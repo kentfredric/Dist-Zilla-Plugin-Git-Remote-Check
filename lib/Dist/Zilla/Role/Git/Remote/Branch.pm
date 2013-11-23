@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::Remote::Branch::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::Remote::Branch::VERSION = '0.1.3';
+  $Dist::Zilla::Role::Git::Remote::Branch::VERSION = '0.2.0'; # TRIAL
 }
 
 # FILENAME: RemoteBranch.pm
@@ -44,7 +44,7 @@ Dist::Zilla::Role::Git::Remote::Branch - Parts to enable aggregated specificatio
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 PARAMETERS
 

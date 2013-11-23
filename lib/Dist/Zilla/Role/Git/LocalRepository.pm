@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::LocalRepository::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::LocalRepository::VERSION = '0.1.3';
+  $Dist::Zilla::Role::Git::LocalRepository::VERSION = '0.2.0'; # TRIAL
 }
 
 # FILENAME: LocalRepository.pm
@@ -48,7 +48,7 @@ Dist::Zilla::Role::Git::LocalRepository - A plugin which works with a local git 
 
 =head1 VERSION
 
-version 0.1.3
+version 0.2.0
 
 =head1 SYNOPSIS
 

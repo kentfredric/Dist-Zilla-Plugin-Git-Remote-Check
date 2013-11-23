@@ -105,54 +105,54 @@
    "provides" : {
       "Dist::Zilla::Plugin::Git::Remote::Check" : {
          "file" : "lib/Dist/Zilla/Plugin/Git/Remote/Check.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild" : {
          "file" : "lib/Dist/Zilla/Plugin/Git/Remote/Check/BeforeBuild.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Plugin::Git::Remote::Update" : {
          "file" : "lib/Dist/Zilla/Plugin/Git/Remote/Update.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild" : {
          "file" : "lib/Dist/Zilla/Plugin/Git/Remote/Update/BeforeBuild.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Role::Git::LocalRepository" : {
          "file" : "lib/Dist/Zilla/Role/Git/LocalRepository.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch" : {
          "file" : "lib/Dist/Zilla/Role/Git/LocalRepository/CurrentBranch.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Role::Git::LocalRepository::LocalBranches" : {
          "file" : "lib/Dist/Zilla/Role/Git/LocalRepository/LocalBranches.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Role::Git::Remote::Branch" : {
          "file" : "lib/Dist/Zilla/Role/Git/Remote/Branch.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Role::Git::Remote::Check" : {
          "file" : "lib/Dist/Zilla/Role/Git/Remote/Check.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Role::Git::Remote::Update" : {
          "file" : "lib/Dist/Zilla/Role/Git/Remote/Update.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Role::Git::RemoteName" : {
          "file" : "lib/Dist/Zilla/Role/Git/RemoteName.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       },
       "Dist::Zilla::Role::Git::RemoteNames" : {
          "file" : "lib/Dist/Zilla/Role/Git/RemoteNames.pm",
-         "version" : "v0.1.3"
+         "version" : "v0.2.0"
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Git-Remote-Check/issues"
@@ -164,7 +164,7 @@
          "web" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Git-Remote-Check"
       }
    },
-   "version" : "0.1.3",
+   "version" : "0.2.0",
    "x_BuiltWith" : {
       "modules" : {
          "Data::Dump" : "1.22",
@@ -780,7 +780,7 @@
       "zilla" : {
          "class" : "Dist::Zilla::Dist::Builder",
          "config" : {
-            "is_trial" : "0"
+            "is_trial" : "1"
          },
          "version" : "5.006"
       }

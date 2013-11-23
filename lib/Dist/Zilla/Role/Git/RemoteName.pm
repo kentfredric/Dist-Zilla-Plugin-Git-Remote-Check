@@ -51,7 +51,7 @@ requires 'get_valid_remote_name';
 
 =method C<remote_name>
 
-If a consuming package specifies a valid value via C<remote_name>, 
+If a consuming package specifies a valid value via C<remote_name>,
 this method will validate the existence of that remote in the current Git repository.
 
 If specified remote does not exist, a fatal log event is triggered.

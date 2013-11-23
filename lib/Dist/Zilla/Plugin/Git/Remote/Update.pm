@@ -35,7 +35,7 @@ Having this in your configuration will effectively cause git to run C<git remote
 before you release, and remotes don't usually have any impact on things in the rest of DZil-land.
 
   [Git::Remote::Update]
-  ; Provided by Dist::Zilla::Role::Git::Remote 
+  ; Provided by Dist::Zilla::Role::Git::Remote
   ; String
   ; The name of the remote to update.
   ; Must exist in Git.

@@ -4,6 +4,8 @@ use warnings;
 
 package Dist::Zilla::Role::Git::RemoteNames;
 
+# ABSTRACT: Query a list of remotes from C<Git>
+
 use Moose::Role;
 
 =begin MetaPOD::JSON v1.1.0

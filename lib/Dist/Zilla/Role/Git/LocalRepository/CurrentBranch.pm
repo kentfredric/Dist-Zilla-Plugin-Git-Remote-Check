@@ -9,6 +9,8 @@ BEGIN {
   $Dist::Zilla::Role::Git::LocalRepository::CurrentBranch::VERSION = '0.1.3';
 }
 
+# ABSTRACT: Query state from C<Git> about the current branch
+
 use Moose::Role;
 
 
@@ -44,7 +46,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Role::Git::LocalRepository::CurrentBranch
+Dist::Zilla::Role::Git::LocalRepository::CurrentBranch - Query state from C<Git> about the current branch
 
 =head1 VERSION
 

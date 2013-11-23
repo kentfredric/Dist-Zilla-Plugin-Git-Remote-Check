@@ -1,0 +1,24 @@
+0.2.0
+ [Added / runtime requires]
+ - Dist::Zilla::Role::Plugin
+ - namespace::autoclean
+
+ [Changed / build requires]
+ - Module::Build 0.3601 → 0.4202
+
+ [Changed / configure requires]
+ - Module::Build 0.3601 → 0.4202
+
+ [Changed / test requires]
+ - Test::More 0.88 → 1.001002
+
+ [Removed / test requires]
+ - File::Find
+ - File::Temp
+
+0.1.2 2012-03-26T19:47:17Z
+ [Added / runtime requires]
+ - perl 5.006
+
+0.1.1 2011-10-15T02:53:58Z
+

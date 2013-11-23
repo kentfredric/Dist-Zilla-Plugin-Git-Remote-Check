@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::Remote::Branch::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::Remote::Branch::VERSION = '0.1.2';
+  $Dist::Zilla::Role::Git::Remote::Branch::VERSION = '0.2.0'; # TRIAL
 }
 
 # FILENAME: RemoteBranch.pm
@@ -16,12 +16,6 @@ BEGIN {
 use Moose::Role;
 
 
-requires 'git';
-
-
-requires 'remote';
-
-
 has '_remote_branch' => (
   isa      => 'Str',
   is       => 'rw',
@@ -29,18 +23,22 @@ has '_remote_branch' => (
   init_arg => 'remote_branch',
 );
 
+requires 'remote_name';
+
 
 sub remote_branch {
   my $self = shift;
-  return $self->remote . q{/} . $self->_remote_branch;
+  return $self->remote_name . q{/} . $self->_remote_branch;
 }
 
 no Moose::Role;
 1;
 
-
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -48,7 +46,7 @@ Dist::Zilla::Role::Git::Remote::Branch - Parts to enable aggregated specificatio
 
 =head1 VERSION
 
-version 0.1.2
+version 0.2.0
 
 =head1 PARAMETERS
 
@@ -62,34 +60,32 @@ e.g: C<master>
 
 =head2 C<remote_branch>
 
-If used in conjunction with L<Dist::Zilla::Role::Git::Remote> to provide C<remote>,
+If used in conjunction with L<Dist::Zilla::Role::Git::RemoteName> to provide C<remote_name>,
 then this method will expand the passed parameter C<remote_branch> in transit to a qualified one.
+
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+    with "Dist::Zilla::Role::Git::Remote::Branch";
 
 =head1 REQUIRED METHODS
 
-=head2 C<git>
+=head2 C<remote_name>
 
-Must return a L<Git::Wrapper> or compatible instance.
+=begin MetaPOD::JSON v1.1.0
 
-Available from:
+{
+    "namespace":"Dist::Zilla::Role::Git::Remote::Branch",
+    "interface":"role"
+}
 
-=over 4
 
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=head2 C<remote>
-
-Must return a String value representing a remote name ( as displayed in C<git remote> ).
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::Remote>
-
-=back
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 
@@ -97,10 +93,9 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

@@ -6,18 +6,18 @@ BEGIN {
   $Dist::Zilla::Plugin::Git::Remote::Update::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Plugin::Git::Remote::Update::VERSION = '0.1.2';
+  $Dist::Zilla::Plugin::Git::Remote::Update::VERSION = '0.2.0'; # TRIAL
 }
 
-# FILENAME: Update.pm
-# CREATED: 13/10/11 05:17:02 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Update a remote with Git before release.
 
 use Moose;
+use namespace::autoclean;
 
 
 
-with 'Dist::Zilla::Role::BeforeRelease';
+
+
 
 
 sub before_release {
@@ -26,23 +26,22 @@ sub before_release {
   return 1;
 }
 
-
+with 'Dist::Zilla::Role::Plugin';
+with 'Dist::Zilla::Role::BeforeRelease';
 with 'Dist::Zilla::Role::Git::LocalRepository';
-
-
-
-with 'Dist::Zilla::Role::Git::Remote';
-
-
+with 'Dist::Zilla::Role::Git::RemoteNames';
+with 'Dist::Zilla::Role::Git::RemoteName';
 with 'Dist::Zilla::Role::Git::Remote::Update';
 
 no Moose;
 __PACKAGE__->meta->make_immutable;
 1;
 
-
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -50,7 +49,7 @@ Dist::Zilla::Plugin::Git::Remote::Update - Update a remote with Git before relea
 
 =head1 VERSION
 
-version 0.1.2
+version 0.2.0
 
 =head1 SYNOPSIS
 
@@ -61,7 +60,7 @@ Having this in your configuration will effectively cause git to run C<git remote
 before you release, and remotes don't usually have any impact on things in the rest of DZil-land.
 
   [Git::Remote::Update]
-  ; Provided by Dist::Zilla::Role::Git::Remote 
+  ; Provided by Dist::Zilla::Role::Git::Remote
   ; String
   ; The name of the remote to update.
   ; Must exist in Git.
@@ -94,12 +93,7 @@ Default value is C<1> / true.
 
 Updates the L</remote> via L<Dist::Zilla::Role::Git::Remote::Update/remote_update>, before releasing.
 
-=head2 C<git>
-
-Returns a L<Git::Wrapper> instance for the current L<Dist::Zilla> projects
-C<git> Repository.
-
-=head2 C<remote>
+=head2 C<remote_name>
 
 Returns a validated remote name. Configured via L</remote_name> parameter.
 
@@ -114,14 +108,9 @@ Performs C<git remote update $remote_name> on L</git> for the remote L</remote>
 Causes this plugin to be executed during L<Dist::Zilla>'s "Before Release" phase.
 ( L</before_release> )
 
-=head2 C<Dist::Zilla::Role::Git::LocalRepository>
+=head2 C<Dist::Zilla::Role::Git::RemoteName>
 
-Provides a L</git> method that returns a C<Git::Wrapper> instance for the
-current C<Dist::Zilla> project.
-
-=head2 C<Dist::Zilla::Role::Git::Remote>
-
-Provides a L</remote> method which always returns a validated C<remote> name,
+Provides a L</remote_name> method which always returns a validated C<remote_name> name,
 optionally accepting it being specified manually to something other than
 C<origin> via the parameter L</remote_name>
 
@@ -129,16 +118,34 @@ C<origin> via the parameter L</remote_name>
 
 Provides a L</remote_update> method which updates a L</remote> in L</git>
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Plugin::Git::Remote::Update",
+    "interface":"class",
+    "inherits":"Moose::Object",
+    "does":[
+        "Dist::Zilla::Role::Plugin",
+        "Dist::Zilla::Role::BeforeRelease",
+        "Dist::Zilla::Role::Git::LocalRepository",
+        "Dist::Zilla::Role::Git::RemoteNames",
+        "Dist::Zilla::Role::Git::RemoteName",
+        "Dist::Zilla::Role::Git::Remote::Update"
+    ]
+}
+
+
+=end MetaPOD::JSON
+
 =head1 AUTHOR
 
 Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

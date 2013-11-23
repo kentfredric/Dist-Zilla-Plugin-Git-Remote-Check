@@ -6,19 +6,25 @@ BEGIN {
   $Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild::VERSION = '0.1.2';
+  $Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild::VERSION = '0.2.0'; # TRIAL
 }
 
-# FILENAME: BeforeBuild.pm
-# CREATED: 13/10/11 05:17:02 by Kent Fredric (kentnl) <kentfredric@gmail.com>
 # ABSTRACT: Update a remote with Git before build.
 
 use Moose;
 
 
 
-with 'Dist::Zilla::Role::BeforeBuild';
 
+
+
+
+with 'Dist::Zilla::Role::Plugin';
+with 'Dist::Zilla::Role::BeforeBuild';
+with 'Dist::Zilla::Role::Git::LocalRepository';
+with 'Dist::Zilla::Role::Git::RemoteNames';
+with 'Dist::Zilla::Role::Git::RemoteName';
+with 'Dist::Zilla::Role::Git::Remote::Update';
 
 sub before_build {
   my $self = shift;
@@ -26,23 +32,15 @@ sub before_build {
   return 1;
 }
 
-
-with 'Dist::Zilla::Role::Git::LocalRepository';
-
-
-
-with 'Dist::Zilla::Role::Git::Remote';
-
-
-with 'Dist::Zilla::Role::Git::Remote::Update';
-
 no Moose;
 __PACKAGE__->meta->make_immutable;
 1;
 
-
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -50,7 +48,7 @@ Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild - Update a remote with Git
 
 =head1 VERSION
 
-version 0.1.2
+version 0.2.0
 
 =head1 SYNOPSIS
 
@@ -61,7 +59,7 @@ Having this in your configuration will effectively cause git to run C<git remote
 before you build, and remotes don't usually have any impact on things in the rest of DZil-land.
 
   [Git::Remote::Update::BeforeBuild]
-  ; Provided by Dist::Zilla::Role::Git::Remote 
+  ; Provided by Dist::Zilla::Role::Git::Remote
   ; String
   ; The name of the remote to update.
   ; Must exist in Git.
@@ -129,16 +127,34 @@ C<origin> via the parameter L</remote_name>
 
 Provides a L</remote_update> method which updates a L</remote> in L</git>
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild",
+    "interface":"class",
+    "inherits":"Moose::Object",
+    "does":[
+        "Dist::Zilla::Role::Plugin",
+        "Dist::Zilla::Role::BeforeBuild",
+        "Dist::Zilla::Role::Git::LocalRepository",
+        "Dist::Zilla::Role::Git::RemoteNames",
+        "Dist::Zilla::Role::Git::RemoteName",
+        "Dist::Zilla::Role::Git::Remote::Update"
+    ]
+}
+
+
+=end MetaPOD::JSON
+
 =head1 AUTHOR
 
 Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

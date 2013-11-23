@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Role::Git::Remote::Check::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Role::Git::Remote::Check::VERSION = '0.1.2';
+  $Dist::Zilla::Role::Git::Remote::Check::VERSION = '0.2.0'; # TRIAL
 }
 
 # FILENAME: Check.pm
@@ -16,13 +16,13 @@ BEGIN {
 use Moose::Role;
 
 
-requires 'git';
-
-
-requires 'remote_branch';
-
 
 requires 'branch';
+requires 'current_branch';
+requires 'git';
+requires 'log';
+requires 'log_fatal';
+requires 'remote_branch';
 
 
 
@@ -45,6 +45,24 @@ sub _outgoing_commits {
   #  require Data::Dump;
   #  $self->log(['[TESTING] %s', Data::Dump::dump( \@commits ) ]);
   return @commits;
+}
+
+
+
+has 'skip_if_not_current' => ( isa => 'Bool', is => 'rw', default => undef );
+
+
+sub is_current_branch {
+  my $self = shift;
+  return ( $self->branch eq $self->current_branch );
+}
+
+
+sub should_skip {
+  my $self = shift;
+  return unless $self->skip_if_not_current;
+  return if $self->is_current_branch;
+  return 1;
 }
 
 
@@ -86,9 +104,11 @@ EOF
 no Moose::Role;
 1;
 
-
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -96,43 +116,43 @@ Dist::Zilla::Role::Git::Remote::Check - Check a remote branch is not ahead of a 
 
 =head1 VERSION
 
-version 0.1.2
+version 0.2.0
 
 =head1 PARAMETERS
 
 =head2 C<report_commits>
 
+=head2 C<skip_if_not_current>
+
 =head1 METHODS
 
 =head2 C<report_commits>
 
+=head2 C<skip_if_not_current>
+
+=head2 C<is_current_branch>
+
+=head2 C<should_skip>
+
 =head2 C<check_remote>
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    sub branch {
+
+    }
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
+    with "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+    with "Dist::Zilla::Role::Git::Remote::Branch";
+    with "Dist::Zilla::Role::Git::Remote::Check";
+
 =head1 REQUIRED METHODS
-
-=head2 C<git>
-
-Must return a L<Git::Wrapper> or compatible instance.
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=head2 C<remote_branch>
-
-Must return a string value of a fully qualified branch name, e.g.: C<origin/master>
-
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::Remote::Branch>
-
-=back
 
 =head2 C<branch>
 
@@ -140,16 +160,37 @@ Must be implemented by the consuming plugin. ( Presently I know of no roles that
 
 Must return a string value of a branch name, e.g.: C<master>
 
+=head2 C<current_branch>
+
+Must return the name (String) of the branch we are currently on, or return false if we are not on a branch.
+
+Must be one of the branches listed by C<git branch>
+
+=head2 C<log>
+
+=head2 C<log_fatal>
+
+=head2 C<remote_branch>
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Dist::Zilla::Role::Git::Remote::Check",
+    "interface":"role"
+}
+
+
+=end MetaPOD::JSON
+
 =head1 AUTHOR
 
 Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

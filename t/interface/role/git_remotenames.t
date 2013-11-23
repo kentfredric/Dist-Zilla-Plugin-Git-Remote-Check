@@ -8,6 +8,7 @@ use Test::More;
   package t::Role::Git::RemoteNames;
   use Moose;
   use namespace::autoclean;
+  with "Dist::Zilla::Role::Git::LocalRepository";
   with "Dist::Zilla::Role::Git::RemoteNames";
 
   sub zilla     { }

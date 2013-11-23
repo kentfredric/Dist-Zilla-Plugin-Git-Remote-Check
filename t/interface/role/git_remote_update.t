@@ -8,6 +8,9 @@ use Test::More;
   package t::Role::Git::Remote::Update;
   use Moose;
   use namespace::autoclean;
+  with "Dist::Zilla::Role::Git::LocalRepository";
+  with "Dist::Zilla::Role::Git::RemoteNames";
+  with "Dist::Zilla::Role::Git::RemoteName";
   with "Dist::Zilla::Role::Git::Remote::Update";
 
   sub log_fatal { }

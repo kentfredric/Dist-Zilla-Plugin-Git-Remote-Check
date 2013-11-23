@@ -713,22 +713,22 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::Remote::Update",
             "name" : "Git::Remote::Update",
-            "version" : "0.1.3"
+            "version" : null
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Remote::Check",
             "name" : "Git::Remote::Check",
-            "version" : "0.1.3"
+            "version" : null
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild",
             "name" : "Git::Remote::Update::BeforeBuild",
-            "version" : "0.1.3"
+            "version" : null
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild",
             "name" : "Git::Remote::Check::BeforeBuild",
-            "version" : "0.1.3"
+            "version" : null
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",

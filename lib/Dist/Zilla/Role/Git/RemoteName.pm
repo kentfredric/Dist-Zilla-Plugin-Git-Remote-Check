@@ -67,6 +67,15 @@ this method will validate the existence of that remote in the current Git reposi
 
 If specified remote does not exist, a fatal log event is triggered.
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+
 =head1 REQUIRED METHODS
 
 =head2 C<log_fatal>
@@ -96,15 +105,6 @@ Available from:
 
 
 =end MetaPOD::JSON
-
-=head1 COMPOSITION
-
-Recommended application order if using this role:
-
-    with "Dist::Zilla::Role::Plugin";
-    with "Dist::Zilla::Role::Git::LocalRepository";
-    with "Dist::Zilla::Role::Git::RemoteNames";
-    with "Dist::Zilla::Role::Git::RemoteName";
 
 =head1 AUTHOR
 

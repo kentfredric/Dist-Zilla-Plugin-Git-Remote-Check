@@ -60,6 +60,14 @@ Dist::Zilla::Role::Git::RemoteNames
 
 version 0.1.3
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+
 =head1 REQUIRED METHODS
 
 =head2 C<log_fatal>
@@ -75,14 +83,6 @@ version 0.1.3
 
 
 =end MetaPOD::JSON
-
-=head1 COMPOSITION
-
-Recommended application order if using this role:
-
-    with "Dist::Zilla::Role::Plugin";
-    with "Dist::Zilla::Role::Git::LocalRepository";
-    with "Dist::Zilla::Role::Git::RemoteNames";
 
 =head1 AUTHOR
 

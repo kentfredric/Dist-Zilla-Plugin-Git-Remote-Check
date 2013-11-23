@@ -61,6 +61,16 @@ e.g: C<master>
 If used in conjunction with L<Dist::Zilla::Role::Git::RemoteName> to provide C<remote_name>,
 then this method will expand the passed parameter C<remote_branch> in transit to a qualified one.
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+    with "Dist::Zilla::Role::Git::Remote::Branch";
+
 =head1 REQUIRED METHODS
 
 =head2 C<remote_name>
@@ -74,16 +84,6 @@ then this method will expand the passed parameter C<remote_branch> in transit to
 
 
 =end MetaPOD::JSON
-
-=head1 COMPOSITION
-
-Recommended application order if using this role:
-
-    with "Dist::Zilla::Role::Plugin";
-    with "Dist::Zilla::Role::Git::LocalRepository";
-    with "Dist::Zilla::Role::Git::RemoteNames";
-    with "Dist::Zilla::Role::Git::RemoteName";
-    with "Dist::Zilla::Role::Git::Remote::Branch";
 
 =head1 AUTHOR
 

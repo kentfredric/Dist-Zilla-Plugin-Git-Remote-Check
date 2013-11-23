@@ -58,6 +58,15 @@ If the consuming package is on a valid Git branch, this will return the name of 
 
 If not on a valid branch, will return false.
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
+    with "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch";
+
 =head1 REQUIRED METHODS
 
 =head2 C<git>
@@ -87,15 +96,6 @@ Returns the SHA1 for the current HEAD
 
 
 =end MetaPOD::JSON
-
-=head1 COMPOSITION
-
-Recommended application order if using this role:
-
-    with "Dist::Zilla::Role::Plugin";
-    with "Dist::Zilla::Role::Git::LocalRepository";
-    with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
-    with "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch";
 
 =head1 AUTHOR
 

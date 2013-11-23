@@ -79,6 +79,16 @@ Normally returns 1 ( true ) unless specified otherwise.
 
 Calls C<git remote update $remote> when triggered, if C<do_update> is true.
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+    with "Dist::Zilla::Role::Git::Remote::Update";
+
 =head1 REQUIRED METHODS
 
 =head2 C<log>
@@ -98,16 +108,6 @@ Calls C<git remote update $remote> when triggered, if C<do_update> is true.
 
 
 =end MetaPOD::JSON
-
-=head1 COMPOSITION
-
-Recommended application order if using this role:
-
-    with "Dist::Zilla::Role::Plugin";
-    with "Dist::Zilla::Role::Git::LocalRepository";
-    with "Dist::Zilla::Role::Git::RemoteNames";
-    with "Dist::Zilla::Role::Git::RemoteName";
-    with "Dist::Zilla::Role::Git::Remote::Update";
 
 =head1 AUTHOR
 

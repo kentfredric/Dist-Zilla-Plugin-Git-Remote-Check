@@ -348,6 +348,10 @@ x_Dist_Zilla:
               name: ROLES
               version: 4.004
             -
+              class: Pod::Weaver::Section::Generic
+              name: COMPOSITION
+              version: 4.004
+            -
               class: Pod::Weaver::Section::Collect
               name: REQUIRED_METHODS
               version: 4.004

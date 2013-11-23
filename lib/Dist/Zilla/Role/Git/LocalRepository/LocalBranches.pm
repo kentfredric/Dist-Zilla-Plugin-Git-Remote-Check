@@ -48,6 +48,14 @@ Dist::Zilla::Role::Git::LocalRepository::LocalBranches
 
 version 0.1.3
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
+
 =head1 REQUIRED METHODS
 
 =head2 C<git>
@@ -61,14 +69,6 @@ version 0.1.3
 
 
 =end MetaPOD::JSON
-
-=head1 COMPOSITION
-
-Recommended application order if using this role:
-
-    with "Dist::Zilla::Role::Plugin";
-    with "Dist::Zilla::Role::Git::LocalRepository";
-    with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
 
 =head1 AUTHOR
 

@@ -87,6 +87,13 @@ Applying this role gives you a "git" method on your plugin, that will give you a
 Returns a L<Git::Wrapper> instance representing the repository
 of the current L<Dist::Zilla> projects' root.
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+
 =head1 REQUIRED METHODS
 
 =head2 zilla
@@ -108,13 +115,6 @@ Available from:
 
 
 =end MetaPOD::JSON
-
-=head1 COMPOSITION
-
-Recommended application order if using this role:
-
-    with "Dist::Zilla::Role::Plugin";
-    with "Dist::Zilla::Role::Git::LocalRepository";
 
 =head1 AUTHOR
 

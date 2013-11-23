@@ -7,10 +7,10 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
-    "Module::Build" => "0.4008"
+    "Module::Build" => "0.4202"
   },
   "configure_requires" => {
-    "Module::Build" => "0.4008"
+    "Module::Build" => "0.4202"
   },
   "dist_abstract" => "Ensure no pending commits on a remote branch before release",
   "dist_author" => [
@@ -37,19 +37,13 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
-    "File::Spec" => 0,
-    "IO::Handle" => 0,
-    "IPC::Open3" => 0,
     "Test::More" => "1.001002"
   }
 );
 
 
 my %fallback_build_requires = (
-  "File::Spec" => 0,
-  "IO::Handle" => 0,
-  "IPC::Open3" => 0,
-  "Module::Build" => "0.4008",
+  "Module::Build" => "0.4202",
   "Test::More" => "1.001002"
 );
 

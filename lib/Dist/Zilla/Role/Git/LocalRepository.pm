@@ -109,6 +109,13 @@ Available from:
 
 =end MetaPOD::JSON
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+
 =head1 AUTHOR
 
 Kent Fredric <kentnl@cpan.org>

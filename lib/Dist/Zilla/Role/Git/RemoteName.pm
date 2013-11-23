@@ -17,9 +17,7 @@ use Moose::Role;
 
 requires 'log_fatal';
 
-# requires 'get_valid_remote_name';
-
-with 'Dist::Zilla::Role::Git::RemoteNames';
+requires 'get_valid_remote_name';
 
 
 sub remote_name {
@@ -87,18 +85,26 @@ Available from:
 
 =back
 
+=head2 C<get_valid_remote_name>
+
 =begin MetaPOD::JSON v1.1.0
 
 {
     "namespace":"Dist::Zilla::Role::Git::RemoteName",
-    "interface":"role",
-    "does":[
-        "Dist::Zilla::Role::Git::RemoteNames"
-    ]
+    "interface":"role"
 }
 
 
 =end MetaPOD::JSON
+
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
 
 =head1 AUTHOR
 

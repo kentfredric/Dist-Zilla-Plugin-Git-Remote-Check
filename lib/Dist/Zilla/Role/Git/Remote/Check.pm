@@ -17,10 +17,11 @@ use Moose::Role;
 
 
 requires 'branch';
-
+requires 'current_branch';
+requires 'git';
+requires 'log';
 requires 'log_fatal';
-
-with 'Dist::Zilla::Role::Git::Remote::Branch', 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
+requires 'remote_branch';
 
 
 
@@ -136,29 +137,43 @@ version 0.1.3
 
 =head2 C<branch>
 
-Must be implemented by the consuming plugin. ( Presently I know of no roles that provide this method ).
-
-Must return a string value of a branch name, e.g.: C<master>
-
 =head2 C<current_branch>
 
 Must return the name (String) of the branch we are currently on, or return false if we are not on a branch.
 
 Must be one of the branches listed by C<git branch>
 
+=head2 C<log>
+
+=head2 C<log_fatal>
+
+=head2 C<remote_branch>
+
 =begin MetaPOD::JSON v1.1.0
 
 {
     "namespace":"Dist::Zilla::Role::Git::Remote::Check",
-    "interface":"role",
-    "does":[
-        "Dist::Zilla::Role::Git::Remote::Branch",
-        "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch"
-    ]
+    "interface":"role"
 }
 
 
 =end MetaPOD::JSON
+
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    sub branch {
+        
+    }
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
+    with "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+    with "Dist::Zilla::Role::Git::Remote::Branch";
+    with "Dist::Zilla::Role::Git::Remote::Check";
 
 =head1 AUTHOR
 

@@ -13,11 +13,9 @@ BEGIN {
 use Moose::Role;
 
 
+
 requires 'log_fatal';
-
-# requires 'git';
-
-with "Dist::Zilla::Role::Git::LocalRepository";
+requires 'git';
 
 has 'remote_names' => (
   isa        => 'ArrayRef[ Str ]',
@@ -62,18 +60,29 @@ Dist::Zilla::Role::Git::RemoteNames
 
 version 0.1.3
 
+=head1 REQUIRED METHODS
+
+=head2 C<log_fatal>
+
+=head2 C<git>
+
 =begin MetaPOD::JSON v1.1.0
 
 {
     "namespace":"Dist::Zilla::Role::Git::RemoteNames",
-    "interface":"role",
-    "does":[
-        "Dist::Zilla::Role::Git::LocalRepository"
-    ]
+    "interface":"role"
 }
 
 
 =end MetaPOD::JSON
+
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
 
 =head1 AUTHOR
 

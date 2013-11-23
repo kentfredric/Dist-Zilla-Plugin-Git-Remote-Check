@@ -27,9 +27,13 @@ sub before_release {
 }
 
 with 'Dist::Zilla::Role::Plugin';
-
 with 'Dist::Zilla::Role::BeforeRelease';
 
+
+
+with 'Dist::Zilla::Role::Git::LocalRepository';
+with 'Dist::Zilla::Role::Git::RemoteNames';
+with 'Dist::Zilla::Role::Git::RemoteName';
 with 'Dist::Zilla::Role::Git::Remote::Update';
 
 no Moose;
@@ -124,6 +128,9 @@ Provides a L</remote_update> method which updates a L</remote> in L</git>
     "does":[
         "Dist::Zilla::Role::Plugin",
         "Dist::Zilla::Role::BeforeRelease",
+        "Dist::Zilla::Role::Git::LocalRepository",
+        "Dist::Zilla::Role::Git::RemoteNames",
+        "Dist::Zilla::Role::Git::RemoteName",
         "Dist::Zilla::Role::Git::Remote::Update"
     ]
 }

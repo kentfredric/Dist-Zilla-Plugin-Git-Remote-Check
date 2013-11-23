@@ -31,10 +31,19 @@ sub before_build {
   return 1;
 }
 
+with 'Dist::Zilla::Role::Plugin';
+with 'Dist::Zilla::Role::BeforeBuild';
+
 has 'branch' => ( isa => 'Str', is => 'rw', default => 'master' );
 
-with 'Dist::Zilla::Role::Plugin',             'Dist::Zilla::Role::BeforeBuild';
-with 'Dist::Zilla::Role::Git::Remote::Check', 'Dist::Zilla::Role::Git::Remote::Update';
+with 'Dist::Zilla::Role::Git::LocalRepository';
+with 'Dist::Zilla::Role::Git::LocalRepository::LocalBranches';
+with 'Dist::Zilla::Role::Git::LocalRepository::CurrentBranch';
+with 'Dist::Zilla::Role::Git::RemoteNames';
+with 'Dist::Zilla::Role::Git::RemoteName';
+with 'Dist::Zilla::Role::Git::Remote::Branch';
+with 'Dist::Zilla::Role::Git::Remote::Check';
+with 'Dist::Zilla::Role::Git::Remote::Update';
 
 has '+_remote_branch' => ( lazy => 1, default => sub { shift->branch } );
 
@@ -199,8 +208,14 @@ asserts L</remote_branch> is not ahead of L</branch>
     "does":[
         "Dist::Zilla::Role::Plugin",
         "Dist::Zilla::Role::BeforeBuild",
-        "Dist::Zilla::Role::Git::Remote::Update",
-        "Dist::Zilla::Role::Git::Remote::Check"
+        "Dist::Zilla::Role::Git::LocalRepository",
+        "Dist::Zilla::Role::Git::LocalRepository::LocalBranches",
+        "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch",
+        "Dist::Zilla::Role::Git::RemoteNames",
+        "Dist::Zilla::Role::Git::RemoteName",
+        "Dist::Zilla::Role::Git::Remote::Branch",
+        "Dist::Zilla::Role::Git::Remote::Check",
+        "Dist::Zilla::Role::Git::Remote::Update"
     ]
 }
 

@@ -18,11 +18,9 @@ requires 'log';
 
 requires 'log_debug';
 
-# requires 'git';
+requires 'git';
 
-# requires 'remote_name';
-
-with 'Dist::Zilla::Role::Git::RemoteName';
+requires 'remote_name';
 
 
 
@@ -85,30 +83,31 @@ Calls C<git remote update $remote> when triggered, if C<do_update> is true.
 
 =head2 C<log>
 
-Expected to take parameters as follows:
+=head2 C<log_debug>
 
-  ->log( [ 'FormatString %s' , $formatargs ] )
+=head2 C<git>
 
-Available from:
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Plugin>
-
-=back
+=head2 C<remote_name>
 
 =begin MetaPOD::JSON v1.1.0
 
 {
     "namespace":"Dist::Zilla::Role::Git::Remote::Update",
-    "interface":"role",
-    "does":[
-        "Dist::Zilla::Role::Git::RemoteName"
-    ]
+    "interface":"role"
 }
 
 
 =end MetaPOD::JSON
+
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+    with "Dist::Zilla::Role::Git::Remote::Update";
 
 =head1 AUTHOR
 

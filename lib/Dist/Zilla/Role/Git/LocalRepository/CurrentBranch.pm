@@ -13,12 +13,10 @@ use Moose::Role;
 
 
 
-# requires 'git';
 
+requires 'local_branches';
+requires 'git';
 
-# requires 'local_branches';
-
-with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
 
 
 sub _current_sha1 {
@@ -98,14 +96,20 @@ Returns the SHA1 for the current HEAD
 
 {
     "namespace":"Dist::Zilla::Role::Git::LocalRepository::CurrentBranch",
-    "interface":"role",
-    "does": [
-        "Dist::Zilla::Role::Git::LocalRepository::LocalBranches"
-    ]
+    "interface":"role"
 }
 
 
 =end MetaPOD::JSON
+
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
+    with "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch";
 
 =head1 AUTHOR
 

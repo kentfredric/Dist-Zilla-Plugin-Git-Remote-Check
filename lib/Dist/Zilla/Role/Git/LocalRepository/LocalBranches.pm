@@ -11,9 +11,8 @@ BEGIN {
 use Moose::Role;
 
 
-# requires 'git';
 
-with 'Dist::Zilla::Role::Git::LocalRepository';
+requires 'git';
 
 has local_branches => (
   isa        => 'HashRef',
@@ -49,18 +48,27 @@ Dist::Zilla::Role::Git::LocalRepository::LocalBranches
 
 version 0.1.3
 
+=head1 REQUIRED METHODS
+
+=head2 C<git>
+
 =begin MetaPOD::JSON v1.1.0
 
 {
     "namespace":"Dist::Zilla::Role::Git::LocalRepository::LocalBranches",
-    "interface":"role",
-    "does":[
-        "Dist::Zilla::Role::Git::LocalRepository"
-    ]
+    "interface":"role"
 }
 
 
 =end MetaPOD::JSON
+
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
 
 =head1 AUTHOR
 

@@ -16,7 +16,7 @@ use Test::More;
   with "Dist::Zilla::Role::Git::Remote::Branch";
   with "Dist::Zilla::Role::Git::Remote::Check";
 
-  sub log { }
+  sub log       { }
   sub log_fatal { }
   sub zilla     { }
   sub branch    { }

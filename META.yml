@@ -516,19 +516,19 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Git::Remote::Update
       name: Git::Remote::Update
-      version: ~
+      version: 0.1.3
     -
       class: Dist::Zilla::Plugin::Git::Remote::Check
       name: Git::Remote::Check
-      version: ~
+      version: 0.1.3
     -
       class: Dist::Zilla::Plugin::Git::Remote::Update::BeforeBuild
       name: Git::Remote::Update::BeforeBuild
-      version: ~
+      version: 0.1.3
     -
       class: Dist::Zilla::Plugin::Git::Remote::Check::BeforeBuild
       name: Git::Remote::Check::BeforeBuild
-      version: ~
+      version: 0.1.3
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:

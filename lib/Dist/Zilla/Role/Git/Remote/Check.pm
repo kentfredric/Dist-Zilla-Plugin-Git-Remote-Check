@@ -164,7 +164,7 @@ Must be one of the branches listed by C<git branch>
 Recommended application order if using this role:
 
     sub branch {
-        
+
     }
     with "Dist::Zilla::Role::Plugin";
     with "Dist::Zilla::Role::Git::LocalRepository";

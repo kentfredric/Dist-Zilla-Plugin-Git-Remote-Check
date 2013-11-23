@@ -13,7 +13,6 @@ use Test::More;
   with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
   with "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch";
 
-
   sub zilla { }
 
   __PACKAGE__->meta->make_immutable;

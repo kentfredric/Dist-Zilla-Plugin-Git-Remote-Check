@@ -13,10 +13,8 @@ use Moose::Role;
 
 
 
-
 requires 'local_branches';
 requires 'git';
-
 
 
 sub _current_sha1 {
@@ -66,25 +64,13 @@ If not on a valid branch, will return false.
 
 Must return a L<Git::Wrapper> or compatible instance
 
-Available from
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
+Suggests: L<Dist::Zilla::Role::Git::LocalRepository>
 
 =head2 C<local_branches>
 
-Must return a HashRef mapping branch name to branch sha1. 
+Must return a HashRef mapping branch name to branch sha1.
 
-Available from
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository::LocalBranches>
-
-=back
+Suggests: L<Dist::Zilla::Role::Git::LocalRepository::LocalBranches>
 
 =head1 PRIVATE METHODS
 

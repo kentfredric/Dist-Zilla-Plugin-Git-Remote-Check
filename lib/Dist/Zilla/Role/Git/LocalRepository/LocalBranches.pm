@@ -8,17 +8,23 @@ BEGIN {
 {
   $Dist::Zilla::Role::Git::LocalRepository::LocalBranches::VERSION = '0.1.3';
 }
+
+# ABSTRACT: Enumerate all available local branches as branch ↔ C<SHA1> mappings.
+
 use Moose::Role;
 
 
 
 requires 'git';
 
+
+
 has local_branches => (
   isa        => 'HashRef',
   is         => 'rw',
   lazy_build => 1,
 );
+
 
 sub _build_local_branches {
   my ($self) = @_;
@@ -42,11 +48,23 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Role::Git::LocalRepository::LocalBranches
+Dist::Zilla::Role::Git::LocalRepository::LocalBranches - Enumerate all available local branches as branch ↔ C<SHA1> mappings.
 
 =head1 VERSION
 
 version 0.1.3
+
+=head1 PARAMETERS
+
+=head2 C<local_branches>
+
+=head1 METHODS
+
+=head2 C<local_branches>
+
+Returns a map from C<git> of
+
+    { branch_name => SHA1 }
 
 =head1 COMPOSITION
 
@@ -59,6 +77,16 @@ Recommended application order if using this role:
 =head1 REQUIRED METHODS
 
 =head2 C<git>
+
+Must be a Git::Wrapper instance.
+
+Suggests L<Dist::Zilla::Role::Git::LocalRepository>
+
+=head1 PRIVATE METHODS
+
+=head2 _build_local_branches
+
+Builder for L</local_branches>
 
 =begin MetaPOD::JSON v1.1.0
 

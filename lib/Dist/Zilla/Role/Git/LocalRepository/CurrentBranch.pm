@@ -3,6 +3,8 @@ use warnings;
 
 package Dist::Zilla::Role::Git::LocalRepository::CurrentBranch;
 
+# ABSTRACT: Query state from C<Git> about the current branch
+
 use Moose::Role;
 
 =begin MetaPOD::JSON v1.1.0
@@ -29,27 +31,13 @@ Recommended application order if using this role:
 
 Must return a L<Git::Wrapper> or compatible instance
 
-Available from
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository>
-
-=back
-
-=cut
+Suggests: L<Dist::Zilla::Role::Git::LocalRepository>
 
 =requires C<local_branches>
 
-Must return a HashRef mapping branch name to branch sha1. 
+Must return a HashRef mapping branch name to branch sha1.
 
-Available from
-
-=over 4
-
-=item * L<Dist::Zilla::Role::Git::LocalRepository::LocalBranches>
-
-=back
+Suggests: L<Dist::Zilla::Role::Git::LocalRepository::LocalBranches>
 
 =cut
 

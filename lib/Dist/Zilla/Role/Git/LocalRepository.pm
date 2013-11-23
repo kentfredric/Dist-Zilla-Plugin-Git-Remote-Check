@@ -56,6 +56,13 @@ Applying this role gives you a "git" method on your plugin, that will give you a
 
 =cut
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+
 =requires zilla
 
 Available from:

@@ -35,6 +35,16 @@ has '_remote_branch' => (
 
 requires 'remote_name';
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+    with "Dist::Zilla::Role::Git::Remote::Branch";
+
 
 =method C<remote_branch>
 

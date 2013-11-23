@@ -18,6 +18,25 @@ use Moose::Role;
 
 =end MetaPOD::JSON
 
+
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+
+    sub branch {
+
+    }
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::LocalRepository::LocalBranches";
+    with "Dist::Zilla::Role::Git::LocalRepository::CurrentBranch";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+    with "Dist::Zilla::Role::Git::Remote::Branch";
+    with "Dist::Zilla::Role::Git::Remote::Check";
+
+
 =requires C<branch>
 
 Must be implemented by the consuming plugin. ( Presently I know of no roles that provide this method ).

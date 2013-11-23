@@ -18,6 +18,15 @@ use Moose::Role;
 
 =cut
 
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+
 =requires C<log_fatal>
 
 Expected to take parameters as follows:

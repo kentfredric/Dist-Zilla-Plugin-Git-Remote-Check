@@ -16,6 +16,17 @@ use Moose::Role;
 
 =end MetaPOD::JSON
 
+
+=head1 COMPOSITION
+
+Recommended application order if using this role:
+
+    with "Dist::Zilla::Role::Plugin";
+    with "Dist::Zilla::Role::Git::LocalRepository";
+    with "Dist::Zilla::Role::Git::RemoteNames";
+    with "Dist::Zilla::Role::Git::RemoteName";
+    with "Dist::Zilla::Role::Git::Remote::Update";
+
 =requires C<log>
 
 Expected to take parameters as follows:

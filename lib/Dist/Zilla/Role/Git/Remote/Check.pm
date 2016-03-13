@@ -144,7 +144,7 @@ sub check_remote {
 
   my $message = <<'EOF';
 There are %d commits visible upstream on '%s' not visible on '%s'.
-Either merge with '%s', rebase on '%s', or anihilate upstream with 'git push -f '
+Either merge with '%s', rebase on '%s', or annihilate upstream with 'git push -f '
 The %d most recent commits are:
  %s
 EOF

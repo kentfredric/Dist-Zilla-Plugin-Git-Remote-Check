@@ -67,7 +67,7 @@ use namespace::autoclean;
 
 =role C<Dist::Zilla::Role::BeforeRelease>
 
-Causes this plugin to be executed during L<Dist::Zilla>'s "Before Re,ease" phase.
+Causes this plugin to be executed during L<Dist::Zilla>'s "Before Release" phase.
 ( L</before_release> )
 
 =cut
